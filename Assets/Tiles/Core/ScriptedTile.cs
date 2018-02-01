@@ -9,13 +9,17 @@ using UnityEngine;
 public class ScriptedTile : Tile 
 {
     private bool init = false;
-    
+    public Sprite preview;
     //Parametre de base de la tile
     void OnEnable() {
         if (!init) {
             flags = TileFlags.InstantiateGameObjectRuntimeOnly;
             colliderType = ColliderType.None;
             init = true;
+        }
+        if (!Debug.isDebugBuild) {
+            Debug.Log("RemoveSprite");
+            sprite = null;
         }
     }
 #if UNITY_EDITOR
@@ -47,6 +51,7 @@ public class ScriptedTile : Tile
             Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(texture);
             prefab.GetComponent<SpriteRenderer>().sprite = sprite;
             tile.sprite = sprite;
+            tile.preview = sprite;
         }
     }
 #endif
