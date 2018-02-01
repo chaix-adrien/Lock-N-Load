@@ -14,7 +14,7 @@ public class ScriptedTile : Tile
     [MenuItem("Assets/Create/ScriptedTile")]
     public static void CreateRoadTile()
     {
-        string path = EditorUtility.SaveFilePanelInProject("Save Road Tile", "New Road Tile", "Asset", "Save Road Tile", "Assets");
+        string path = EditorUtility.SaveFilePanelInProject("Save Tile", "New Tile", "Asset", "Save Tile", "Tiles");
         if (path == "")
             return;
     AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<ScriptedTile>(), path);
