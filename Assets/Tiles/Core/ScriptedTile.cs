@@ -18,7 +18,6 @@ public class ScriptedTile : Tile
             init = true;
         }
         if (!Debug.isDebugBuild) {
-            Debug.Log("RemoveSprite");
             sprite = null;
         }
     }
