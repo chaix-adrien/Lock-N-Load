@@ -6,19 +6,33 @@ using GamepadInput;
 public class Script_Player : MonoBehaviour {
 //public
 	public GamepadInput.GamePad.Index gamepad;
+
+	public GameObject ray;
 	public float speed;
+	public Transform startRay;
 //private
 	private Rigidbody2D rb;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
+		ray.GetComponent<LineRenderer>().useWorldSpace = true;
 	}
 
-	void Update () {
+	void FixedUpdate () {
 		move();
 		rotate();
+	}
 
+	void Update() {
+		displayRay();
+	}
 
+	void displayRay() {
+		RaycastHit2D hitInfo = Physics2D.Raycast(startRay.transform.position, transform.up);
+		ray.GetComponent<LineRenderer>().SetPosition(0, startRay.transform.position);
+		if (hitInfo) {
+			ray.GetComponent<LineRenderer>().SetPosition(1, hitInfo.point);
+		}
 	}
 
 	void rotate() {
