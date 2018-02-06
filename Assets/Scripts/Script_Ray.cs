@@ -18,12 +18,12 @@ public class Script_Ray : MonoBehaviour {
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
-		percentAmmo = player.GetComponent<Script_Player>().getPercentAmmo();
+		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
 		resetColor();
 	}
 
 	void Update() {
-		percentAmmo = player.GetComponent<Script_Player>().getPercentAmmo();
+		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
 		if (reloadState && !fireState) {
 			lineRenderer.enabled = false;
 		} else if (!reloadState) {
