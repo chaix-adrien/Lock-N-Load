@@ -8,14 +8,24 @@ public class Script_Player : MonoBehaviour {
 	public GamepadInput.GamePad.Index gamepad;
 
 	public GameObject ray;
-	public float speed;
 	public Transform startRay;
+
+	public float reloadTime = 2f;
+	public int magazineMax = 3;
+	public float speedFire = 0.0f;
 //private
 	private Rigidbody2D rb;
+	private Dictionary<string, float> times = new Dictionary<string, float>();
+
+	private int magazine;
+
+	private Script_Move moveComp;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-		ray.GetComponent<LineRenderer>().useWorldSpace = true;
+		magazine = magazineMax;
+		times.Add("lastShoot", 0f);
+		moveComp = GetComponent<Script_Move>();
 	}
 
 	void FixedUpdate () {
@@ -25,6 +35,37 @@ public class Script_Player : MonoBehaviour {
 
 	void Update() {
 		displayRay();
+		checkForFire();
+	}
+
+	private bool triggerState = false;
+	void checkForFire() {
+		float triggerDeadZoneIn = 0.9f;
+		float triggerDeadZoneOut = 0.5f;
+		float trigger = GamePad.GetTrigger(GamePad.Trigger.RightTrigger, gamepad);
+		if (!triggerState
+		&& trigger >= triggerDeadZoneIn
+		&& times["lastShoot"] + speedFire <= Time.time
+		&& magazine > 0) {
+			fire();
+			times["lastShoot"] = Time.time;
+			triggerState = true;
+		} else if (trigger < triggerDeadZoneOut)
+			triggerState = false;
+	}
+
+	void fire() {
+		ray.GetComponent<Script_Ray>().fire();
+		magazine--;
+		if (magazine <= 0) {
+			Invoke("reload", reloadTime);
+			ray.GetComponent<Script_Ray>().reload();
+		}
+	}
+
+	void reload() {
+		magazine = magazineMax;
+		ray.GetComponent<Script_Ray>().endReload();
 	}
 
 	void displayRay() {
@@ -43,12 +84,9 @@ public class Script_Player : MonoBehaviour {
 
 	void move() {
 		Vector2 leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, gamepad);
-		rb.velocity = leftStick * speed;
+		moveComp.move(leftStick);
 	}
-	
-    void OnCollisionEnter2D(Collision2D col){
-	}
-
-	void OnTriggerEnter2D(Collider2D col) {
+	public float getPercentAmmo() {
+		return (magazine / 1f) / (magazineMax / 1f);
 	}
 }

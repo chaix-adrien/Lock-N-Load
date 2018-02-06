@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: Tile_Mug
+  m_Name: Mug_Tile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 60410653de423004fbf2e3d8735c01b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -30,9 +30,8 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1354678442280846, guid: 467c3029336d0a74b890355f5e05e898,
+  m_InstancedGameObject: {fileID: 1228880921980494, guid: c359b29c0461fca43892eb19bf20b64f,
     type: 2}
-  m_Flags: 1
+  m_Flags: 4
   m_ColliderType: 0
-  m_Sprites: []
-  m_Preview: {fileID: 21300000, guid: 60410653de423004fbf2e3d8735c01b6, type: 3}
+  preview: {fileID: 21300000, guid: 60410653de423004fbf2e3d8735c01b6, type: 3}
