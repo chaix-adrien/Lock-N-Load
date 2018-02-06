@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ff77d4ce3cc84aa42d2bbc919a197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crossableByRay: 1
 --- !u!212 &212642780696340470
 SpriteRenderer:
   m_ObjectHideFlags: 0
