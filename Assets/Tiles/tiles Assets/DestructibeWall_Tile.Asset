@@ -7,9 +7,9 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: brick_tile
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
+  m_Name: DestructibeWall_Tile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 453a97776a7cc7b46a0d087b7d1fb4ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -30,6 +30,8 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
+  m_InstancedGameObject: {fileID: 1124513224340498, guid: 501d5bd888e605547b700255c42974dd,
+    type: 2}
+  m_Flags: 4
+  m_ColliderType: 0
+  InGameSprite: {fileID: 0}

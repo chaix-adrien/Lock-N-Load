@@ -46,6 +46,12 @@ TagManager:
   - name: map
     uniqueID: 3639160435
     locked: 0
+  - name: Scripted Map
+    uniqueID: 273973925
+    locked: 0
   - name: Player
     uniqueID: 1510501127
+    locked: 0
+  - name: Map Top Of PLayer
+    uniqueID: 658332105
     locked: 0

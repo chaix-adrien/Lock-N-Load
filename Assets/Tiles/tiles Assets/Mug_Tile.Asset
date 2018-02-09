@@ -34,4 +34,4 @@ MonoBehaviour:
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  preview: {fileID: 21300000, guid: 60410653de423004fbf2e3d8735c01b6, type: 3}
+  InGameSprite: {fileID: 0}

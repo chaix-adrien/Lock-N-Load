@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Script_WeaponWithRay : MonoBehaviour {
 	public float reloadTime = 2f;
@@ -30,7 +31,14 @@ public class Script_WeaponWithRay : MonoBehaviour {
 		if (canFire
 		&& lastShootTime + speedFire <= Time.time
 		&& magazine > 0) {
-			Debug.Log("Fire");
+			RaycastHit2D hitInfo = castRay();
+			Script_TileHandler handler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
+			Debug.Log(handler);			
+			if (handler) {
+				Debug.Log("callGetShoot");
+				handler.getShot();
+			}
+			
 			ray.GetComponent<Script_Ray>().fire();
 			magazine--;
 			lastShootTime = Time.time;
@@ -72,11 +80,14 @@ public class Script_WeaponWithRay : MonoBehaviour {
 	}
 
 	void displayRay() {
-		int layerMask = 1 << LayerMask.NameToLayer("Default");
-		RaycastHit2D hitInfo = Physics2D.Raycast(startRay.transform.position, transform.up, Mathf.Infinity, layerMask);
+		RaycastHit2D hitInfo = castRay();
 		ray.GetComponent<LineRenderer>().SetPosition(0, startRay.transform.position);
 		if (hitInfo) {
 			ray.GetComponent<LineRenderer>().SetPosition(1, hitInfo.point);
 		}
+	}
+	RaycastHit2D castRay() {
+		int layerMask = 1 << LayerMask.NameToLayer("Default");
+		return Physics2D.Raycast(startRay.transform.position, transform.up, Mathf.Infinity, layerMask);
 	}
 }

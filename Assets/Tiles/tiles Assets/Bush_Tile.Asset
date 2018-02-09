@@ -30,8 +30,8 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1553195490621804, guid: dfa3eb012adb48945a2cf8ce6b01456f,
+  m_InstancedGameObject: {fileID: 1846968638657782, guid: b23d96aae53b87c43a78f3e6996f8865,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  preview: {fileID: 21300000, guid: ba24aad000125d140a28a4b8aa641254, type: 3}
+  InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}

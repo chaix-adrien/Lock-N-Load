@@ -9,18 +9,30 @@ using UnityEngine;
 public class ScriptedTile : Tile 
 {
     private bool init = false;
-    public Sprite preview;
-    //Parametre de base de la tile
+    public Sprite InGameSprite;
+
+    private Sprite savedSprite;
+
+
     void OnEnable() {
         if (!init) {
             flags = TileFlags.InstantiateGameObjectRuntimeOnly;
             colliderType = ColliderType.None;
             init = true;
         }
-        if (!Debug.isDebugBuild) {
-            sprite = null;
-        }
+        savedSprite = sprite;
+        #if UNITY_EDITOR
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
+        #else
+            gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
+        #endif    
     }
+    
+    public void resetSprite() {
+        sprite = savedSprite;
+    }
+
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/Scripted Tile")]
     public static void CreateScriptedTile()
@@ -45,12 +57,13 @@ public class ScriptedTile : Tile
 		corePrefab.hideFlags = HideFlags.None;
 	    GameObject prefab = PrefabUtility.CreatePrefab(path + "NewTile.prefab", corePrefab);
         tile.gameObject = prefab;
+        prefab.GetComponent<Script_Tile_Collider>().tile = tile;
         if (texture != "") {
             texture = "Assets" + texture.Replace(Application.dataPath, "");
             Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(texture);
             prefab.GetComponent<SpriteRenderer>().sprite = sprite;
             tile.sprite = sprite;
-            tile.preview = sprite;
+            tile.InGameSprite = sprite;
         }
     }
 #endif
