@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: Bush_Tile
+  m_Name: Explosion_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: fa7a50f8b5e63634486cb13eadec251d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da9c50dbb2ecf5140910d01af09a47f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1846968638657782, guid: b23d96aae53b87c43a78f3e6996f8865,
+  m_InstancedGameObject: {fileID: 1562715726645478, guid: d6610e38d7662d9489e2b2f835dcfad0,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0

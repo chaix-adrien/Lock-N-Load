@@ -33,12 +33,9 @@ public class Script_WeaponWithRay : MonoBehaviour {
 		&& magazine > 0) {
 			RaycastHit2D hitInfo = castRay();
 			Script_TileHandler handler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
-			Debug.Log(handler);			
 			if (handler) {
-				Debug.Log("callGetShoot");
 				handler.getShot();
-			}
-			
+			}			
 			ray.GetComponent<Script_Ray>().fire();
 			magazine--;
 			lastShootTime = Time.time;

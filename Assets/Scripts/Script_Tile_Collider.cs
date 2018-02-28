@@ -14,7 +14,6 @@ public class Script_Tile_Collider : MonoBehaviour {
 		if (crossableByRay) {
 			gameObject.layer = LayerMask.NameToLayer("IgnoredByRay");
 		}
-		//pas possible ICI	
 	}
 	public void setSprite(Sprite toset) {
 		tile.sprite = toset;
