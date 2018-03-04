@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script_TileSlow : MonoBehaviour {
+public class Script_TileSlow : Script_TileHandler {
 
 	public float speedCoef;
 	// Use this for initialization
@@ -16,13 +16,14 @@ public class Script_TileSlow : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter2D(Collider2D col) {
+	protected override void  walkedOnEnter(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
 		if (!col.isTrigger && moveComp) {
 			moveComp.addContraint(contraintName, speedCoef);
 		}
 	}
-	void OnTriggerExit2D(Collider2D col) {
+
+	protected override void  walkedOnLeave(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
 		if (!col.isTrigger && moveComp) {
 			moveComp.removeContraint(contraintName);

@@ -270,7 +270,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e65859a74f417a468ab621a2aeb3268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 100
+  startLife: 100
+  minLife: 0
+  invicibleFrame: 1
+  lifeBar: {fileID: 1157420160}
   gamepad: 0
+  controllMode: 0
 --- !u!50 &617655664
 Rigidbody2D:
   serializedVersion: 4
@@ -289,7 +295,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!212 &617655665
@@ -1710,23 +1716,23 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 1
-  - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 1
-  - serializedVersion: 1
-    m_DirtyIndex: 1
-  - serializedVersion: 1
-    m_DirtyIndex: 1
+    m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 1
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 1
+    m_DirtyIndex: 0
+  - serializedVersion: 1
+    m_DirtyIndex: 0
+  - serializedVersion: 1
+    m_DirtyIndex: 0
+  - serializedVersion: 1
+    m_DirtyIndex: 0
 --- !u!114 &1607154695
 MonoBehaviour:
   m_ObjectHideFlags: 0

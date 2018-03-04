@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using GamepadInput;
 
-public class Script_Player : MonoBehaviour {
+public class Script_Player : Script_Entity {
 //public
+	 [Header("Player parameters")]
 	public GamepadInput.GamePad.Index gamepad;
+
+		public enum moveMode {
+		KEYBOARD,
+		CONTROLLER,
+	};
+
+	public moveMode controllMode = moveMode.CONTROLLER;
 //private
 	private Dictionary<string, float> times = new Dictionary<string, float>();
 	private Script_Move moveComp;
@@ -13,6 +21,8 @@ public class Script_Player : MonoBehaviour {
 	private Script_WeaponWithRay weapon;
 
 	void Start () {
+		base.Start();
+		Debug.Log("start player");
 		times.Add("lastShoot", 0f);
 		moveComp = GetComponent<Script_Move>();
 		weapon = GetComponent<Script_WeaponWithRay>();
@@ -50,7 +60,19 @@ public class Script_Player : MonoBehaviour {
 	}
 
 	void move() {
-		Vector2 leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, gamepad);
+		Vector2 leftStick = new Vector2(0f, 0f);
+		if (controllMode == moveMode.CONTROLLER) {
+			leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, gamepad);
+		}
+		else if (controllMode == moveMode.KEYBOARD) {
+			leftStick.x = Input.GetAxis("horizontal_arrow");
+			leftStick.y = Input.GetAxis("vertical_arrow");
+			
+		}
 		moveComp.move(leftStick);
+	}
+
+	protected override void die() {
+		Debug.Log("player get dead");
 	}
 }

@@ -11,6 +11,5 @@ public class Script_TileMap : MonoBehaviour {
 	void Start () {
   		Tilemap tilemap = FindObjectOfType(typeof(Tilemap)) as Tilemap;
         tilemap.RefreshAllTiles();
-		Debug.Log("REFRESH MAP");
 	}
 }

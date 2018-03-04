@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114089318472902116}
   - component: {fileID: 95688975942709148}
   - component: {fileID: 114487501233200596}
+  - component: {fileID: 114081493672915292}
   m_Layer: 0
   m_Name: FireBall_Tile
   m_TagString: TileCollider
@@ -86,6 +87,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114081493672915292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173995114543436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03e0de0a11fb5e49961d6c17eb3b9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damages: 10
 --- !u!114 &114089318472902116
 MonoBehaviour:
   m_ObjectHideFlags: 1

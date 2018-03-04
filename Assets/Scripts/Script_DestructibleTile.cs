@@ -20,7 +20,7 @@ public class Script_DestructibleTile : Script_TileHandler {
 		
 	}
 
-	public override void getShot() {
+	public override void getShot(GameObject player) {
 		if (spriteId < spritesState.Length) {
 			Debug.Log(spriteId);
 			Debug.Log(spritesState[spriteId]);

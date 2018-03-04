@@ -34,7 +34,7 @@ public class Script_WeaponWithRay : MonoBehaviour {
 			RaycastHit2D hitInfo = castRay();
 			Script_TileHandler handler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
 			if (handler) {
-				handler.getShot();
+				handler.getShot(gameObject);
 			}			
 			ray.GetComponent<Script_Ray>().fire();
 			magazine--;

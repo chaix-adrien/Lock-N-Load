@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114832709437830396}
   - component: {fileID: 95457685586081586}
   - component: {fileID: 114058406926178748}
+  - component: {fileID: 114885030377897442}
   m_Layer: 0
   m_Name: Fre_Tile
   m_TagString: TileCollider
@@ -110,6 +111,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossableByRay: 1
   tile: {fileID: 11400000, guid: 926afba9fd3e90940b5ed07d199cce09, type: 2}
+--- !u!114 &114885030377897442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562715726645478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03e0de0a11fb5e49961d6c17eb3b9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damages: 10
 --- !u!212 &212322500610285414
 SpriteRenderer:
   m_ObjectHideFlags: 1
