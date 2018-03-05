@@ -35,8 +35,9 @@ public class Script_WeaponWithRay : MonoBehaviour {
 			Script_TileHandler handler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
 			if (handler) {
 				handler.getShot(gameObject);
-			}			
-			ray.GetComponent<Script_Ray>().fire();
+			}
+			if (ray)	
+				ray.GetComponent<Script_Ray>().fire();
 			magazine--;
 			lastShootTime = Time.time;
 			if (magazine <= 0)
@@ -46,7 +47,8 @@ public class Script_WeaponWithRay : MonoBehaviour {
 
 	public void reload() {
 		magazine = magazineMax;
-		ray.GetComponent<Script_Ray>().endReload();
+		if (ray)
+			ray.GetComponent<Script_Ray>().endReload();
 	}
 
 	public float getPercentAmmo() {

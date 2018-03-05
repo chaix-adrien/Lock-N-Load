@@ -78,7 +78,6 @@ public class Script_Player : Script_Entity {
 		else if (controllMode == moveMode.KEYBOARD) {
 			leftStick.x = Input.GetAxis("horizontal");
 			leftStick.y = Input.GetAxis("vertical");
-			
 		}
 		moveComp.move(leftStick);
 	}
