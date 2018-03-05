@@ -273,8 +273,10 @@ MonoBehaviour:
   maxLife: 100
   startLife: 100
   minLife: 0
-  invicibleFrame: 1
+  invicibleFrame: 2
+  invicibleFrameColor: {r: 0.737931, g: 1, b: 0, a: 1}
   lifeBar: {fileID: 1157420160}
+  entityColor: {r: 1, g: 0, b: 0, a: 1}
   gamepad: 0
   controllMode: 0
 --- !u!50 &617655664

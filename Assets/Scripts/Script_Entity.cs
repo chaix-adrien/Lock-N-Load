@@ -10,45 +10,55 @@ public class Script_Entity : MonoBehaviour {
 
 	public float invicibleFrame = 1.0f;
 
+	public Color invicibleFrameColor = Color.white;
+
 	public GameObject lifeBar;
 
 	private int life;
-	private float lastShootTime = 0.0f;
+	private float lastShootTime;
 
 	private SpriteRenderer rend;
+	public Color entityColor;
 
 	// Use this for initialization
 	protected void Start () {
 		life = startLife;
 		rend = GetComponent<SpriteRenderer>();
+		lastShootTime = -invicibleFrame;
+		GetComponent<SpriteRenderer>().color = entityColor;
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 		float elapsedTime = Time.time - lastShootTime;
-		if (elapsedTime >= invicibleFrame) {
+		if (elapsedTime < invicibleFrame) {
 			displayInvincibleFrame(elapsedTime, elapsedTime / invicibleFrame);
 		}
 	}
 
 	protected virtual void displayInvincibleFrame(float elapsedTime, float percent) {
-
+		if (percent >= 0.9)
+			rend.color = entityColor;
+		else if (elapsedTime % 0.5 < 0.25) 
+			rend.color = invicibleFrameColor;
+		else
+			rend.color = entityColor;
 	}
 
 	protected virtual void die() {
 		Debug.Log("entity get dead");
 	}
 
-	public void hit(int damages) {
-		Debug.Log("hit " + (Time.time - lastShootTime));
+	public void hit(int damages, Color hitColor) {
 		if (Time.time - lastShootTime >= invicibleFrame) {
+			invicibleFrameColor = hitColor;
 			lastShootTime = Time.time;
 			life -= damages;
 			if (life <= minLife) {
 				life = minLife;
 				die();
 			}
-			Debug.Log(life);
 			if (lifeBar)
 				lifeBar.GetComponent<Script_LifeBar>().refreshLifeBar(getPercentLife());
 		}

@@ -22,7 +22,6 @@ public class Script_Player : Script_Entity {
 
 	void Start () {
 		base.Start();
-		Debug.Log("start player");
 		times.Add("lastShoot", 0f);
 		moveComp = GetComponent<Script_Move>();
 		weapon = GetComponent<Script_WeaponWithRay>();
@@ -33,7 +32,8 @@ public class Script_Player : Script_Entity {
 		rotate();
 	}
 
-	void Update() {
+	protected void Update() {
+		base.Update();
 		checkForFire();
 	}
 
