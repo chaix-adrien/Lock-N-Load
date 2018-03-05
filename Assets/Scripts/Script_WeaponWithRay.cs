@@ -7,6 +7,7 @@ public class Script_WeaponWithRay : MonoBehaviour {
 	public float reloadTime = 2f;
 	public int magazineMax = 3;
 	public float speedFire = 0.0f;
+	public int damagePerShot = 20;
 	public Transform startRay;
 	public GameObject ray;
 	private int magazine;
@@ -31,13 +32,16 @@ public class Script_WeaponWithRay : MonoBehaviour {
 		if (canFire
 		&& lastShootTime + speedFire <= Time.time
 		&& magazine > 0) {
-			RaycastHit2D hitInfo = castRay();
-			Script_TileHandler handler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
-			if (handler) {
-				handler.getShot(gameObject);
-			}
-			if (ray)	
+			if (ray)
 				ray.GetComponent<Script_Ray>().fire();
+			RaycastHit2D hitInfo = castRay();
+			Script_TileHandler tileHandler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
+			if (tileHandler)
+				tileHandler.getShot(gameObject);
+			Script_Entity entityHandler = hitInfo.collider.gameObject.GetComponent<Script_Entity>();
+			if (entityHandler)
+				entityHandler.hit(damagePerShot, GetComponent<Script_Entity>().entityColor);
+			
 			magazine--;
 			lastShootTime = Time.time;
 			if (magazine <= 0)
@@ -86,7 +90,9 @@ public class Script_WeaponWithRay : MonoBehaviour {
 		}
 	}
 	RaycastHit2D castRay() {
-		int layerMask = 1 << LayerMask.NameToLayer("Default");
+		string[] mask = {"Default", "Player"};
+		int layerMask = LayerMask.GetMask(mask);
+		//int layerMask = 1 << LayerMask.NameToLayer("Default") << LayerMask.NameToLayer("Player");
 		return Physics2D.Raycast(startRay.transform.position, transform.up, Mathf.Infinity, layerMask);
 	}
 }
