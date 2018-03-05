@@ -41,7 +41,12 @@ public class Script_Player : Script_Entity {
 	void checkForFire() {
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
-		float trigger = GamePad.GetTrigger(GamePad.Trigger.RightTrigger, gamepad);
+		float trigger = 0f;
+		if (controllMode == moveMode.CONTROLLER) {
+			trigger = GamePad.GetTrigger(GamePad.Trigger.RightTrigger, gamepad);
+		} else if (controllMode == moveMode.KEYBOARD) {
+			trigger = Input.GetKey("space") ? 1f : 0f;
+		}
 		if (!triggerState
 		&& trigger >= triggerDeadZoneIn) {
 			weapon.fire();
@@ -52,7 +57,13 @@ public class Script_Player : Script_Entity {
 
 	
 	void rotate() {
-		Vector2 rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, gamepad);
+		Vector2 rightStick = new Vector2(0f, 0f);
+		if (controllMode == moveMode.CONTROLLER) {
+			rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, gamepad);
+		} else if (controllMode == moveMode.KEYBOARD) {
+			rightStick.x = Input.GetAxis("horizontal_arrow");
+			rightStick.y = Input.GetAxis("vertical_arrow");
+		}
 		if (rightStick.magnitude >= 0.1) {
 			float angle = Vector2.SignedAngle(new Vector2(0, 1), rightStick);
 			transform.localEulerAngles = new Vector3(0, 0, angle);
@@ -65,8 +76,8 @@ public class Script_Player : Script_Entity {
 			leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, gamepad);
 		}
 		else if (controllMode == moveMode.KEYBOARD) {
-			leftStick.x = Input.GetAxis("horizontal_arrow");
-			leftStick.y = Input.GetAxis("vertical_arrow");
+			leftStick.x = Input.GetAxis("horizontal");
+			leftStick.y = Input.GetAxis("vertical");
 			
 		}
 		moveComp.move(leftStick);
