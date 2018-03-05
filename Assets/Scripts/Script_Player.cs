@@ -12,8 +12,9 @@ public class Script_Player : Script_Entity {
 		KEYBOARD,
 		CONTROLLER,
 	};
-
 	public moveMode controllMode = moveMode.CONTROLLER;
+
+	public GameObject impactSprite;
 //private
 	private Dictionary<string, float> times = new Dictionary<string, float>();
 	private Script_Move moveComp;
@@ -80,6 +81,15 @@ public class Script_Player : Script_Entity {
 			leftStick.y = Input.GetAxis("vertical");
 		}
 		moveComp.move(leftStick);
+	}
+
+	protected override void onHit(int damages, Color hitColor) {
+		impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
+		Invoke("hideImpactSprite", 1f);
+	}
+
+	private void hideImpactSprite() {
+		impactSprite.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 0f);
 	}
 
 	protected override void die() {

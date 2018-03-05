@@ -92,7 +92,6 @@ public class Script_WeaponWithRay : MonoBehaviour {
 	RaycastHit2D castRay() {
 		string[] mask = {"Default", "Player"};
 		int layerMask = LayerMask.GetMask(mask);
-		//int layerMask = 1 << LayerMask.NameToLayer("Default") << LayerMask.NameToLayer("Player");
 		return Physics2D.Raycast(startRay.transform.position, transform.up, Mathf.Infinity, layerMask);
 	}
 }

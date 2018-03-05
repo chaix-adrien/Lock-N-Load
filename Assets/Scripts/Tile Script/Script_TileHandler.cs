@@ -27,6 +27,7 @@ public class Script_TileHandler : MonoBehaviour {
 	}
 
 	public virtual void getShot(GameObject player) {
+		Debug.Log("GetShot base");
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {

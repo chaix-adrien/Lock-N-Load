@@ -10,7 +10,7 @@ public class Script_Entity : MonoBehaviour {
 
 	public float invicibleFrame = 1.0f;
 
-	public Color invicibleFrameColor = Color.white;
+	public float invincibleFrameFade = 0.5f;
 
 	public GameObject lifeBar;
 
@@ -38,10 +38,12 @@ public class Script_Entity : MonoBehaviour {
 	}
 
 	protected virtual void displayInvincibleFrame(float elapsedTime, float percent) {
+		Color faded = entityColor;
+		faded.a = invincibleFrameFade;
 		if (percent >= 0.9)
 			rend.color = entityColor;
 		else if (elapsedTime % 0.5 < 0.25) 
-			rend.color = invicibleFrameColor;
+			rend.color = faded;
 		else
 			rend.color = entityColor;
 	}
@@ -50,9 +52,12 @@ public class Script_Entity : MonoBehaviour {
 		Debug.Log("entity get dead");
 	}
 
+	
+	protected virtual void onHit(int damages, Color hitColor) {
+	}
+
 	public void hit(int damages, Color hitColor) {
 		if (Time.time - lastShootTime >= invicibleFrame) {
-			invicibleFrameColor = hitColor;
 			lastShootTime = Time.time;
 			life -= damages;
 			if (life <= minLife) {
@@ -61,6 +66,7 @@ public class Script_Entity : MonoBehaviour {
 			}
 			if (lifeBar)
 				lifeBar.GetComponent<Script_LifeBar>().refreshLifeBar(getPercentLife());
+			onHit(damages, hitColor);
 		}
 	}
 
