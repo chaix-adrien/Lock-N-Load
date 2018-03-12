@@ -20,7 +20,7 @@ public class Script_DamageOnWalk : Script_TileHandler {
 	protected override void walkedOnStay(Collider2D col) {
 		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
 		if (!col.isTrigger && entity) {
-			entity.hit(damages, onHitColor);
+			entity.hit(damages, onHitColor, "environement");
 		}
 	}	
 }

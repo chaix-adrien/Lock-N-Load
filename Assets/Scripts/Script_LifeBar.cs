@@ -12,12 +12,6 @@ public class Script_LifeBar : MonoBehaviour {
 		line = GetComponent<LineRenderer>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		 transform.rotation = Quaternion.identity;
-
-	}
-
 	public void refreshLifeBar(float percent) {
 		transform.localScale = new Vector3(percent, 1f, 1f);
 	}

@@ -41,7 +41,7 @@ public class Script_WeaponWithRay : MonoBehaviour {
 				tileHandler.getShot(gameObject);
 			Script_Entity entityHandler = hitInfo.collider.gameObject.GetComponent<Script_Entity>();
 			if (entityHandler)
-				entityHandler.hit(damagePerShot, GetComponent<Script_Entity>().entityColor);
+				entityHandler.hit(damagePerShot, GetComponent<Script_Entity>().entityColor, "player");
 			GameObject instanciedImpact = Instantiate(impact, hitInfo.point, Quaternion.identity);
 			instanciedImpact.GetComponent<SpriteRenderer>().color = GetComponent<Script_Entity>().entityColor;
 			magazine--;

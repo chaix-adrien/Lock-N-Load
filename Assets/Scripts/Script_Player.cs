@@ -83,11 +83,12 @@ public class Script_Player : Script_Entity {
 		moveComp.move(leftStick);
 	}
 
-	protected override void onHit(int damages, Color hitColor) {
-		float impactTime = 1f;
-		Debug.Log("Hit");
-		impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
-		Invoke("hideImpactSprite", impactTime);
+	protected override void onHit(int damages, Color hitColor, string from) {
+		if (from == "player") {
+			float impactTime = 1f;
+			impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
+			Invoke("hideImpactSprite", impactTime);
+		}
 	}
 
 	private void hideImpactSprite() {
