@@ -193,7 +193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &412545327
 MonoBehaviour:
@@ -206,12 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d788c2c3d12bbe14cb1979fba4adc247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerToFollow: {fileID: 617655660}
---- !u!1 &617655660 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1696987223583972, guid: ac4fc149618efc340a480df30eb35193,
-    type: 2}
-  m_PrefabInternal: {fileID: 1309657323}
+  playerToFollow: {fileID: 0}
 --- !u!1 &763340499
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +325,49 @@ Prefab:
       propertyPath: gamepad
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4366354745779728, guid: ac4fc149618efc340a480df30eb35193, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451406023500860, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: gamepad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451406023500860, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: entityColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114451406023500860, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: entityColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366354745779728, guid: ac4fc149618efc340a480df30eb35193, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366354745779728, guid: ac4fc149618efc340a480df30eb35193, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 212220922371627288, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -1355738017
+      objectReference: {fileID: 0}
+    - target: {fileID: 212220922371627288, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114901443518525918, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: impact
+      value: 
+      objectReference: {fileID: 1176684150126338, guid: 7d6fd356e766ecb439ecb88fa3f3a3cf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac4fc149618efc340a480df30eb35193, type: 2}
   m_IsPrefabParent: 0
@@ -1771,6 +1809,24 @@ Prefab:
         type: 2}
       propertyPath: entityColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366354745779728, guid: ac4fc149618efc340a480df30eb35193, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366354745779728, guid: ac4fc149618efc340a480df30eb35193, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 212220922371627288, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -1355738017
+      objectReference: {fileID: 0}
+    - target: {fileID: 212220922371627288, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac4fc149618efc340a480df30eb35193, type: 2}

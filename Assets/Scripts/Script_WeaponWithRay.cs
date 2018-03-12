@@ -8,6 +8,7 @@ public class Script_WeaponWithRay : MonoBehaviour {
 	public int magazineMax = 3;
 	public float speedFire = 0.0f;
 	public int damagePerShot = 20;
+	public GameObject impact;
 	public Transform startRay;
 	public GameObject ray;
 	private int magazine;
@@ -41,7 +42,8 @@ public class Script_WeaponWithRay : MonoBehaviour {
 			Script_Entity entityHandler = hitInfo.collider.gameObject.GetComponent<Script_Entity>();
 			if (entityHandler)
 				entityHandler.hit(damagePerShot, GetComponent<Script_Entity>().entityColor);
-			
+			GameObject instanciedImpact = Instantiate(impact, hitInfo.point, Quaternion.identity);
+			instanciedImpact.GetComponent<SpriteRenderer>().color = GetComponent<Script_Entity>().entityColor;
 			magazine--;
 			lastShootTime = Time.time;
 			if (magazine <= 0)

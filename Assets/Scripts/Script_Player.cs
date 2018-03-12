@@ -84,8 +84,10 @@ public class Script_Player : Script_Entity {
 	}
 
 	protected override void onHit(int damages, Color hitColor) {
+		float impactTime = 1f;
+		Debug.Log("Hit");
 		impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
-		Invoke("hideImpactSprite", 1f);
+		Invoke("hideImpactSprite", impactTime);
 	}
 
 	private void hideImpactSprite() {
