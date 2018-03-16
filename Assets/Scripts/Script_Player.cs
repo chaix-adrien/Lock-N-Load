@@ -15,6 +15,7 @@ public class Script_Player : Script_Entity {
 	public moveMode controllMode = moveMode.CONTROLLER;
 
 	public GameObject impactSprite;
+	public GameObject shield;
 //private
 	private Dictionary<string, float> times = new Dictionary<string, float>();
 	private Script_Move moveComp;
@@ -26,6 +27,7 @@ public class Script_Player : Script_Entity {
 		times.Add("lastShoot", 0f);
 		moveComp = GetComponent<Script_Move>();
 		weapon = GetComponent<Script_WeaponWithRay>();
+		shield.GetComponent<SpriteRenderer>().color = entityColor;
 	}
 
 	void FixedUpdate () {

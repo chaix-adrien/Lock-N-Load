@@ -37,11 +37,20 @@ public class Script_WeaponWithRay : MonoBehaviour {
 				ray.GetComponent<Script_Ray>().fire();
 			RaycastHit2D hitInfo = castRay();
 			Script_TileHandler tileHandler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
+			
+			//on TILE
 			if (tileHandler)
 				tileHandler.getShot(gameObject);
 			Script_Entity entityHandler = hitInfo.collider.gameObject.GetComponent<Script_Entity>();
+			
+			//on ENTITY
 			if (entityHandler)
 				entityHandler.hit(damagePerShot, GetComponent<Script_Entity>().entityColor, "player");
+			
+			//on SHIELD
+			if (hitInfo.collider.gameObject.tag == "Player Shield")
+				hitInfo.collider.gameObject.GetComponent<Script_Shield>().hit();
+			
 			GameObject instanciedImpact = Instantiate(impact, hitInfo.point, Quaternion.identity);
 			instanciedImpact.GetComponent<SpriteRenderer>().color = GetComponent<Script_Entity>().entityColor;
 			magazine--;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Map
   - TileCollider
+  - Player Shield
   layers:
   - Default
   - TransparentFX
