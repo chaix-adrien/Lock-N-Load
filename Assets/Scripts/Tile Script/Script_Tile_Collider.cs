@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 public class Script_Tile_Collider : MonoBehaviour {
 
 	public bool crossableByRay = true;
+
+	public bool walkable = false;
 	public ScriptedTile tile;
 	private Sprite savedSprite;
 	void Start () {
@@ -14,6 +16,9 @@ public class Script_Tile_Collider : MonoBehaviour {
 		if (crossableByRay) {
 			gameObject.layer = LayerMask.NameToLayer("IgnoredByRay");
 		}
+		Collider2D col = GetComponent<Collider2D>();
+		if (col)
+			col.isTrigger = walkable;
 	}
 	public void setSprite(Sprite toset) {
 		tile.sprite = toset;
