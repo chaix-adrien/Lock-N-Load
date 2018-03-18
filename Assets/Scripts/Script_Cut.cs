@@ -5,15 +5,14 @@ using UnityEngine;
 public class Script_Cut : Script_WeaponBase {
 	private IEnumerator coroutine;
 
-	public GameObject shieldObject;
 	private Script_Shield shield;
 	private Script_WeaponBase weapon;
 
 	private bool state = false;
 	// Use this for initialization
 	new void Start () {
-		shield = shieldObject.GetComponent<Script_Shield>();
-		weapon = GetComponent<Script_WeaponBase>();
+		shield = GetComponentInChildren<Script_Shield>();
+		weapon = GetComponentInChildren<Script_WeaponBase>();
 		base.Start();
 	}
 	
