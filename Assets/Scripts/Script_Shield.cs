@@ -6,6 +6,7 @@ public class Script_Shield : MonoBehaviour {
 	private int maxLife = 4;
 	private int life;
 	private SpriteRenderer rend;
+	private PolygonCollider2D col;
 
 	private Dictionary<string, bool> contraints;
 	private bool on = false;
@@ -15,6 +16,7 @@ public class Script_Shield : MonoBehaviour {
 	void Start () {
 		life = maxLife;
 		rend = GetComponent<SpriteRenderer>();
+		col = GetComponent<PolygonCollider2D>();
 		if (on) up(); else down();
 		contraints = new Dictionary<string, bool>();
 	}
@@ -22,7 +24,7 @@ public class Script_Shield : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (on) {
-			gameObject.SetActive(life > 0);
+			enable(life > 0);
 		}
 	}
 
@@ -30,13 +32,14 @@ public class Script_Shield : MonoBehaviour {
 		if (!canShield)
 			return;
 		on = true;
-		if (life > 0)
-			gameObject.SetActive(true);
+		if (life > 0) {
+			enable(true);
+		}
 	}
 
 	public void down() {
 		on = false;
-		gameObject.SetActive(false);
+		enable(false);
 	}
 
 	public void hit() {
@@ -46,19 +49,28 @@ public class Script_Shield : MonoBehaviour {
 		}
 	}
 
-	public void refull() {
-		life = maxLife;
+	public void refull(int stack = -1) {
+		if (stack == -1)
+			life = maxLife;
+		else {
+			life += stack;
+			life = life > maxLife ? maxLife : life;
+		}
 		updateColor();
-		gameObject.SetActive(on);
+		enable(on);
 	}
 
 	public bool getState() {
 		return on;
 	}
 
+	public float getPercentShield() {
+		return (life / 1.0f) / maxLife;
+	}
+
 	private void updateColor() {
 		Color newCol = rend.color;
-		newCol.a = (life / 1.0f) / maxLife;
+		newCol.a = getPercentShield();
 		rend.color = newCol;
 	}
 
@@ -76,12 +88,17 @@ public class Script_Shield : MonoBehaviour {
 		updateCanShield();
 	}
 
-	void updateCanShield() {
+	private void updateCanShield() {
 		bool can = true;
 		foreach(KeyValuePair<string, bool> contraint in contraints) {
 			can = can && contraint.Value;
 		}
 		canShield = can;
+	}
+
+	private void enable(bool active) {
+		rend.enabled = active;
+		col.enabled = active;
 	}
 
 }
