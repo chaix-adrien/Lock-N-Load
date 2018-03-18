@@ -37,6 +37,8 @@ public class Script_Shield : MonoBehaviour {
 		if (life > 0) {
 			life--;
 			updateColor();
+			if (life == 0)
+				Invoke("refull", 1f);
 		}
 	}
 

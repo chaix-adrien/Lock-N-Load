@@ -15,19 +15,21 @@ public class Script_Player : Script_Entity {
 	public moveMode controllMode = moveMode.CONTROLLER;
 
 	public GameObject impactSprite;
-	public GameObject shield;
+	public GameObject shieldObject;
 //private
 	private Dictionary<string, float> times = new Dictionary<string, float>();
 	private Script_Move moveComp;
 
 	private Script_WeaponWithRay weapon;
+	private Script_Shield shield;
 
 	void Start () {
 		base.Start();
 		times.Add("lastShoot", 0f);
 		moveComp = GetComponent<Script_Move>();
 		weapon = GetComponent<Script_WeaponWithRay>();
-		shield.GetComponent<SpriteRenderer>().color = entityColor;
+		shieldObject.GetComponent<SpriteRenderer>().color = entityColor;
+		shield = shieldObject.GetComponent<Script_Shield>();
 	}
 
 	void FixedUpdate () {
@@ -38,10 +40,13 @@ public class Script_Player : Script_Entity {
 	protected void Update() {
 		base.Update();
 		checkForFire();
+		checkForShield();
 	}
 
 	private bool triggerState = false;
 	void checkForFire() {
+		if (shield.getState())
+			return;
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
@@ -56,6 +61,23 @@ public class Script_Player : Script_Entity {
 			triggerState = true;
 		} else if (trigger < triggerDeadZoneOut)
 			triggerState = false;
+	}
+
+	void checkForShield() {
+		float triggerDeadZoneIn = 0.9f;
+		float triggerDeadZoneOut = 0.5f;
+		float trigger = 0f;
+		if (controllMode == moveMode.CONTROLLER) {
+			trigger = GamePad.GetTrigger(GamePad.Trigger.LeftTrigger, gamepad);
+		} else if (controllMode == moveMode.KEYBOARD) {
+			trigger = Input.GetKey("x") ? 1f : 0f;
+		}
+		if (!triggerState
+		&& trigger >= triggerDeadZoneIn) {
+			shield.up();
+			triggerState = true;
+			} else if (trigger < triggerDeadZoneOut && shield.GetComponent<Script_Shield>().getState() == true)
+			shield.down();
 	}
 
 	
