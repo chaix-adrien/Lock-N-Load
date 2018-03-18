@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Script_WeaponWithRay : Script_WeaponBase {
 	public GameObject ray;
-	void Start () {
+	new void Start () {
 		base.Start();
 	}
 

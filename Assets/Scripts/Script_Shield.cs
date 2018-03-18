@@ -6,7 +6,6 @@ public class Script_Shield : MonoBehaviour {
 	private int maxLife = 4;
 	private int life;
 	private SpriteRenderer rend;
-	private PolygonCollider2D col;
 
 	private Dictionary<string, bool> contraints;
 	private bool on = false;
@@ -16,7 +15,6 @@ public class Script_Shield : MonoBehaviour {
 	void Start () {
 		life = maxLife;
 		rend = GetComponent<SpriteRenderer>();
-		col = GetComponent<PolygonCollider2D>();
 		if (on) up(); else down();
 		contraints = new Dictionary<string, bool>();
 	}

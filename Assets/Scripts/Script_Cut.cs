@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Script_Cut : Script_WeaponBase {
-
-	private SpriteRenderer rend;
 	private IEnumerator coroutine;
 
 	public GameObject shieldObject;
@@ -13,11 +11,10 @@ public class Script_Cut : Script_WeaponBase {
 
 	private bool state = false;
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		shield = shieldObject.GetComponent<Script_Shield>();
 		weapon = GetComponent<Script_WeaponBase>();
 		base.Start();
-		rend = GetComponent<SpriteRenderer>();
 	}
 	
 	protected override void shootOnShield(GameObject shield, Vector2 point) {

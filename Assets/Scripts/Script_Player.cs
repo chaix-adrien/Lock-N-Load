@@ -18,15 +18,13 @@ public class Script_Player : Script_Entity {
 	public GameObject shieldObject;
 	public Script_Cut cut;
 //private
-	private Dictionary<string, float> times = new Dictionary<string, float>();
 	private Script_Move moveComp;
 
 	private Script_WeaponWithRay weapon;
 	private Script_Shield shield;
 
-	void Start () {
+	new void Start () {
 		base.Start();
-		times.Add("lastShoot", 0f);
 		moveComp = GetComponent<Script_Move>();
 		weapon = GetComponent<Script_WeaponWithRay>();
 		shieldObject.GetComponent<SpriteRenderer>().color = entityColor;
@@ -39,7 +37,7 @@ public class Script_Player : Script_Entity {
 		rotate();
 	}
 
-	protected void Update() {
+	protected new void Update() {
 		base.Update();
 		checkForShield();
 		checkForFire();
