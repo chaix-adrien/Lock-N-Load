@@ -11,6 +11,8 @@ public class ScriptedTile : Tile
     private bool init = false;
     public Sprite InGameSprite;
 
+    public bool allowPowerUp = false;
+
     private Sprite savedSprite;
 
 
