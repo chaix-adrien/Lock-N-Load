@@ -3,8 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Script_PowerUp : Script_TileHandler {
+	public bool onlyToPlayer = true;
+	public bool destroyOnUse = true;
+	public bool destroyOnShoot = true;
+	public bool useIfUseless = false;
 
-	// Use this for initialization
+	protected virtual bool use(Collider2D col) {
+		return true;
+	}
+
+	protected virtual bool isUsefull(Collider2D col) {
+		return false;
+	}
+
+	protected override void  walkedOnEnter(Collider2D col) {
+		if (!col.isTrigger) {
+			if ((onlyToPlayer && col.tag == "Player") || !onlyToPlayer) {
+				if (useIfUseless || isUsefull(col)) {
+					if (use(col) && destroyOnUse) {
+						Destroy(gameObject);
+					}
+				}
+			}
+		}
+	}
+
+	public override void getShot(GameObject player) {
+		if (destroyOnShoot) {
+			Destroy(gameObject);
+		}
+	}
 	private Script_PowerUpSpawner spawner;
 	void Start () {
 		GameObject spawnerObj = GameObject.FindGameObjectWithTag("PowerUpSpawner");
@@ -12,10 +40,6 @@ public class Script_PowerUp : Script_TileHandler {
 		spawner.addToSpawned(transform);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 	void OnDestroy() {
 		spawner.removeFromSpawned(transform);
 	}
