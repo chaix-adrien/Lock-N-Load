@@ -16,13 +16,13 @@ public class Script_TileCantShoot : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		Script_WeaponWithRay weapon = col.gameObject.GetComponent<Script_WeaponWithRay>();
+		Script_WeaponBase weapon = col.gameObject.GetComponent<Script_WeaponBase>();
 		if (!col.isTrigger && weapon) {
 			weapon.addContraint(contraintName, false);
 		}
 	}
 	void OnTriggerExit2D(Collider2D col) {
-		Script_WeaponWithRay weapon = col.gameObject.GetComponent<Script_WeaponWithRay>();
+		Script_WeaponBase weapon = col.gameObject.GetComponent<Script_WeaponBase>();
 		if (!col.isTrigger && weapon) {
 			weapon.removeContraint(contraintName);
 		}
