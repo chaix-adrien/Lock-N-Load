@@ -47,13 +47,10 @@ public class Script_PowerUpSpawner : MonoBehaviour {
 		List<Vector3> avialableTiles = new List<Vector3>();
 		for (int x = tilemap.origin.x; x < tilemap.origin.x + tilemap.size.x; x++) {
             for (int y = tilemap.origin.y; y < tilemap.origin.y + tilemap.size.y; y++) {
-				Tile tile = tilemap.GetTile(new Vector3Int(x, y, 0)) as Tile;
-				ScriptedTile scriptedTile = tile as ScriptedTile;
-				if (tile) {
-					if ((scriptedTile && scriptedTile.allowPowerUp) || (!scriptedTile && tile.colliderType != Tile.ColliderType.Sprite)) {
-						if (spawnedPos.Contains(new Vector3(x + 0.5f, y + 0.5f, 0)) == false) {
-							avialableTiles.Add(new Vector3(x, y, 0));
-						}
+				ScriptedTile tile = tilemap.GetTile(new Vector3Int(x, y, 0)) as ScriptedTile;
+				if (tile && tile.allowPowerUp) {
+					if (spawnedPos.Contains(new Vector3(x + 0.5f, y + 0.5f, 0)) == false) {
+						avialableTiles.Add(new Vector3(x, y, 0));
 					}
 				}
             }
