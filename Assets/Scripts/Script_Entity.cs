@@ -74,6 +74,8 @@ public class Script_Entity : MonoBehaviour {
 		life += regen;
 		if (life > maxLife)
 			life = maxLife;
+		if (lifeBar)
+				lifeBar.GetComponent<Script_LifeBar>().refreshLifeBar(getPercentLife());
 	}
 
 	public float getPercentLife() {

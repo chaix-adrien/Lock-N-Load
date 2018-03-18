@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 114567634951892724}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,6 +411,7 @@ MonoBehaviour:
   damagePerShot: 10
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 0}
+  shieldObject: {fileID: 1325393201578958}
 --- !u!114 &114603801404168104
 MonoBehaviour:
   m_ObjectHideFlags: 1

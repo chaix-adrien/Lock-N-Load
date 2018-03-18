@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Script_WeaponWithRay : Script_WeaponBase {
-	private bool displayRayState = true;
 	public GameObject ray;
 	void Start () {
 		base.Start();
@@ -16,9 +15,6 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 		ray.SetActive(canFire);
 	}
 
-	public void setCanFire(bool can) {
-		canFire = can;
-	}
 	public override bool fire() {
 		bool fired = base.fire();
 		if (base.fire() && ray)

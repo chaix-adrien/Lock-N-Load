@@ -31,6 +31,7 @@ public class Script_TileHandler : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
+		Debug.Log("walked on " + col);
 		walkedOnEnter(col);
 	}
 
