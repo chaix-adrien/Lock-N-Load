@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 95457685586081586}
   - component: {fileID: 114058406926178748}
   - component: {fileID: 114885030377897442}
+  - component: {fileID: 114405205058399390}
   m_Layer: 0
   m_Name: Explosion_Tile
   m_TagString: TileCollider
@@ -98,6 +99,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86f0f87463ad5344970257de64ab88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114405205058399390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562715726645478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252525fb8840b564bb21cb7bf1c716c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 4
+  autoFade: 0
 --- !u!114 &114832709437830396
 MonoBehaviour:
   m_ObjectHideFlags: 1

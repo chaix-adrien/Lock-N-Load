@@ -9,7 +9,8 @@ public class Script_PowerUp : Script_TileHandler {
 	public bool useIfUseless = false;
 	private Script_PowerUpSpawner spawner;
 
-	void Start () {
+	protected override void Start () {
+		base.Start();
 		GameObject spawnerObj = GameObject.FindGameObjectWithTag("PowerUpSpawner");
 		spawner = spawnerObj.GetComponent<Script_PowerUpSpawner>();
 		spawner.addToSpawned(transform);

@@ -44,8 +44,6 @@ public class Script_PowerUpSpawner : MonoBehaviour {
 	}
 
 	private void spawn() {
-        BoundsInt bounds = tilemap.cellBounds;
-        TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
 		List<Vector3> avialableTiles = new List<Vector3>();
 		for (int x = tilemap.origin.x; x < tilemap.origin.x + tilemap.size.x; x++) {
             for (int y = tilemap.origin.y; y < tilemap.origin.y + tilemap.size.y; y++) {

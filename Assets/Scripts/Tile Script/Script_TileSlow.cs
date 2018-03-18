@@ -5,17 +5,11 @@ using UnityEngine;
 public class Script_TileSlow : Script_TileHandler {
 
 	public float speedCoef;
-	// Use this for initialization
 	private string contraintName;
-	void Start () {
+	protected override void Start () {
+		base.Start();
 		contraintName = "mug_" + GetInstanceID();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	protected override void  walkedOnEnter(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
 		if (!col.isTrigger && moveComp) {

@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Script_DestructibleTile : Script_TileHandler {
 	public Sprite[] spritesState;
-
 	public bool walkableWhenBroken = true;
 	public bool rayAccrossWhenBroken = true;
 	private int spriteId;
 	private SpriteRenderer rend;
-	// Use this for initialization
-	void Start () {
-		spriteId = 0;
+
+	protected override void Start () {
+		base.Start();
+		spriteId = 0;		
 		rend = GetComponent<SpriteRenderer>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public override void getShot(GameObject player) {

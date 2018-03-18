@@ -6,8 +6,6 @@ using UnityEngine.Tilemaps;
 
 
 public class Script_TileMap : MonoBehaviour {
-
-	// Use this for initialization
 	void Start () {
   		Tilemap tilemap = FindObjectOfType(typeof(Tilemap)) as Tilemap;
         tilemap.RefreshAllTiles();
