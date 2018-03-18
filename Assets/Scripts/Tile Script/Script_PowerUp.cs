@@ -7,6 +7,16 @@ public class Script_PowerUp : Script_TileHandler {
 	public bool destroyOnUse = true;
 	public bool destroyOnShoot = true;
 	public bool useIfUseless = false;
+	private Script_PowerUpSpawner spawner;
+
+	void Start () {
+		GameObject spawnerObj = GameObject.FindGameObjectWithTag("PowerUpSpawner");
+		spawner = spawnerObj.GetComponent<Script_PowerUpSpawner>();
+		spawner.addToSpawned(transform);
+		if (!destroyOnShoot) {
+			gameObject.layer = LayerMask.NameToLayer("IgnoredByRay");
+		}
+	}
 
 	protected virtual bool use(Collider2D col) {
 		return true;
@@ -32,12 +42,6 @@ public class Script_PowerUp : Script_TileHandler {
 		if (destroyOnShoot) {
 			Destroy(gameObject);
 		}
-	}
-	private Script_PowerUpSpawner spawner;
-	void Start () {
-		GameObject spawnerObj = GameObject.FindGameObjectWithTag("PowerUpSpawner");
-		spawner = spawnerObj.GetComponent<Script_PowerUpSpawner>();
-		spawner.addToSpawned(transform);
 	}
 	
 	void OnDestroy() {
