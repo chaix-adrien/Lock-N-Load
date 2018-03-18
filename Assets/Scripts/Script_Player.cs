@@ -16,6 +16,7 @@ public class Script_Player : Script_Entity {
 
 	public GameObject impactSprite;
 	public GameObject shieldObject;
+	public Script_Cut cut;
 //private
 	private Dictionary<string, float> times = new Dictionary<string, float>();
 	private Script_Move moveComp;
@@ -30,6 +31,7 @@ public class Script_Player : Script_Entity {
 		weapon = GetComponent<Script_WeaponWithRay>();
 		shieldObject.GetComponent<SpriteRenderer>().color = entityColor;
 		shield = shieldObject.GetComponent<Script_Shield>();
+		cut = GetComponent<Script_Cut>();
 	}
 
 	void FixedUpdate () {
@@ -41,6 +43,7 @@ public class Script_Player : Script_Entity {
 		base.Update();
 		checkForFire();
 		checkForShield();
+		checkForCut();
 	}
 
 	private bool triggerState = false;
@@ -50,11 +53,10 @@ public class Script_Player : Script_Entity {
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
-		if (controllMode == moveMode.CONTROLLER) {
+		if (controllMode == moveMode.CONTROLLER)
 			trigger = GamePad.GetTrigger(GamePad.Trigger.RightTrigger, gamepad);
-		} else if (controllMode == moveMode.KEYBOARD) {
+		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("space") ? 1f : 0f;
-		}
 		if (!triggerState
 		&& trigger >= triggerDeadZoneIn) {
 			weapon.fire();
@@ -67,11 +69,10 @@ public class Script_Player : Script_Entity {
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
-		if (controllMode == moveMode.CONTROLLER) {
+		if (controllMode == moveMode.CONTROLLER)
 			trigger = GamePad.GetTrigger(GamePad.Trigger.LeftTrigger, gamepad);
-		} else if (controllMode == moveMode.KEYBOARD) {
+		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("x") ? 1f : 0f;
-		}
 		if (!triggerState
 		&& trigger >= triggerDeadZoneIn) {
 			shield.up();
@@ -80,8 +81,22 @@ public class Script_Player : Script_Entity {
 			shield.down();
 	}
 
-	
+	private void checkForCut() {
+		bool doIt = false;
+		if (cut.getState())
+			return;
+		if (controllMode == moveMode.CONTROLLER)
+			doIt = GamePad.GetButton(GamePad.Button.B, gamepad);
+		else if (controllMode == moveMode.KEYBOARD)
+			doIt = Input.GetKey("c");
+		if (doIt) {
+			cut.fire();
+		}
+	}
+
 	void rotate() {
+		if (cut.getState())
+			return;
 		Vector2 rightStick = new Vector2(0f, 0f);
 		if (controllMode == moveMode.CONTROLLER) {
 			rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, gamepad);
@@ -108,7 +123,7 @@ public class Script_Player : Script_Entity {
 	}
 
 	protected override void onHit(int damages, Color hitColor, string from) {
-		if (from == "player") {
+		if (from == "weapon") {
 			float impactTime = 1f;
 			impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
 			Invoke("hideImpactSprite", impactTime);

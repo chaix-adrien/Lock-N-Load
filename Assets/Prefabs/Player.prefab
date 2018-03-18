@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 114603801404168104}
   - component: {fileID: 114200599538818616}
   - component: {fileID: 114659338041358754}
+  - component: {fileID: 114567634951892724}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -392,6 +393,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ff71c74e7ed7479b156cf0074ba53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114567634951892724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555550535320420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbd10579f38c7b49a9a8437a26aa475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadTime: 0
+  magazineMax: 0
+  speedFire: 1
+  range: 0.25
+  ray: {fileID: 0}
+  damagePerShot: 20
+  startRay: {fileID: 4085814378830992}
+  impact: {fileID: 0}
 --- !u!114 &114603801404168104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,6 +434,7 @@ MonoBehaviour:
   controllMode: 1
   impactSprite: {fileID: 1318440947418584}
   shieldObject: {fileID: 1325393201578958}
+  cut: {fileID: 0}
 --- !u!114 &114659338041358754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,11 +448,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadTime: 2
   magazineMax: 3
-  speedFire: 0
-  damagePerShot: 20
-  impact: {fileID: 1176684150126338, guid: 7d6fd356e766ecb439ecb88fa3f3a3cf, type: 2}
-  startRay: {fileID: 4085814378830992}
+  speedFire: 0.1
+  range: Infinity
   ray: {fileID: 1044170311306722}
+  damagePerShot: 20
+  startRay: {fileID: 4085814378830992}
+  impact: {fileID: 1176684150126338, guid: 7d6fd356e766ecb439ecb88fa3f3a3cf, type: 2}
 --- !u!114 &114823724363472578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,7 +500,7 @@ LineRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 1
   m_Positions:
-  - {x: -0.75, y: 1.5, z: 0}
+  - {x: -0.57, y: 1.5, z: 1}
   - {x: 0.75, y: 1.5, z: 1}
   m_Parameters:
     serializedVersion: 2
