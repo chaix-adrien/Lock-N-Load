@@ -41,15 +41,13 @@ public class Script_Player : Script_Entity {
 
 	protected void Update() {
 		base.Update();
-		checkForFire();
 		checkForShield();
+		checkForFire();
 		checkForCut();
 	}
 
 	private bool triggerState = false;
 	void checkForFire() {
-		if (shield.getState())
-			return;
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
@@ -77,14 +75,17 @@ public class Script_Player : Script_Entity {
 		&& trigger >= triggerDeadZoneIn) {
 			shield.up();
 			triggerState = true;
-			} else if (trigger < triggerDeadZoneOut && shield.GetComponent<Script_Shield>().getState() == true)
+			weapon.addContraint("shield", false);
+			cut.addContraint("shield", false);
+		} else if (trigger < triggerDeadZoneOut && shield.getState() == true) {
+			weapon.removeContraint("shield");
+			cut.removeContraint("shield");
 			shield.down();
+		}
 	}
 
 	private void checkForCut() {
 		bool doIt = false;
-		if (cut.getState())
-			return;
 		if (controllMode == moveMode.CONTROLLER)
 			doIt = GamePad.GetButton(GamePad.Button.B, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)

@@ -7,12 +7,18 @@ public class Script_Shield : MonoBehaviour {
 	private int life;
 	private SpriteRenderer rend;
 	private PolygonCollider2D col;
-	private bool on = true;
+
+	private Dictionary<string, bool> contraints;
+	private bool on = false;
+
+	private bool canShield = true;
 	// Use this for initialization
 	void Start () {
 		life = maxLife;
 		rend = GetComponent<SpriteRenderer>();
 		col = GetComponent<PolygonCollider2D>();
+		if (on) up(); else down();
+		contraints = new Dictionary<string, bool>();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +29,8 @@ public class Script_Shield : MonoBehaviour {
 	}
 
 	public void up() {
+		if (!canShield)
+			return;
 		on = true;
 		if (life > 0)
 			gameObject.SetActive(true);
@@ -37,8 +45,6 @@ public class Script_Shield : MonoBehaviour {
 		if (life > 0) {
 			life--;
 			updateColor();
-			if (life == 0)
-				Invoke("refull", 1f);
 		}
 	}
 
@@ -57,4 +63,27 @@ public class Script_Shield : MonoBehaviour {
 		newCol.a = (life / 1.0f) / maxLife;
 		rend.color = newCol;
 	}
+
+	public void addContraint(string name, bool enableShield) {
+		if (contraints.ContainsKey(name)) {
+			contraints[name] = enableShield;
+		} else {
+			contraints.Add(name, enableShield);
+		}
+		updateCanShield();
+	}
+
+	public void removeContraint(string name) {
+		contraints.Remove(name);
+		updateCanShield();
+	}
+
+	void updateCanShield() {
+		bool can = true;
+		foreach(KeyValuePair<string, bool> contraint in contraints) {
+			can = can && contraint.Value;
+		}
+		canShield = can;
+	}
+
 }

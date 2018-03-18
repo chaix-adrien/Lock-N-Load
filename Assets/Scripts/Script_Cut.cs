@@ -7,9 +7,15 @@ public class Script_Cut : Script_WeaponBase {
 	private SpriteRenderer rend;
 	private IEnumerator coroutine;
 
+	public GameObject shieldObject;
+	private Script_Shield shield;
+	private Script_WeaponBase weapon;
+
 	private bool state = false;
 	// Use this for initialization
 	void Start () {
+		shield = shieldObject.GetComponent<Script_Shield>();
+		weapon = GetComponent<Script_WeaponBase>();
 		base.Start();
 		rend = GetComponent<SpriteRenderer>();
 	}
@@ -22,6 +28,10 @@ public class Script_Cut : Script_WeaponBase {
 		if (fired) {
 			state = true;
 			cutAnimation();
+			if (shield)
+				shield.addContraint("cut", false);
+			if (weapon)
+				weapon.addContraint("cut", false);
 		}
 		return fired;
 	}
@@ -35,6 +45,7 @@ public class Script_Cut : Script_WeaponBase {
 		StartCoroutine(coroutine);
 	}
 	private IEnumerator cutAnimationCoroutine() {
+		
 		float wait = 0.01f;
 		float animationTime = 0.1f;
 		float itTotal = animationTime / wait;
@@ -45,6 +56,10 @@ public class Script_Cut : Script_WeaponBase {
 			rotate += toAdd;
 			transform.Rotate(Vector3.forward, toAdd);
 		}
+		if (shield)
+			shield.removeContraint("cut");
+		if (weapon)
+			weapon.removeContraint("cut");
 		state = false;
 		StopCoroutine(coroutine);
 	}
