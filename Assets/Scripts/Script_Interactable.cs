@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script_Interactible : MonoBehaviour {
+public class Script_Interactable : MonoBehaviour {
 	public GameObject whenInteractible = null;
 
 	private GameObject interactIcon;
@@ -29,5 +29,5 @@ public class Script_Interactible : MonoBehaviour {
 		interactIcon.GetComponent<SpriteRenderer>().enabled = (atRange.Count >= 1);
 	}
 
-	public virtual void interactWhith(GameObject interactor) {}
+	public virtual void interactWith(GameObject interactor) {}
 }

@@ -18,7 +18,7 @@ public class Script_Player : Script_Entity {
 	public GameObject shieldObject;
 	public Script_Cut cut;
 //private
-	private Script_Interactible canInteractWith;
+	private Script_Interactable canInteractWith;
 	private Script_Move moveComp;
 
 	private Script_WeaponWithRay weapon;
@@ -110,8 +110,8 @@ public class Script_Player : Script_Entity {
 
 	private void action() {
 		if (canInteractWith) {
+			canInteractWith.interactWith(gameObject);
 		}
-		//Script_Interactible = canInteractWith
 	}
 
 	void rotate() {
@@ -159,7 +159,7 @@ public class Script_Player : Script_Entity {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		Script_Interactible interaction = col.gameObject.GetComponent<Script_Interactible>();
+		Script_Interactable interaction = col.gameObject.GetComponent<Script_Interactable>();
 		if (interaction) {
 			canInteractWith = interaction;
 			interaction.canInteractWith(GetInstanceID(), true);
@@ -167,7 +167,7 @@ public class Script_Player : Script_Entity {
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
-		Script_Interactible interaction = col.gameObject.GetComponent<Script_Interactible>();
+		Script_Interactable interaction = col.gameObject.GetComponent<Script_Interactable>();
 		if (interaction && canInteractWith == interaction)	
 			canInteractWith = null;
 		if (interaction)
