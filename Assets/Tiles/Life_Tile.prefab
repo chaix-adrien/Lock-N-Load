@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onlyToPlayer: 1
   destroyOnUse: 1
-  destroyOnShoot: 0
+  destroyOnShoot: 1
   useIfUseless: 0
   lifeGiven: 40
 --- !u!114 &114510373598744318
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossableByRay: 0
+  walkable: 1
   tile: {fileID: 11400000, guid: 0033cbbb49cdb0e40aa7b607b970226c, type: 2}
 --- !u!212 &212248612699186638
 SpriteRenderer:

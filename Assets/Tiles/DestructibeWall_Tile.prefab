@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossableByRay: 0
+  walkable: 0
   tile: {fileID: 11400000, guid: 47cacc25b398c02419286bfe095242bc, type: 2}
 --- !u!114 &114743149766053802
 MonoBehaviour:

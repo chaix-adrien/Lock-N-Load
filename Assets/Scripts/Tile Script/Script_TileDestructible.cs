@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script_DestructibleTile : Script_TileHandler {
+public class Script_TileDestructible : Script_TileHandler {
 	public Sprite[] spritesState;
 	public bool walkableWhenBroken = true;
 	public bool rayAccrossWhenBroken = true;
@@ -15,7 +15,7 @@ public class Script_DestructibleTile : Script_TileHandler {
 		rend = GetComponent<SpriteRenderer>();
 	}
 
-	public override void getShot(GameObject player) {
+	public override void getShot(GameObject player, string from, string fromDetails) {
 		if (spriteId < spritesState.Length) {
 			rend.sprite = spritesState[spriteId];
 			spriteId++;

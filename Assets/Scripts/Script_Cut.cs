@@ -11,6 +11,7 @@ public class Script_Cut : Script_WeaponBase {
 	private bool state = false;
 	// Use this for initialization
 	new void Start () {
+		weaponName = "cut";
 		shield = GetComponentInChildren<Script_Shield>();
 		weapon = GetComponentInChildren<Script_WeaponBase>();
 		base.Start();

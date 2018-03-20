@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Script_WeaponWithRay : Script_WeaponBase {
 	public GameObject ray;
 	new void Start () {
+		weaponName = "raygun";
 		base.Start();
 	}
 

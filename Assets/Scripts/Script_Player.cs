@@ -13,11 +13,12 @@ public class Script_Player : Script_Entity {
 		CONTROLLER,
 	};
 	public moveMode controllMode = moveMode.CONTROLLER;
-
+	public float interactionRange = 0.25f;
 	public GameObject impactSprite;
 	public GameObject shieldObject;
 	public Script_Cut cut;
 //private
+	private Script_Interactible canInteractWith;
 	private Script_Move moveComp;
 
 	private Script_WeaponWithRay weapon;
@@ -42,9 +43,10 @@ public class Script_Player : Script_Entity {
 		checkForShield();
 		checkForFire();
 		checkForCut();
+		checkForAction();
 	}
 
-	private bool triggerState = false;
+	bool triggerStateRight = false;
 	void checkForFire() {
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
@@ -53,15 +55,17 @@ public class Script_Player : Script_Entity {
 			trigger = GamePad.GetTrigger(GamePad.Trigger.RightTrigger, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("space") ? 1f : 0f;
-		if (!triggerState
+		if (!triggerStateRight
 		&& trigger >= triggerDeadZoneIn) {
 			weapon.fire();
-			triggerState = true;
+			triggerStateRight = true;
 		} else if (trigger < triggerDeadZoneOut)
-			triggerState = false;
+			triggerStateRight = false;
 	}
 
+	private bool triggerStateLeft = false;
 	void checkForShield() {
+		
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
@@ -69,10 +73,10 @@ public class Script_Player : Script_Entity {
 			trigger = GamePad.GetTrigger(GamePad.Trigger.LeftTrigger, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("x") ? 1f : 0f;
-		if (!triggerState
+		if (!triggerStateLeft
 		&& trigger >= triggerDeadZoneIn) {
 			shield.up();
-			triggerState = true;
+			triggerStateLeft = true;
 			weapon.addContraint("shield", false);
 			cut.addContraint("shield", false);
 		} else if (trigger < triggerDeadZoneOut && shield.getState() == true) {
@@ -85,12 +89,29 @@ public class Script_Player : Script_Entity {
 	private void checkForCut() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = GamePad.GetButton(GamePad.Button.B, gamepad);
+			doIt = GamePad.GetButtonDown(GamePad.Button.B, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
-			doIt = Input.GetKey("c");
+			doIt = Input.GetKeyDown("c");
 		if (doIt) {
 			cut.fire();
 		}
+	}
+
+	private void checkForAction() {
+		bool doIt = false;
+		if (controllMode == moveMode.CONTROLLER)
+			doIt = GamePad.GetButtonDown(GamePad.Button.X, gamepad);
+		else if (controllMode == moveMode.KEYBOARD)
+			doIt = Input.GetKeyDown("a");
+		if (doIt) {
+			action();
+		}
+	}
+
+	private void action() {
+		if (canInteractWith) {
+		}
+		//Script_Interactible = canInteractWith
 	}
 
 	void rotate() {
@@ -135,5 +156,21 @@ public class Script_Player : Script_Entity {
 
 	protected override void die() {
 		Debug.Log("player get dead");
+	}
+
+	void OnTriggerEnter2D(Collider2D col) {
+		Script_Interactible interaction = col.gameObject.GetComponent<Script_Interactible>();
+		if (interaction) {
+			canInteractWith = interaction;
+			interaction.canInteractWith(GetInstanceID(), true);
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col) {
+		Script_Interactible interaction = col.gameObject.GetComponent<Script_Interactible>();
+		if (interaction && canInteractWith == interaction)	
+			canInteractWith = null;
+		if (interaction)
+			interaction.canInteractWith(GetInstanceID(), false);
 	}
 }

@@ -39,7 +39,7 @@ public class Script_PowerUp : Script_TileHandler {
 		}
 	}
 
-	public override void getShot(GameObject player) {
+	public override void getShot(GameObject player, string from, string fromDetails) {
 		if (destroyOnShoot) {
 			Destroy(gameObject);
 		}

@@ -8,6 +8,7 @@ TagManager:
   - TileCollider
   - Player Shield
   - PowerUpSpawner
+  - InteractionIcon
   layers:
   - Default
   - TransparentFX

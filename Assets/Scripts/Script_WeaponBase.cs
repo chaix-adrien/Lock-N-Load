@@ -9,6 +9,8 @@ public class Script_WeaponBase : MonoBehaviour {
 	public float range = Mathf.Infinity;
 	
  	public int damagePerShot = 20;
+
+	protected string weaponName = "none";
 	public Transform startRay;
 	public GameObject impact;
 
@@ -28,11 +30,11 @@ public class Script_WeaponBase : MonoBehaviour {
 	}
 
 	protected virtual void shootOnEntity(Script_Entity entity, Vector2 point) {
-		entity.hit(damagePerShot, GetComponent<Script_Entity>().entityColor, "weapon");
+		entity.hit(damagePerShot, GetComponent<Script_Entity>().entityColor, "weapon", weaponName);
 	}
 
 	protected virtual void shootOnTile(Script_TileHandler tile, Vector2 point) {
-		tile.getShot(gameObject);
+		tile.getShot(gameObject, "weapon", weaponName);
 	}
 
 	protected virtual void shootOnShield(GameObject shield, Vector2 point) {

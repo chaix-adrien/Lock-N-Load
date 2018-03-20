@@ -52,7 +52,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossableByRay: 0
+  walkable: 0
   tile: {fileID: 11400000, guid: 3c8580c7bde08bc43af5fec215a770ef, type: 2}
 --- !u!114 &114870342381195274
 MonoBehaviour:
