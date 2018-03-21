@@ -8,14 +8,15 @@ public class Script_Entity : MonoBehaviour {
 	public int startLife = 100;
 	public int minLife = 0;
 
-	public float invicibleFrame = 1.0f;
+	public float invicinbleFrame = 1.0f;
 
-	public float invincibleFrameFade = 0.5f;
+	private float invincibleFrameFade = 0.5f;
 
 	public GameObject lifeBar;
 
 	private int life;
-	private float lastShootTime;
+	private float invincibleUntil = -1;
+	private float invincibleSince = -1;
 
 	private SpriteRenderer rend;
 	public Color entityColor;
@@ -24,16 +25,16 @@ public class Script_Entity : MonoBehaviour {
 	protected void Start () {
 		life = startLife;
 		rend = GetComponent<SpriteRenderer>();
-		lastShootTime = -invicibleFrame;
 		GetComponent<SpriteRenderer>().color = entityColor;
 		
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
-		float elapsedTime = Time.time - lastShootTime;
-		if (elapsedTime < invicibleFrame) {
-			displayInvincibleFrame(elapsedTime, elapsedTime / invicibleFrame);
+		if (Time.time <= invincibleUntil) {
+			float elapsedTime = Time.time - invincibleSince;
+			float totalTime = invincibleUntil - invincibleSince;
+			displayInvincibleFrame(elapsedTime, elapsedTime / totalTime);
 		}
 	}
 
@@ -53,12 +54,12 @@ public class Script_Entity : MonoBehaviour {
 	}
 
 	
-	protected virtual void onHit(int damages, Color hitColor, string from) {
+	protected virtual void onHit(int damages, Color hitColor, string from, string fromDetails) {
 	}
 
 	public void hit(int damages, Color hitColor, string from, string fromDetails) {
-		if (damages > 0 && Time.time - lastShootTime >= invicibleFrame) {
-			lastShootTime = Time.time;
+		if (damages > 0 && Time.time > invincibleUntil) {
+			turnInvincible(invicinbleFrame);
 			life -= damages;
 			if (life <= minLife) {
 				life = minLife;
@@ -66,8 +67,13 @@ public class Script_Entity : MonoBehaviour {
 			}
 			if (lifeBar)
 				lifeBar.GetComponent<Script_LifeBar>().refreshLifeBar(getPercentLife());
-			onHit(damages, hitColor, from);
+			onHit(damages, hitColor, from, fromDetails);
 		}
+	}
+
+	public void turnInvincible(float time) {
+		invincibleSince = Time.time;
+		invincibleUntil = invincibleSince + time;
 	}
 
 	public void heal(int regen) {

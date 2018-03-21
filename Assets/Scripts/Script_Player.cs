@@ -142,7 +142,7 @@ public class Script_Player : Script_Entity {
 		moveComp.move(leftStick);
 	}
 
-	protected override void onHit(int damages, Color hitColor, string from) {
+	protected override void onHit(int damages, Color hitColor, string from, string fromDetails) {
 		if (from == "weapon") {
 			float impactTime = 1f;
 			impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
