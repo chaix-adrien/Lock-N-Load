@@ -12,6 +12,7 @@ public class ScriptedTile : Tile
     public Sprite InGameSprite;
 
     public bool allowPowerUp = false;
+    public bool canBeExplosed = true;
 
     private Sprite savedSprite;
 

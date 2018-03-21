@@ -36,3 +36,4 @@ MonoBehaviour:
   m_ColliderType: 0
   InGameSprite: {fileID: 21300000, guid: 5edc6e343e1a569458b6de6d0f929721, type: 3}
   allowPowerUp: 0
+  canBeExplosed: 0

@@ -30,9 +30,10 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1259944784734094, guid: 8cbd9fda0fe0b8f4cbb9bb40d9101095,
+  m_InstancedGameObject: {fileID: 1480197509915210, guid: 402bd0d910f6f2c4382a1769ca152d38,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
   InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
   allowPowerUp: 0
+  canBeExplosed: 0

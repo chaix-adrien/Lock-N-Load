@@ -21,7 +21,6 @@ public class Script_DestroySelfWithTime : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
 	void destroySelf() {
 		Destroy(gameObject);
 	}

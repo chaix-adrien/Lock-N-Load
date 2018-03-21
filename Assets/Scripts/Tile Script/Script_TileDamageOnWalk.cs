@@ -8,6 +8,13 @@ public class Script_TileDamageOnWalk : Script_TileHandler {
 
 	protected string environementName = "none";
 	
+
+	protected override void walkedOnEnter(Collider2D col) {
+		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
+		if (!col.isTrigger && entity) {
+			entity.hit(damages, onHitColor, "environement", environementName);
+		}
+	}
 	protected override void walkedOnStay(Collider2D col) {
 		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
 		if (!col.isTrigger && entity) {

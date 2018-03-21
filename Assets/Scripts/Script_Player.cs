@@ -160,10 +160,13 @@ public class Script_Player : Script_Entity {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		Script_Interactable interaction = col.gameObject.GetComponent<Script_Interactable>();
+		if (!interaction)
+			interaction = col.gameObject.GetComponentInParent<Script_Interactable>();
 		if (interaction) {
 			canInteractWith = interaction;
 			interaction.canInteractWith(GetInstanceID(), true);
 		}
+		
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
