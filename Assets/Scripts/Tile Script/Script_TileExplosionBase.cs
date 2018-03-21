@@ -15,11 +15,11 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	public bool onWalk = false;
 	public bool onShoot = true;
 	private Tilemap tilemap;
-	protected Vector3Int pos;	
+	protected Vector2Int pos;	
 	protected override void Start() {
 		base.Start();
 		Vector2Int posInt = GetComponent<Script_Tile_Collider>().pos;
-		pos = new Vector3Int(posInt.x, posInt.y, 0);
+		pos = new Vector2Int(posInt.x, posInt.y);
 		tilemap = GameObject.FindGameObjectWithTag("Map").GetComponent<Tilemap>();
 	}
 
@@ -34,10 +34,11 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	}
 
 	protected virtual void launchExplosion() {
+		Debug.Log("ici");
 		explode(new Vector2Int(pos.x, pos.y));
 	}
 
-	protected void explode(Vector2Int check) {
+	protected bool explode(Vector2Int check) {
 		if (damageOnExplode > 0) {
 			Collider2D[] hitColliders = new Collider2D[50];
 			ContactFilter2D contactFilter = new ContactFilter2D();
@@ -57,10 +58,14 @@ public class Script_TileExplosionBase : Script_TileHandler {
 						tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutOnExplode);
 					else if (toPutElse)
 						tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutElse);
-				}
-			}
+					return true;
+				} else
+					return false;
+			} else
+				return false;
 		} else {
-				Invoke("destroySelf", 0.01f);
+			Invoke("destroySelf", 0.01f);
+			return true;
 		}
 	}
 	
