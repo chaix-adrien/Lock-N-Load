@@ -22,8 +22,11 @@ GameObject:
   - component: {fileID: 212859754187223366}
   - component: {fileID: 61235768037537770}
   - component: {fileID: 114656405925922086}
+  - component: {fileID: 95813803786180008}
+  - component: {fileID: 114002539441339174}
+  - component: {fileID: 114010772350942670}
   m_Layer: 0
-  m_Name: NewTile
+  m_Name: BoltBall_Tile
   m_TagString: TileCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +70,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95813803786180008
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921025353523960}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5007e0b20fdf1a54b874bb0b02f56cb8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114002539441339174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921025353523960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c37b24497952445bd2d3c9c3028d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchTime: 4
+  toSwitch: {fileID: 11400000, guid: d9e0d83c5067f4642a31ca5d4af513be, type: 2}
+--- !u!114 &114010772350942670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921025353523960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f602446872f3544ace51c7640b73ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downEntierely: 1
+  hitCharge: 0
+  replaceByOnWalk: {fileID: 11400000, guid: d9e0d83c5067f4642a31ca5d4af513be, type: 2}
 --- !u!114 &114656405925922086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossableByRay: 1
-  walkable: 0
-  tile: {fileID: 0}
+  walkable: 1
+  tile: {fileID: 11400000, guid: 17f4e1ab78d6bc641b71a992a2f37706, type: 2}
   pos: {x: 0, y: 0}
 --- !u!212 &212859754187223366
 SpriteRenderer:

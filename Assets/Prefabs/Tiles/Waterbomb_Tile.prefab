@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 212946414720726162}
   - component: {fileID: 61793166303060856}
   - component: {fileID: 114212993530281210}
+  - component: {fileID: 114585953979591920}
   m_Layer: 0
-  m_Name: NewTile
+  m_Name: Waterbomb_Tile
   m_TagString: TileCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,10 +58,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -79,9 +80,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossableByRay: 1
-  walkable: 0
-  tile: {fileID: 0}
+  walkable: 1
+  tile: {fileID: 11400000, guid: 46d0fd75a5a5b7d428832df6013fcd56, type: 2}
   pos: {x: 0, y: 0}
+--- !u!114 &114585953979591920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558110777146042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d349c9e9adf9c499b9612152215901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  chance: 0.5
+  toPutOnExplode: {fileID: 11400000, guid: 1999601df4630fa40bbb7f3a046ec93e, type: 2}
+  toPutElse: {fileID: 0}
+  onlyOnFloor: 1
+  damageOnExplode: 0
+  onHitColor: {r: 1, g: 1, b: 1, a: 1}
+  onWalk: 1
+  onShoot: 0
 --- !u!212 &212946414720726162
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -116,13 +137,13 @@ SpriteRenderer:
   m_SortingLayerID: 273973925
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 36183234f7c969b45a54106f78847d68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0

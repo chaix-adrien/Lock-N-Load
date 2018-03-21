@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: NewTile
+  m_Name: BoltBall_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5732e3d15e26e5f479b63ae10cb50054, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 0}
+  InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
   floor: 0
   allowPowerUp: 0
   canBeExplosed: 1

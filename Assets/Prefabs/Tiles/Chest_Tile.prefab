@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212222762981385210}
   - component: {fileID: 114735769289794818}
   - component: {fileID: 61117478456442598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interact_Icon
   m_TagString: InteractionIcon
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ff77d4ce3cc84aa42d2bbc919a197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossableByRay: 1
+  crossableByRay: 0
   walkable: 0
   tile: {fileID: 11400000, guid: 90395e5ec6042904eb3eb75245840a62, type: 2}
   pos: {x: 0, y: 0}
