@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
   m_Name: Chest_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: f52dad7b26268014e9d847f956d031f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e014bb976a12b77438b3985f5dc586af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,5 +34,5 @@ MonoBehaviour:
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 21300000, guid: f52dad7b26268014e9d847f956d031f9, type: 3}
+  InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
   allowPowerUp: 0

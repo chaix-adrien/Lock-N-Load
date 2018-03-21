@@ -106,6 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whenInteractible: {fileID: 0}
+  contain:
+  - {fileID: 11400000, guid: 0033cbbb49cdb0e40aa7b607b970226c, type: 2}
+  - {fileID: 11400000, guid: f9b61b861b7b0ff419b991e3949ec099, type: 2}
 --- !u!114 &114896182611097876
 MonoBehaviour:
   m_ObjectHideFlags: 1

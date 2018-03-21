@@ -22,10 +22,12 @@ public class Script_Tile_Collider : MonoBehaviour {
 			col.isTrigger = walkable;
 	}
 	public void setSprite(Sprite toset) {
-		tile.sprite = toset;
+		if (tile)
+			tile.sprite = toset;
 	}
 
     void OnDestroy() {
-		tile.resetSprite();
+		if (tile)
+			tile.resetSprite();
     }
 }
