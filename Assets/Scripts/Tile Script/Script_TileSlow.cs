@@ -23,4 +23,10 @@ public class Script_TileSlow : Script_TileHandler {
 			moveComp.removeContraint(contraintName);
 		}
 	}
+
+	void OnDestroy() {
+		foreach (var player in GameObject.FindGameObjectsWithTag("Player")) {
+			player.GetComponent<Script_Move>().removeContraint(contraintName);
+		}
+	}
 }

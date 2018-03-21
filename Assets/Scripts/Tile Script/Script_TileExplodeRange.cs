@@ -9,8 +9,13 @@ public class Script_TileExplodeRange : Script_TileHandler {
 	public float chance = 0.5f;
 	public Tile toPutOnExplode = null;
 	public Tile toPutElse = null;
+
+	public bool onlyOnFloor = false;
 	public int damageOnExplode = 40;
 	public Color onHitColor = Color.white;
+
+	public bool onWalk = false;
+	public bool onShoot = true;
 	private Tilemap tilemap;
 	private Vector3Int pos;	
 	void Start() {
@@ -20,6 +25,16 @@ public class Script_TileExplodeRange : Script_TileHandler {
 	}
 
 	public override void getShot(GameObject player, string from, string fromDetails) {
+		if (onShoot)
+			explode();
+	}
+
+	protected override void walkedOnEnter(Collider2D entity) {
+		if (!entity.isTrigger && onWalk)
+			explode();
+	}
+
+	private void explode() {
 		tilemap = GameObject.FindGameObjectWithTag("Map").GetComponent<Tilemap>();
 		Vector3Int check = Vector3Int.zero;
 		Collider2D[] hitColliders = new Collider2D[10];
@@ -36,11 +51,13 @@ public class Script_TileExplodeRange : Script_TileHandler {
 			for (check.y = pos.y - range; check.y <= pos.y + range; check.y++) {
 				ScriptedTile tile = tilemap.GetTile(new Vector3Int(check.x, check.y, 0)) as ScriptedTile;
 				if (!(check.x == pos.x && check.y == pos.y)) {
-					if (!tile || tile.canBeExplosed) {
-						if (Random.value <= chance)
-							tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutOnExplode);
-						else if (toPutElse)
-							tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutElse);
+					if (!onlyOnFloor || tile.floor) {
+						if (!tile || tile.canBeExplosed) {
+							if (Random.value <= chance)
+								tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutOnExplode);
+							else if (toPutElse)
+								tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutElse);
+						}
 					}
 				}
 			}	

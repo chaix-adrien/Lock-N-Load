@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114735769289794818}
   - component: {fileID: 61117478456442598}
   m_Layer: 0
-  m_Name: Chest_Tile
+  m_Name: Interact_Icon
   m_TagString: InteractionIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db368ce6c78d78b429b46a76da01a7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whenInteractible: {fileID: 0}
+  whenInteractible: {fileID: 1160867571777580}
   contain:
   - {fileID: 1281969052088926, guid: bb1bcec2fe4805749a10e3a5c38c9c66, type: 2}
   - {fileID: 1743266061826596, guid: 83a643af2b60ce64eb68afe8ee466c5d, type: 2}
@@ -256,8 +256,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 658332105
-  m_SortingLayer: 6
+  m_SortingLayerID: 273973925
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f52dad7b26268014e9d847f956d031f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

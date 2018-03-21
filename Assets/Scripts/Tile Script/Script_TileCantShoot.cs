@@ -22,4 +22,10 @@ public class Script_TileCantShoot : Script_TileHandler {
 			weapon.removeContraint(contraintName);
 		}
 	}
+
+	void OnDestroy() {
+		foreach (var player in GameObject.FindGameObjectsWithTag("Player")) {
+			player.GetComponent<Script_WeaponBase>().removeContraint(contraintName);
+		}
+	}
 }

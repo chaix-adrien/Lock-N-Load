@@ -57,7 +57,7 @@ public class Script_Entity : MonoBehaviour {
 	}
 
 	public void hit(int damages, Color hitColor, string from, string fromDetails) {
-		if (Time.time - lastShootTime >= invicibleFrame) {
+		if (damages > 0 && Time.time - lastShootTime >= invicibleFrame) {
 			lastShootTime = Time.time;
 			life -= damages;
 			if (life <= minLife) {
