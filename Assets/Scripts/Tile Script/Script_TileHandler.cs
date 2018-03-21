@@ -20,15 +20,18 @@ public class Script_TileHandler : MonoBehaviour {
 	public virtual void getShot(GameObject player, string from, string fromDetails) {}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		walkedOnEnter(col);
+		if (!col.isTrigger)
+			walkedOnEnter(col);
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
-		walkedOnLeave(col);
+		if (!col.isTrigger)
+			walkedOnLeave(col);
 	}
 
 	void OnTriggerStay2D(Collider2D col) {
-		walkedOnStay(col);
+		if (!col.isTrigger)
+			walkedOnStay(col);
 	}
 
 	

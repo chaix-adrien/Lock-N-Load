@@ -42,9 +42,14 @@ public class Script_Shield : MonoBehaviour {
 		enable(false);
 	}
 
-	public void hit() {
+	public void hit(int charge = 1) {
 		if (life > 0) {
-			life--;
+			if (charge == -1)
+				life = 0;
+			else {
+				life -= charge;
+				life = life < 0 ? 0 : life;
+			}
 			updateColor();
 		}
 	}

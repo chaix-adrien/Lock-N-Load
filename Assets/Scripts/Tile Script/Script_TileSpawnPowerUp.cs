@@ -12,6 +12,7 @@ public class Script_TileSpawnPowerUp : MonoBehaviour {
 		Script_Tile_Collider tileCol = GetComponent<Script_Tile_Collider>();
 		if (toSpawn) {
 			GameObject instancied = Instantiate(toSpawn, new Vector3(tileCol.pos.x, tileCol.pos.y, 0), Quaternion.identity);
+			instancied.transform.SetParent(tilemap.transform, false);
 			tilemap.SetTile(new Vector3Int(tileCol.pos.x, tileCol.pos.y, 0), floor);
 		}
 	}

@@ -12,21 +12,23 @@ public class Script_TileSlow : Script_TileHandler {
 	}
 	protected override void  walkedOnEnter(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
-		if (!col.isTrigger && moveComp) {
+		if (moveComp) {
 			moveComp.addContraint(contraintName, speedCoef);
 		}
 	}
 
 	protected override void  walkedOnLeave(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
-		if (!col.isTrigger && moveComp) {
+		if (moveComp) {
 			moveComp.removeContraint(contraintName);
 		}
 	}
 
 	void OnDestroy() {
-		foreach (var player in GameObject.FindGameObjectsWithTag("Player")) {
-			player.GetComponent<Script_Move>().removeContraint(contraintName);
+		if (contraintName != null) {
+			foreach (var player in GameObject.FindGameObjectsWithTag("Player")) {
+				player.GetComponent<Script_Move>().removeContraint(contraintName);
+			}
 		}
 	}
 }

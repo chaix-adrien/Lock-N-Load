@@ -8,7 +8,7 @@ public class Script_Interactable : MonoBehaviour {
 	List<int> atRange;
 
 	
-	protected void Start() {
+	protected virtual void Start() {
 		atRange = new List<int>();
 		if (whenInteractible) {
 			whenInteractible.GetComponent<SpriteRenderer>().enabled = false;

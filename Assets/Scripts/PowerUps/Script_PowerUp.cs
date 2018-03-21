@@ -9,15 +9,9 @@ public class Script_PowerUp : Script_TileHandler {
 	public bool destroyOnShoot = true;
 	public bool useIfUseless = false;
 	private Script_PowerUpSpawner spawner;
-	private Tilemap tilemap;
-	private ScriptedTile floor;
-	private Script_Tile_Collider colli;
 
 	protected override void Start () {
 		base.Start();
-		tilemap = GameObject.FindGameObjectWithTag("Map").GetComponent<Tilemap>();
-		floor = Resources.Load("Floor_Tile") as ScriptedTile;
-		colli = GetComponent<Script_Tile_Collider>();
 		GameObject spawnerObj = GameObject.FindGameObjectWithTag("PowerUpSpawner");
 		spawner = spawnerObj.GetComponent<Script_PowerUpSpawner>();
 		spawner.addToSpawned(transform);
@@ -35,12 +29,10 @@ public class Script_PowerUp : Script_TileHandler {
 	}
 
 	protected override void  walkedOnEnter(Collider2D col) {
-		if (!col.isTrigger) {
-			if ((onlyToPlayer && col.tag == "Player") || !onlyToPlayer) {
-				if (useIfUseless || isUsefull(col)) {
-					if (use(col) && destroyOnUse) {
-						Destroy(gameObject);
-					}
+		if ((onlyToPlayer && col.tag == "Player") || !onlyToPlayer) {
+			if (useIfUseless || isUsefull(col)) {
+				if (use(col) && destroyOnUse) {
+					Destroy(gameObject);
 				}
 			}
 		}

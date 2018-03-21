@@ -18,7 +18,7 @@ public class Script_TileExplodeRange : Script_TileHandler {
 	public bool onShoot = true;
 	private Tilemap tilemap;
 	private Vector3Int pos;	
-	void Start() {
+	protected override void Start() {
 		base.Start();
 		Vector2Int posInt = GetComponent<Script_Tile_Collider>().pos;
 		pos = new Vector3Int(posInt.x, posInt.y, 0);
@@ -30,8 +30,8 @@ public class Script_TileExplodeRange : Script_TileHandler {
 	}
 
 	protected override void walkedOnEnter(Collider2D entity) {
-		if (!entity.isTrigger && onWalk)
-			explode();
+		if (onWalk)
+			Invoke("explode", 0.01f);
 	}
 
 	private void explode() {
