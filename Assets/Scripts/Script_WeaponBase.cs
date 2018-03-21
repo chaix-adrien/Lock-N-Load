@@ -79,6 +79,11 @@ public class Script_WeaponBase : MonoBehaviour {
 		return false;
 	}
 
+	public void forceReloadWithAmount(int ammo) {
+		if (ammo >= 0)
+			magazine = ammo;
+	}
+
 	public virtual void reload() {
 		magazine = magazineMax;
 	}

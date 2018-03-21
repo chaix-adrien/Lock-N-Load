@@ -34,7 +34,6 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	}
 
 	protected virtual void launchExplosion() {
-		Debug.Log("ici");
 		explode(new Vector2Int(pos.x, pos.y));
 	}
 
