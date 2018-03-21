@@ -53,7 +53,6 @@ public class Script_WeaponBase : MonoBehaviour {
 				shootOnNothing(hitInfo);
 			} else {
 				//on TILE
-				Debug.Log("Shit");
 				Script_TileHandler tileHandler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
 				if (tileHandler)
 					shootOnTile(tileHandler, hitInfo.point);
