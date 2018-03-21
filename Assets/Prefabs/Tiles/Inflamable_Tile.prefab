@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212743921810400866}
   - component: {fileID: 60913795429707470}
   - component: {fileID: 114248557619530706}
-  - component: {fileID: 114780557966109890}
+  - component: {fileID: 114899334990215334}
   m_Layer: 0
   m_Name: Inflamable_Tile
   m_TagString: TileCollider
@@ -99,7 +99,7 @@ MonoBehaviour:
   walkable: 0
   tile: {fileID: 11400000, guid: 3c8580c7bde08bc43af5fec215a770ef, type: 2}
   pos: {x: 0, y: 0}
---- !u!114 &114780557966109890
+--- !u!114 &114899334990215334
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,15 +107,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934127130270892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d349c9e9adf9c499b9612152215901, type: 3}
+  m_Script: {fileID: 11500000, guid: 402ba2f77d4a732469e5372607588016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
-  chance: 1
-  toPutOnExplode: {fileID: 11400000, guid: 926afba9fd3e90940b5ed07d199cce09, type: 2}
-  toPutElse: {fileID: 0}
+  range: 1
+  chance: 0.5
+  toPutOnExplode: {fileID: 11400000, guid: b4db032fa4291e5449b883a40e4f4eb2, type: 2}
+  toPutElse: {fileID: 11400000, guid: 926afba9fd3e90940b5ed07d199cce09, type: 2}
+  onlyOnFloor: 0
   damageOnExplode: 40
   onHitColor: {r: 1, g: 1, b: 1, a: 1}
+  onWalk: 0
+  onShoot: 1
 --- !u!212 &212743921810400866
 SpriteRenderer:
   m_ObjectHideFlags: 1

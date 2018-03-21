@@ -103,11 +103,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1
-  chance: 0.1
+  chance: 0.5
   toPutOnExplode: {fileID: 11400000, guid: 926afba9fd3e90940b5ed07d199cce09, type: 2}
   toPutElse: {fileID: 11400000, guid: d9e0d83c5067f4642a31ca5d4af513be, type: 2}
+  onlyOnFloor: 0
   damageOnExplode: 40
   onHitColor: {r: 1, g: 1, b: 1, a: 1}
+  onWalk: 0
+  onShoot: 1
 --- !u!114 &114232609675791124
 MonoBehaviour:
   m_ObjectHideFlags: 1
