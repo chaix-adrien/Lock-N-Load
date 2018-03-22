@@ -6,6 +6,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 
 	public GameObject[] players = null;
 	public GameObject map = null;
+	public AudioClip onWinSound;
 
 	private  bool gameIsOver = false;
 	private List<GameObject> alive;
@@ -50,6 +51,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	}
 
 	private void gameOver() {
+		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onWinSound);
 		gameIsOver = true;
 		alive[0].transform.localScale = new Vector3(2, 2, 1);
 	}

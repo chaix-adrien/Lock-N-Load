@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Script_Shield : MonoBehaviour {
+	public AudioClip onBreakSound;
+	public AudioClip onHitSound;
 	private int maxLife = 4;
 	private int life;
 	private SpriteRenderer rend;
@@ -50,6 +52,10 @@ public class Script_Shield : MonoBehaviour {
 				life -= charge;
 				life = life < 0 ? 0 : life;
 			}
+			if (life == 0)
+				GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onBreakSound);
+			else
+				GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onHitSound);				
 			updateColor();
 		}
 	}

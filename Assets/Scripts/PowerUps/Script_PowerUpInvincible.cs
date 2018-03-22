@@ -15,6 +15,7 @@ public class Script_PowerUpInvincible : Script_PowerUp {
 		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
 		if (entity) {
 			entity.turnInvincible(invincibleTime);
+			base.use(col);
 			return true;
 		}
 		return false;

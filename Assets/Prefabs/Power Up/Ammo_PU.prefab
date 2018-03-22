@@ -95,6 +95,7 @@ MonoBehaviour:
   destroyOnUse: 1
   destroyOnShoot: 1
   useIfUseless: 0
+  onUseSound: {fileID: 8300000, guid: 0daa0896e96d708489f82212db132de9, type: 3}
   ammoToReload: 6
 --- !u!114 &114841930525283854
 MonoBehaviour:

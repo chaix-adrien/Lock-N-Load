@@ -83,6 +83,7 @@ public class Script_Player : Script_Entity {
 			weapon.addContraint("shield", false);
 			cut.addContraint("shield", false);
 		} else if (trigger < triggerDeadZoneOut && shield.getState() == true) {
+			triggerStateLeft = false;
 			weapon.removeContraint("shield");
 			cut.removeContraint("shield");
 			shield.down();

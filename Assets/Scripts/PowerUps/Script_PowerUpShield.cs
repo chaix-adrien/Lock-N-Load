@@ -17,6 +17,7 @@ public class Script_PowerUpShield : Script_PowerUp {
 		Script_Shield shield = col.gameObject.GetComponentInChildren<Script_Shield>();
 		if (shield) {
 			shield.refull(refullTotal ? -1 : shieldStack);
+			base.use(col);
 			return true;
 		}
 		return false;

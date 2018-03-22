@@ -9,6 +9,7 @@ public class Script_PowerUpSpawner : MonoBehaviour {
 	public float timeBeforeFirst = 1f;
 
 	public GameObject[] toSpawn;
+	public AudioClip onSpawnSound;
 
 	private GameObject map;
 	private Tilemap tilemap;
@@ -60,6 +61,7 @@ public class Script_PowerUpSpawner : MonoBehaviour {
 			GameObject toCreate = toSpawn[Mathf.FloorToInt(Random.value * toSpawn.Length)];
 			GameObject created = Instantiate(toCreate, selectedTilePos, Quaternion.identity);
 			created.transform.SetParent(map.transform, false);
+			GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onSpawnSound);
 		}
 	}
 }

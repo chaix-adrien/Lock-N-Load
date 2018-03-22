@@ -15,6 +15,7 @@ public class Script_PowerUpLife : Script_PowerUp {
 		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
 		if (entity) {
 			entity.heal(lifeGiven);
+			base.use(col);
 			return true;
 		}
 		return false;

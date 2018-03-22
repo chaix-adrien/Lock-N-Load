@@ -10,6 +10,8 @@ public class Script_WeaponBase : MonoBehaviour {
 	
  	public int damagePerShot = 20;
 
+	public AudioClip[] onFireSounds;
+
 	protected string weaponName = "none";
 	public Transform startRay;
 	public GameObject impact;
@@ -48,6 +50,7 @@ public class Script_WeaponBase : MonoBehaviour {
 		if (canFire
 		&& lastShootTime + speedFire <= Time.time
 		&& (magazine > 0 || magazineMax == 0)) {
+			GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onFireSounds[Mathf.FloorToInt(Random.Range(0, onFireSounds.Length))]);
 			RaycastHit2D hitInfo = castRay(range);
 			if (hitInfo == false) {
 				shootOnNothing(hitInfo);

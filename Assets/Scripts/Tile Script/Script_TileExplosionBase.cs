@@ -14,6 +14,7 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	public Color onHitColor = Color.white;
 	public bool onWalk = false;
 	public bool onShoot = true;
+	public AudioClip explosionSound;
 	private Tilemap tilemap;
 	protected Vector2Int pos;	
 	protected override void Start() {
@@ -34,6 +35,7 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	}
 
 	protected virtual void launchExplosion() {
+		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(explosionSound);
 		explode(new Vector2Int(pos.x, pos.y));
 	}
 

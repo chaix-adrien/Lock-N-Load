@@ -14,6 +14,7 @@ public class Script_PowerUpAmmo : Script_PowerUp {
 		Script_WeaponBase weapon = col.gameObject.GetComponent<Script_WeaponBase>();
 		if (weapon) {
 			weapon.forceReloadWithAmount(ammoToReload);
+			base.use(col);
 			return true;
 		}
 		return false;

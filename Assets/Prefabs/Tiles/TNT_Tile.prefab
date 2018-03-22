@@ -111,6 +111,7 @@ MonoBehaviour:
   onHitColor: {r: 1, g: 1, b: 1, a: 1}
   onWalk: 0
   onShoot: 1
+  explosionSound: {fileID: 8300000, guid: 7c2f7861f5e184945a1449d1613b3a41, type: 3}
 --- !u!114 &114232609675791124
 MonoBehaviour:
   m_ObjectHideFlags: 1

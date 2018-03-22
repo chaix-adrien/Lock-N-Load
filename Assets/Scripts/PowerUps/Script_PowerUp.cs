@@ -8,6 +8,7 @@ public class Script_PowerUp : Script_TileHandler {
 	public bool destroyOnUse = true;
 	public bool destroyOnShoot = true;
 	public bool useIfUseless = false;
+	public AudioClip onUseSound;
 	private Script_PowerUpSpawner spawner;
 
 	protected override void Start () {
@@ -21,6 +22,7 @@ public class Script_PowerUp : Script_TileHandler {
 	}
 
 	protected virtual bool use(Collider2D col) {
+		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onUseSound);
 		return true;
 	}
 

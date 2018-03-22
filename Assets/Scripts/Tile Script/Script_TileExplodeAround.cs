@@ -11,5 +11,6 @@ public class Script_TileExplodeAround : Script_TileExplosionBase {
 				explode(check);
 			}	
 		}
+		base.launchExplosion();
 	}
 }

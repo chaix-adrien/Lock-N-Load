@@ -365,8 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireTime: 0.1
-  StartChill: {r: 0.07586192, g: 0, b: 1, a: 0.472}
-  EndChill: {r: 0, g: 0.0645537, b: 0.49264705, a: 0.491}
+  StartChill: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 1}
+  EndChill: {r: 0.30882353, g: 0.30882353, b: 0.30882353, a: 1}
   StartFire: {r: 1, g: 0, b: 0, a: 1}
   EndFire: {r: 1, g: 0, b: 0, a: 1}
   player: {fileID: 1555550535320420}
@@ -393,6 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ff71c74e7ed7479b156cf0074ba53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBreakSound: {fileID: 8300000, guid: 3d1012d93aab9b14188541b67b661aa5, type: 3}
+  onHitSound: {fileID: 8300000, guid: 7ea105a1b9ff09b42a48b7577a386922, type: 3}
 --- !u!114 &114567634951892724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,6 +411,8 @@ MonoBehaviour:
   speedFire: 1
   range: 0.25
   damagePerShot: 10
+  onFireSounds:
+  - {fileID: 8300000, guid: a6ac1aeff94db0c409ba730c3c3fd98e, type: 3}
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 0}
 --- !u!114 &114603801404168104
@@ -450,6 +454,9 @@ MonoBehaviour:
   speedFire: 0.1
   range: Infinity
   damagePerShot: 20
+  onFireSounds:
+  - {fileID: 8300000, guid: 592eef74beb57ca47969164222d5f161, type: 3}
+  - {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7, type: 3}
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 1176684150126338, guid: 7d6fd356e766ecb439ecb88fa3f3a3cf, type: 2}
   ray: {fileID: 1044170311306722}

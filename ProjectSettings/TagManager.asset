@@ -9,6 +9,7 @@ TagManager:
   - Player Shield
   - PowerUpSpawner
   - InteractionIcon
+  - AudioPlayer
   layers:
   - Default
   - TransparentFX
