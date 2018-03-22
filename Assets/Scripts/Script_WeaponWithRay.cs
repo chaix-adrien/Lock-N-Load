@@ -30,7 +30,6 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 
 
 	protected override void onReloadEnd() {
-		Debug.Log("3");
 		if (ray)
 			ray.GetComponent<Script_Ray>().endReload();
 	}

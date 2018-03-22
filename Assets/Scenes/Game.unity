@@ -173,7 +173,7 @@ Prefab:
     - target: {fileID: 114603801404168104, guid: ac4fc149618efc340a480df30eb35193,
         type: 2}
       propertyPath: controllMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212657155440197156, guid: ac4fc149618efc340a480df30eb35193,
         type: 2}
@@ -191,6 +191,11 @@ Prefab:
     - target: {fileID: 4172917506214846, guid: ac4fc149618efc340a480df30eb35193, type: 2}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603801404168104, guid: ac4fc149618efc340a480df30eb35193,
+        type: 2}
+      propertyPath: gamepad
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac4fc149618efc340a480df30eb35193, type: 2}
