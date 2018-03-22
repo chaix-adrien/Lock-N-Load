@@ -57,6 +57,7 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        Overlay.gameObject.SetActive(true);
         if (LookCursor)
         {
             Cursor.visible = false;
