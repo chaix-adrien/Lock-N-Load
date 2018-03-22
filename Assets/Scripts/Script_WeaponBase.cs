@@ -15,7 +15,8 @@ public class Script_WeaponBase : MonoBehaviour {
 	protected string weaponName = "none";
 	public Transform startRay;
 	public GameObject impact;
-	public AudioClip[] onFireSounds;
+	public AudioClip onFireSounds;
+	public AudioClip onFireSoundsTuchPlayer;
 	public AudioClip onReloadSound;
 	// Use this for initialization
 	private Dictionary<string, bool> contraints;
@@ -51,11 +52,16 @@ public class Script_WeaponBase : MonoBehaviour {
 		if (canFire
 		&& lastShootTime + speedFire <= Time.time
 		&& (magazine > 0 || magazineMax == 0)) {
-			GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onFireSounds[Mathf.FloorToInt(Random.Range(0, onFireSounds.Length))]);
+			
 			RaycastHit2D hitInfo = castRay(range);
 			if (hitInfo == false) {
+				GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onFireSounds);
 				shootOnNothing(hitInfo);
 			} else {
+				if (hitInfo.collider.tag == "Player")
+					GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onFireSoundsTuchPlayer);
+				else
+					GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onFireSounds);
 				//on TILE
 				Script_TileHandler tileHandler = hitInfo.collider.gameObject.GetComponent<Script_TileHandler>();
 				if (tileHandler)
@@ -64,7 +70,7 @@ public class Script_WeaponBase : MonoBehaviour {
 				Script_Entity entityHandler = hitInfo.collider.gameObject.GetComponent<Script_Entity>();
 				if (entityHandler)
 					shootOnEntity(entityHandler, hitInfo.point);
-				
+
 				//on SHIELD
 				if (hitInfo.collider.gameObject.tag == "Player Shield")
 					shootOnShield(hitInfo.collider.gameObject, hitInfo.point);

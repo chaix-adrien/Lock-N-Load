@@ -413,8 +413,9 @@ MonoBehaviour:
   damagePerShot: 10
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 0}
-  onFireSounds:
-  - {fileID: 8300000, guid: a6ac1aeff94db0c409ba730c3c3fd98e, type: 3}
+  onFireSounds: {fileID: 8300000, guid: a6ac1aeff94db0c409ba730c3c3fd98e, type: 3}
+  onFireSoundsTuchPlayer: {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7,
+    type: 3}
   onReloadSound: {fileID: 0}
 --- !u!114 &114603801404168104
 MonoBehaviour:
@@ -457,9 +458,9 @@ MonoBehaviour:
   damagePerShot: 20
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 1176684150126338, guid: 7d6fd356e766ecb439ecb88fa3f3a3cf, type: 2}
-  onFireSounds:
-  - {fileID: 8300000, guid: 592eef74beb57ca47969164222d5f161, type: 3}
-  - {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7, type: 3}
+  onFireSounds: {fileID: 8300000, guid: 592eef74beb57ca47969164222d5f161, type: 3}
+  onFireSoundsTuchPlayer: {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7,
+    type: 3}
   onReloadSound: {fileID: 8300000, guid: 95992615288d0a844b69cc0a0325445b, type: 3}
   ray: {fileID: 1044170311306722}
 --- !u!114 &114823724363472578
