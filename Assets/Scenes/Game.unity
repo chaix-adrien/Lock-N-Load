@@ -875,63 +875,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<size=30><color=#4793FF>U</color>PAUSE MENU</size>
-
-
-    <b>Art UI Desing and textures team</b>
-
-    Lovatto Studio
-
-    Moonkey art
-
-    briner lovo
+  m_Text: '<size=30><color=#4793FF>LOCK-N-LOAD</color></size>
 
 
 
-    <b>source code team</b>
 
-    lovatto studio
+    <b>A Game MAde By</b>
 
-    briner lovo
-
-
-
-    <b>Asset Store art team</b>
-
-    briner lovo
-
-    lovatto studio
+    Adrien Chaix
 
 
 
-    <b> localization project tester</b>
-
-    briner lovo
-
-    lovatto studio
-
-    dani chicas
-
-    astrid briday
 
 
+    <b>On an original idea of</b>
 
-    <b>ideas and development team</b>
+    Luka Peschke
 
-    Astrid Briday
-
-    Dani chicas
-
-    briner lovo
-
-    lovatto studio
-
-    dayanara cabezas
-
-    blanca lidia
-
-
-    <size=8>this is just a example of credits</size>'
+    Adrien Chaix'
 --- !u!222 &106996927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11425,7 +11386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edd210cf535ee447b8d47f3d029c0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEditorMode: 0
+  OnEditorMode: 1
   ResolutionPanel: {fileID: 870421810}
   ResolutionButtons: {fileID: 100000, guid: 8bf1f4a7a52aa8549b86df8e52a51567, type: 2}
   ShowFramesPerSecond: 0
