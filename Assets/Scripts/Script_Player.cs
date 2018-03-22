@@ -133,8 +133,8 @@ public class Script_Player : Script_Entity {
 		if (controllMode == moveMode.CONTROLLER) {
 			rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, gamepad);
 		} else if (controllMode == moveMode.KEYBOARD) {
-			rightStick.x = Input.GetAxis("horizontal_arrow");
-			rightStick.y = Input.GetAxis("vertical_arrow");
+			rightStick.x = Input.GetAxis("Horizontal_arrow");
+			rightStick.y = Input.GetAxis("Hertical_arrow");
 		}
 		if (rightStick.magnitude >= 0.1) {
 			float angle = Vector2.SignedAngle(new Vector2(0, 1), rightStick);
@@ -148,8 +148,8 @@ public class Script_Player : Script_Entity {
 			leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, gamepad);
 		}
 		else if (controllMode == moveMode.KEYBOARD) {
-			leftStick.x = Input.GetAxis("horizontal");
-			leftStick.y = Input.GetAxis("vertical");
+			leftStick.x = Input.GetAxis("Horizontal");
+			leftStick.y = Input.GetAxis("Vertical");
 		}
 		moveComp.move(leftStick);
 	}

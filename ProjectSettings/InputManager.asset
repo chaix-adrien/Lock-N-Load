@@ -694,7 +694,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: horizontal_arrow
+    m_Name: Horizontal_arrow
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -710,7 +710,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: horizontal
+    m_Name: Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: q
@@ -726,7 +726,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: vertical
+    m_Name: Vertical
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: s
@@ -742,7 +742,7 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: vertical_arrow
+    m_Name: Vertical_arrow
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
