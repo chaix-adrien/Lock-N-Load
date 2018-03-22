@@ -23,6 +23,7 @@ public class Script_Ray : MonoBehaviour {
 	}
 
 	void Update() {
+		
 		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
 		if (reloadState && !fireState) {
 			lineRenderer.enabled = false;
@@ -36,7 +37,7 @@ public class Script_Ray : MonoBehaviour {
 	}
 
 	public void fire() {
-		fireState = true;		
+		fireState = true;
 		Invoke("endFire", fireTime);
 	}
 
@@ -51,8 +52,8 @@ public class Script_Ray : MonoBehaviour {
 	void resetColor() {
 		Color newStart = StartChill;
 		Color newEnd = EndChill;
-		newStart.a = percentAmmo;
-		newEnd.a = percentAmmo;
+		newStart.a = 0.5f + percentAmmo / 2f;
+		newEnd.a = 0.5f + percentAmmo / 2f;
 		lineRenderer.startColor = newStart;
 		lineRenderer.endColor = newEnd;
 	}

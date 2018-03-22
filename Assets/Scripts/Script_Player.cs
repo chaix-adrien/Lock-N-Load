@@ -28,6 +28,8 @@ public class Script_Player : Script_Entity {
 		base.Start();
 		moveComp = GetComponent<Script_Move>();
 		weapon = GetComponent<Script_WeaponWithRay>();
+		weapon.ray.GetComponent<Script_Ray>().StartFire = entityColor;
+		weapon.ray.GetComponent<Script_Ray>().EndFire = entityColor;
 		shieldObject.GetComponent<SpriteRenderer>().color = entityColor;
 		shield = shieldObject.GetComponent<Script_Shield>();
 		cut = GetComponent<Script_Cut>();

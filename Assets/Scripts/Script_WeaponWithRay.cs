@@ -18,8 +18,13 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 
 	public override bool fire() {
 		bool fired = base.fire();
-		if (base.fire() && ray)
+		if (fired && ray) {
 			ray.GetComponent<Script_Ray>().fire();
+			if (getPercentAmmo() == 0f)
+				ray.GetComponent<Script_Ray>().reload();
+		}
+			
+		
 		return fired;
 	}
 

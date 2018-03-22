@@ -74,7 +74,7 @@ public class Script_WeaponBase : MonoBehaviour {
 			lastShootTime = Time.time;
 			if (magazine <= 0 && magazineMax != 0)
 				Invoke("reload", reloadTime);
-			return true;	
+			return true;
 		}
 		return false;
 	}
