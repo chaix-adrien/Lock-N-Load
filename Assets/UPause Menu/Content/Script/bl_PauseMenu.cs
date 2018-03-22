@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using GamepadInput;
+using UnityEngine.SceneManagement;
 
 public class bl_PauseMenu : MonoBehaviour {
 
@@ -70,7 +72,7 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
         {
             DoPause();
         }
@@ -255,9 +257,10 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     public void SimpleRestart()
     {
-        m_Pause = false;
-        m_PauseState = PauseState.None;
-        Application.LoadLevel(Application.loadedLevelName);
+        //m_Pause = false;
+        //m_PauseState = PauseState.None;
+        DoPause();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     /// <summary>
     /// 
