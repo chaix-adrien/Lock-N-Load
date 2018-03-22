@@ -445,8 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec09da290ab48b468250c73e4bf6473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 2
-  magazineMax: 3
+  reloadTime: 1
+  magazineMax: 4
   speedFire: 0.1
   range: Infinity
   damagePerShot: 20

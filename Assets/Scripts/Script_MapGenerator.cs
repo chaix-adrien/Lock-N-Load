@@ -3,68 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[System.Serializable]
- public struct avialableTile
- {
-     [SerializeField] public Tile tile;
-	 [SerializeField] public float chance;
- }
+
 public class Script_MapGenerator : MonoBehaviour {
-	public bool generate = true;
-
 	public bool clearAtGeneration = true;
-	public Tile floor = null;
-
-	public Tile wall = null;
-	public avialableTile[] tiles;
-	public Vector2Int size = new Vector2Int(19, 10);
-
 	public GameObject[] playersToSpawn;
+	protected Tilemap tilemap;
+	protected List<Vector3Int> floors;
 
-	private Tilemap tilemap;
-	private List<float>chances;
-	private float chancesTotal;
-
-	private List<Vector3Int> floors;
-
-	void Start() {
+	protected virtual void Start() {
 		tilemap = GetComponent<Tilemap>();
-		if (generate)
-			generateMap();
 	}
 
-	private void generateChances() {
-		chances = new List<float>();
-		chancesTotal = 0f;
-		float total = 0f;
-		for (int i = 0; i < tiles.Length; i++) {
-			chancesTotal += (tiles[i].chance > 1f) ? tiles[i].chance : 1f;
-			total += tiles[i].chance;
-			chances.Add(total);
-		}
-	}
-
-	private Tile choseRandomTile() {
-		float chosenRange = Random.Range(0f, chancesTotal);
-		for (int i = 0; i < tiles.Length; i++) {
-			if (chances[i] > chosenRange)
-				return tiles[i].tile;
-		}
-		return floor;
-	}
-
-	private void generateBorders() {
-		Vector3Int pos = Vector3Int.zero;
-		for (pos.x = -1; pos.x <= size.x; pos.x++) {
-			for (pos.y = -1; pos.y <= size.y; pos.y++) {
-				if (pos.x == -1 || pos.x == size.x || pos.y == -1 || pos.y == size.y) {
-					tilemap.SetTile(pos, wall);
-				}
-			}
-		}
-	}
-
-	private void spawnPlayer() {
+	protected void spawnPlayer() {
 		for (int i = 0; i < playersToSpawn.Length; i++) {
 			playersToSpawn[i].transform.SetParent(transform);
 			Vector3Int pos = floors[Mathf.FloorToInt(Random.Range(0, floors.Count))];
@@ -73,28 +23,22 @@ public class Script_MapGenerator : MonoBehaviour {
 		}
 	}
 
-	private void generateMap() {
-		if (!(wall & generate && tiles.Length > 0 && floor)) {
-			Debug.Log("Check wall / floor / tiles");
-			return;
-		}
-		if (clearAtGeneration)
-			tilemap.ClearAllTiles();
-		floors = new List<Vector3Int>();
-		generateChances();
-		generateBorders();
+	protected void getFloorsTiles() {
+		BoundsInt bounds = tilemap.cellBounds;
 		Vector3Int pos = Vector3Int.zero;
-		for (pos.x = 0; pos.x < size.x; pos.x++) {
-			for (pos.y = 0; pos.y < size.y; pos.y++) {
-				Tile chosenTile = choseRandomTile();
-				tilemap.SetTile(pos, chosenTile);
-				if (chosenTile == floor) {
+		floors = new List<Vector3Int>();
+		for (pos.x = bounds.position.x; pos.x < bounds.size.x; pos.x++) {
+			for (pos.y = bounds.position.y; pos.y < bounds.size.y; pos.y++) {
+				ScriptedTile tile = tilemap.GetTile(pos) as ScriptedTile;;
+				if (tile && tile.floor)
 					floors.Add(pos);
-				}
 			}
 		}
-		spawnPlayer();
+	}
+
+	public virtual void generateMap() {
 		tilemap.CompressBounds();
-		BoundsInt  bounds = tilemap.cellBounds;
+		getFloorsTiles();
+		spawnPlayer();
 	}
 }

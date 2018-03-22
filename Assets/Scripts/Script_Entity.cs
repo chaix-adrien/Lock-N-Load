@@ -14,7 +14,8 @@ public class Script_Entity : MonoBehaviour {
 
 	public GameObject lifeBar;
 
-	private int life;
+	protected bool alive = true;
+	protected int life;
 	private float invincibleUntil = -1;
 	private float invincibleSince = -1;
 
@@ -31,6 +32,8 @@ public class Script_Entity : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected void Update () {
+		if (!alive)
+			return;
 		if (Time.time <= invincibleUntil) {
 			float elapsedTime = Time.time - invincibleSince;
 			float totalTime = invincibleUntil - invincibleSince;
@@ -39,6 +42,8 @@ public class Script_Entity : MonoBehaviour {
 	}
 
 	protected virtual void displayInvincibleFrame(float elapsedTime, float percent) {
+		if (!alive)
+			return;
 		Color faded = entityColor;
 		faded.a = invincibleFrameFade;
 		if (percent >= 0.9)
@@ -49,15 +54,27 @@ public class Script_Entity : MonoBehaviour {
 			rend.color = entityColor;
 	}
 
-	protected virtual void die() {
-		Debug.Log("entity get dead");
+	public bool isAlive() {
+		return alive;
 	}
 
-	
+	protected virtual void die() {
+		alive = false;
+		gameObject.SetActive(false);
+	}
+
+	public virtual void respawn() {
+		alive = true;
+		heal(maxLife);
+		gameObject.SetActive(true);
+	}
+
 	protected virtual void onHit(int damages, Color hitColor, string from, string fromDetails) {
 	}
 
 	public void hit(int damages, Color hitColor, string from, string fromDetails) {
+		if (!alive)
+			return;
 		if (damages > 0 && Time.time > invincibleUntil) {
 			turnInvincible(invicinbleFrame);
 			life -= damages;
@@ -77,6 +94,8 @@ public class Script_Entity : MonoBehaviour {
 	}
 
 	public void heal(int regen) {
+		if (!alive)
+			return;
 		life += regen;
 		if (life > maxLife)
 			life = maxLife;

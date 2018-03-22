@@ -69,9 +69,6 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	}
 	
 	private void destroySelf() {
-		if (Random.Range(0, 1.0f) <= chance)
-			tilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), toPutOnExplode);
-		else if (toPutElse)
-			tilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), toPutElse);
+		tilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), toPutOnExplode);
 	}
 }

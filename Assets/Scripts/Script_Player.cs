@@ -154,11 +154,6 @@ public class Script_Player : Script_Entity {
 	private void hideImpactSprite() {
 		impactSprite.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 0f);
 	}
-
-	protected override void die() {
-		Debug.Log("player get dead");
-	}
-
 	void OnTriggerEnter2D(Collider2D col) {
 		Script_Interactable interaction = col.gameObject.GetComponent<Script_Interactable>();
 		if (!interaction)
