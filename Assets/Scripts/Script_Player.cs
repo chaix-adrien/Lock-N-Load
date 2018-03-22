@@ -31,6 +31,7 @@ public class Script_Player : Script_Entity {
 		shieldObject.GetComponent<SpriteRenderer>().color = entityColor;
 		shield = shieldObject.GetComponent<Script_Shield>();
 		cut = GetComponent<Script_Cut>();
+		turnInvincible(2f);
 	}
 
 	void FixedUpdate () {

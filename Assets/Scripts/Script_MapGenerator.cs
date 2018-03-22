@@ -23,6 +23,7 @@ public class Script_MapGenerator : MonoBehaviour {
 
 	private Tilemap tilemap;
 	private List<float>chances;
+	private float chancesTotal;
 
 	private List<Vector3Int> floors;
 
@@ -34,15 +35,17 @@ public class Script_MapGenerator : MonoBehaviour {
 
 	private void generateChances() {
 		chances = new List<float>();
+		chancesTotal = 0f;
 		float total = 0f;
 		for (int i = 0; i < tiles.Length; i++) {
+			chancesTotal += (tiles[i].chance > 1f) ? tiles[i].chance : 1f;
 			total += tiles[i].chance;
 			chances.Add(total);
 		}
 	}
 
 	private Tile choseRandomTile() {
-		float chosenRange = Random.Range(0f, tiles.Length);
+		float chosenRange = Random.Range(0f, chancesTotal);
 		for (int i = 0; i < tiles.Length; i++) {
 			if (chances[i] > chosenRange)
 				return tiles[i].tile;

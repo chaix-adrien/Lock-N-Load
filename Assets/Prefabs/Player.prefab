@@ -236,7 +236,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
 --- !u!60 &60032915994529818
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -411,7 +411,6 @@ MonoBehaviour:
   damagePerShot: 10
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 0}
-  shieldObject: {fileID: 1325393201578958}
 --- !u!114 &114603801404168104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,12 +425,12 @@ MonoBehaviour:
   maxLife: 100
   startLife: 100
   minLife: 0
-  invicibleFrame: 2
-  invincibleFrameFade: 0.5
+  invicinbleFrame: 1
   lifeBar: {fileID: 1264299955484976}
   entityColor: {r: 1, g: 0, b: 0, a: 1}
   gamepad: 1
   controllMode: 1
+  interactionRange: 0.25
   impactSprite: {fileID: 1318440947418584}
   shieldObject: {fileID: 1325393201578958}
   cut: {fileID: 0}
