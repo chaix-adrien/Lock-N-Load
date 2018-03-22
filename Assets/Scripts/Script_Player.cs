@@ -39,10 +39,7 @@ public class Script_Player : Script_Entity {
 	void FixedUpdate () {
 		move();
 		rotate();
-	}
-
-	protected new void Update() {
-		base.Update();
+		checkForReload();
 		checkForShield();
 		checkForFire();
 		checkForCut();
@@ -98,6 +95,17 @@ public class Script_Player : Script_Entity {
 			doIt = Input.GetKeyDown("c");
 		if (doIt) {
 			cut.fire();
+		}
+	}
+
+	private void checkForReload() {
+		bool doIt = false;
+		if (controllMode == moveMode.CONTROLLER)
+			doIt = GamePad.GetButtonDown(GamePad.Button.X, gamepad);
+		else if (controllMode == moveMode.KEYBOARD)
+			doIt = Input.GetKeyDown("e");
+		if (doIt) {
+			weapon.reload();
 		}
 	}
 

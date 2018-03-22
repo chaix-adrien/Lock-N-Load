@@ -10,12 +10,13 @@ public class Script_WeaponBase : MonoBehaviour {
 	
  	public int damagePerShot = 20;
 
-	public AudioClip[] onFireSounds;
+	
 
 	protected string weaponName = "none";
 	public Transform startRay;
 	public GameObject impact;
-
+	public AudioClip[] onFireSounds;
+	public AudioClip onReloadSound;
 	// Use this for initialization
 	private Dictionary<string, bool> contraints;
 	protected bool canFire = true;
@@ -76,7 +77,7 @@ public class Script_WeaponBase : MonoBehaviour {
 			magazine--;
 			lastShootTime = Time.time;
 			if (magazine <= 0 && magazineMax != 0)
-				Invoke("reload", reloadTime);
+				reload();
 			return true;
 		}
 		return false;
@@ -88,6 +89,17 @@ public class Script_WeaponBase : MonoBehaviour {
 	}
 
 	public virtual void reload() {
+		if (magazine >= magazineMax)
+			return;
+		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onReloadSound);
+		Invoke("reloadFunction", reloadTime);
+	}
+
+	protected virtual void onReloadEnd() {
+	}
+
+	private void reloadFunction() {
+		onReloadEnd();
 		magazine = magazineMax;
 	}
 

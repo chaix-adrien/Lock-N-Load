@@ -8,7 +8,8 @@ public class Script_TileExplodeAround : Script_TileExplosionBase {
 		Vector2Int check = Vector2Int.zero;
 		for (check.x = pos.x - range; check.x <= pos.x + range; check.x++) {
 			for (check.y = pos.y - range; check.y <= pos.y + range; check.y++) {
-				explode(check);
+				if (!(check.x == pos.x && check.y == pos.y))
+					explode(check);
 			}	
 		}
 		base.launchExplosion();

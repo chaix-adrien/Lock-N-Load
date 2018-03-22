@@ -30,8 +30,11 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	}
 
 	protected override void walkedOnEnter(Collider2D entity) {
-		if (onWalk)
-			Invoke("launchExplosion", 0.01f);
+		if (onWalk) {
+			GetComponent<SpriteRenderer>().enabled = false;
+			Invoke("launchExplosion", 0.1f);
+		}
+			
 	}
 
 	protected virtual void launchExplosion() {
@@ -52,7 +55,7 @@ public class Script_TileExplosionBase : Script_TileHandler {
 			}
 		}
 		ScriptedTile tile = tilemap.GetTile(new Vector3Int(check.x, check.y, 0)) as ScriptedTile;
-		if (!(check.x == pos.x && check.y == pos.y)) {
+		if (!(check.x == pos.x && check.y == pos.y) && tile) {
 			if (!onlyOnFloor || tile.floor) {
 				if (!tile || tile.canBeExplosed) {
 					if (Random.Range(0, 1.0f) <= chance)
@@ -65,7 +68,7 @@ public class Script_TileExplosionBase : Script_TileHandler {
 			} else
 				return false;
 		} else {
-			Invoke("destroySelf", 0.01f);
+			Invoke("destroySelf", 0.02f);
 			return true;
 		}
 	}

@@ -28,8 +28,9 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 		return fired;
 	}
 
-	public override void reload() {
-		base.reload();
+
+	protected override void onReloadEnd() {
+		Debug.Log("3");
 		if (ray)
 			ray.GetComponent<Script_Ray>().endReload();
 	}
