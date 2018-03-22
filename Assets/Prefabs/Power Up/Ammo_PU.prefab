@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212585826831191210}
   - component: {fileID: 60614017393394006}
   - component: {fileID: 114841930525283854}
-  - component: {fileID: 114598446509526722}
+  - component: {fileID: 114180358854583574}
   m_Layer: 0
   m_Name: Ammo_PU
   m_TagString: TileCollider
@@ -80,7 +80,7 @@ PolygonCollider2D:
       - {x: 0.2578125, y: -0.1875}
       - {x: 0.28125, y: -0.0703125}
       - {x: 0.28125, y: 0.1328125}
---- !u!114 &114598446509526722
+--- !u!114 &114180358854583574
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -88,14 +88,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1164805746795532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2375578d9a768e1499311b97994c9208, type: 3}
+  m_Script: {fileID: 11500000, guid: ab6ff04a79190cf449ee927a9913d05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onlyToPlayer: 1
   destroyOnUse: 1
   destroyOnShoot: 1
   useIfUseless: 0
-  invincibleTime: 3
+  ammoToReload: 6
 --- !u!114 &114841930525283854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 1342175837
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 76f325bfa5361a74bb1989785229fc84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2d93cb53947b8f41b725743f853b063, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

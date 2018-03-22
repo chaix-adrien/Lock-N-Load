@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114099441216533844}
   - component: {fileID: 114363196272273716}
   m_Layer: 0
-  m_Name: Invincible_Tile
+  m_Name: PU_Invincible_Tile
   m_TagString: TileCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

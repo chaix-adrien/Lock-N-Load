@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114358288173990260}
   - component: {fileID: 114040244062907104}
   m_Layer: 0
-  m_Name: Life_Tile
+  m_Name: PU_Life_Tile
   m_TagString: TileCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
