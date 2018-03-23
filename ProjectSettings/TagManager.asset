@@ -10,6 +10,7 @@ TagManager:
   - PowerUpSpawner
   - InteractionIcon
   - AudioPlayer
+  - Menu
   layers:
   - Default
   - TransparentFX

@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Script_MainMenu : Script_ButtonMenu_Button {
 	public void quickPlay() {
-		SceneManager.LoadScene("Game");
+		string[] names = Input.GetJoystickNames();
+		if (names.Length >= 2)
+			SceneManager.LoadScene("Game");
 	}
 
 	public void options() {
+		GameObject.FindGameObjectWithTag("Menu").GetComponent<bl_PauseMenu>().DoPause();
 	}
 
 	public void quit() {

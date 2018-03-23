@@ -95,6 +95,7 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     public void DoPause()
     {
+        Debug.Log("ici");
         if (PauseUI != null)
         {
             //True or False
@@ -144,10 +145,11 @@ public class bl_PauseMenu : MonoBehaviour {
                 //If you do not want to disable animation for event
                 //use this:
                 //StartCoroutine(DesactiveInTime(PauseUI,2f);
-                if (CreditsUI.activeSelf)
-                {
-                    CreditsUI.GetComponent<Animator>().SetBool("show", false);
-                }
+                if  (CreditsUI)
+                    if (CreditsUI.activeSelf)
+                    {
+                        CreditsUI.GetComponent<Animator>().SetBool("show", false);
+                    }
 
                 m_PauseState = PauseState.None;
             }
@@ -166,6 +168,7 @@ public class bl_PauseMenu : MonoBehaviour {
         {
             OptionsUI.GetComponent<Animator>().SetBool("show", false);
         }
+        if (CreditsUI)
         if (CreditsUI.activeSelf)
         {
             CreditsUI.GetComponent<Animator>().SetBool("show", false);

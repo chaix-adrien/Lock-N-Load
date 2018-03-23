@@ -11,6 +11,7 @@ public class Script_ButtonMenu_Button : MonoBehaviour {
 
 	void Start() {
 		menu = GetComponentInParent<Script_ButtonMenu>();
+
 	}
 	
 	void OnMouseEnter() {
@@ -19,6 +20,10 @@ public class Script_ButtonMenu_Button : MonoBehaviour {
 
 	void OnMouseExit() {
 		menu.unselectObject(gameObject);
+	}
+
+	void OnMouseDown() {
+		OnActivate();
 	}
 
 	void OnSelect()
