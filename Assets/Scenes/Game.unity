@@ -11386,7 +11386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edd210cf535ee447b8d47f3d029c0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEditorMode: 1
+  OnEditorMode: 0
   ResolutionPanel: {fileID: 870421810}
   ResolutionButtons: {fileID: 100000, guid: 8bf1f4a7a52aa8549b86df8e52a51567, type: 2}
   ShowFramesPerSecond: 0
