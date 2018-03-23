@@ -18,7 +18,8 @@ public class Script_Move : MonoBehaviour {
 	}
 	
 	public void move(Vector2 moveVec) {
-		rb.velocity = moveVec * realSpeed;
+		if (rb)
+			rb.velocity = moveVec * realSpeed;
 	}
 
 	public void addContraint(string name, float contraint) {

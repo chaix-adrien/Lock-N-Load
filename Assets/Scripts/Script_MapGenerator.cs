@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Script_MapGenerator : MonoBehaviour {
 	public bool clearAtGeneration = true;
-	public GameObject[] playersToSpawn;
+	public List<GameObject> playersToSpawn;
 	protected Tilemap tilemap;
 	protected List<Vector3Int> floors;
 
@@ -15,7 +15,7 @@ public class Script_MapGenerator : MonoBehaviour {
 	}
 
 	protected void spawnPlayer() {
-		for (int i = 0; i < playersToSpawn.Length; i++) {
+		for (int i = 0; i < playersToSpawn.Count; i++) {
 			playersToSpawn[i].transform.SetParent(transform);
 			Vector3Int pos = floors[Mathf.FloorToInt(Random.Range(0, floors.Count))];
 			playersToSpawn[i].transform.localPosition = new Vector3(pos.x + tilemap.tileAnchor.x, pos.y + tilemap.tileAnchor.y, pos.z + tilemap.tileAnchor.z);
