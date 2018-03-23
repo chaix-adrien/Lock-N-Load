@@ -4334,6 +4334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1024137683}
   - component: {fileID: 1024137684}
+  - component: {fileID: 1024137685}
   m_Layer: 5
   m_Name: ShowFPS
   m_TagString: Untagged
@@ -4419,6 +4420,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!114 &1024137685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1024137682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e5fec6953b6e94ba49c8798aa1e986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggle: {fileID: 1024137684}
+  menu: {fileID: 1809608615}
 --- !u!1 &1024699472
 GameObject:
   m_ObjectHideFlags: 0
@@ -11245,7 +11259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edd210cf535ee447b8d47f3d029c0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEditorMode: 0
+  OnEditorMode: 1
   ResolutionPanel: {fileID: 870421810}
   ResolutionButtons: {fileID: 100000, guid: 8bf1f4a7a52aa8549b86df8e52a51567, type: 2}
   ShowFramesPerSecond: 0
@@ -11263,6 +11277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642dc42b3c45dcc42b2288b5ec2a8348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyOption: 0
   useTimeScale: 1
   LookCursor: 1
   PauseUI: {fileID: 1213828113}

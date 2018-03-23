@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class bl_PauseMenu : MonoBehaviour {
 
     public static PauseState m_PauseState = PauseState.None;
+    public bool onlyOption = false;
     /// <summary>
     /// Global var for know is pause game
     /// </summary>
@@ -59,7 +60,8 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        Overlay.gameObject.SetActive(true);
+        if (Overlay)
+            Overlay.gameObject.SetActive(true);
         if (LookCursor)
         {
             Cursor.visible = false;
@@ -72,7 +74,7 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
+        if (!onlyOption &&  (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any)))
         {
             DoPause();
         }
@@ -95,7 +97,6 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     public void DoPause()
     {
-        Debug.Log("ici");
         if (PauseUI != null)
         {
             //True or False
@@ -164,6 +165,11 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     public void DoMain()
     {
+        if (onlyOption) {
+            DoPause();
+            return;
+        }
+            
         if (OptionsUI.activeSelf)
         {
             OptionsUI.GetComponent<Animator>().SetBool("show", false);

@@ -4,10 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Script_MainMenu : Script_ButtonMenu_Button {
+	public GameObject option;
 	public void quickPlay() {
 		string[] names = Input.GetJoystickNames();
-		if (names.Length >= 2)
-			SceneManager.LoadScene("Game");
+#if UNITY_EDITOR
+#else
+	if (names.Length >= 2)
+#endif
+		SceneManager.LoadScene("Game");
+	}
+
+	void Update() {
+			GetComponent<Collider2D>().enabled = !option.activeSelf;
 	}
 
 	public void options() {
