@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 
 public class Script_ButtonMenuNavigation : MonoBehaviour {
-	private List<Button> buttons;
-	public int defaultSelection = -1;
+	private List<Selectable> buttons;
+	public int defaultSelection = 0;
 
 	private int selection;
 	void Start () {
-		buttons = new List<Button>();
-		GetComponentsInChildren<Button>(buttons);
+		buttons = new List<Selectable>();
+		GetComponentsInChildren<Selectable>(buttons);
 		foreach (var button in buttons) {
 			button.gameObject.AddComponent<HighlightFix>();
 		}
@@ -47,7 +47,7 @@ public class Script_ButtonMenuNavigation : MonoBehaviour {
 		}
 	}
 
-	public void selectObject(Button obj) {
+	public void selectObject(Selectable obj) {
 		for (int i = 0; i < buttons.Count; i++) {
 			if (buttons[i] == obj) {
 				selection = i;
