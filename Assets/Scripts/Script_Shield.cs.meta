@@ -5,7 +5,9 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - onBreakSound: {fileID: 8300000, guid: 3d1012d93aab9b14188541b67b661aa5, type: 3}
+  - onHitSound: {fileID: 8300000, guid: 7ea105a1b9ff09b42a48b7577a386922, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

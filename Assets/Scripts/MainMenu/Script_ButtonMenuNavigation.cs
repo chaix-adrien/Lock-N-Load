@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GamepadInput;
+using UnityEngine.UI;
 
-public class Script_ButtonMenu : MonoBehaviour {
-	public List<GameObject> buttons;
+
+public class Script_ButtonMenuNavigation : MonoBehaviour {
+	public List<Button> buttons;
 	public int defaultSelection = -1;
 
 	private int selection;
 	void Start () {
-		buttons = new List<GameObject>();
+		buttons = new List<Button>();
 		selection = defaultSelection;
 		for (int i = 0; i < transform.childCount; i++) {
-			buttons.Add(transform.GetChild(i).gameObject);
+			Button child = transform.GetChild(i).gameObject.GetComponent<Button>();
+			if (child)
+				buttons.Add(child);
 		}
 	}
 	
@@ -42,24 +46,14 @@ public class Script_ButtonMenu : MonoBehaviour {
 					selectObject(buttons[i]);
 			}
 		}
-		if (Input.GetKeyDown("return") || GamePad.GetButtonDown(GamePad.Button.A, GamePad.Index.Any)) {
-			buttons[selection].GetComponent<Script_ButtonMenu_Button>().OnActivate();
-		}
-
 	}
 
-	public void unselectObject(GameObject obj) {
-		selection = -1;
-		obj.SendMessage("OnUnselect", 0f);
-	}
-
-	public void selectObject(GameObject obj) {
+	public void selectObject(Button obj) {
 		for (int i = 0; i < buttons.Count; i++) {
-			if (buttons[i] != obj)
-				buttons[i].SendMessage("OnUnselect", 0f);
-			else
+			if (buttons[i] == obj) {
 				selection = i;
-		}
-		obj.SendMessage("OnSelect", 0f);
-	}
+				obj.Select();
+			}
+		}			
+	}	
 }

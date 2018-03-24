@@ -5,7 +5,14 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startRay: {instanceID: 0}
+  - impact: {instanceID: 0}
+  - onFireSounds: {fileID: 8300000, guid: 592eef74beb57ca47969164222d5f161, type: 3}
+  - onFireSoundsTuchPlayer: {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7,
+      type: 3}
+  - onReloadSound: {instanceID: 0}
+  - ray: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

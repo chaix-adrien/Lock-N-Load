@@ -78,6 +78,10 @@ public class bl_PauseMenu : MonoBehaviour {
         {
             DoPause();
         }
+        if (onlyOption && (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))) {
+            if (m_Pause)
+                DoPause();
+        }
         //Fade effect
         if (Overlay != null)
         {

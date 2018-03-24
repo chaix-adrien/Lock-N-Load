@@ -2,9 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Script_MainMenu : Script_ButtonMenu_Button {
+public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
+
+	private List<GraphicRaycaster> raycast;
+
+	void Start() {
+		raycast = new List<GraphicRaycaster>();
+		GetComponentsInChildren<GraphicRaycaster>(raycast);
+	}
+
+	void Update() {
+		foreach (var ray in raycast) {
+			ray.enabled = !option.activeSelf;
+		}
+	}
+
 	public void quickPlay() {
 		string[] names = Input.GetJoystickNames();
 #if UNITY_EDITOR
@@ -14,9 +29,6 @@ public class Script_MainMenu : Script_ButtonMenu_Button {
 		SceneManager.LoadScene("Game");
 	}
 
-	void Update() {
-			GetComponent<Collider2D>().enabled = !option.activeSelf;
-	}
 
 	public void options() {
 		GameObject.FindGameObjectWithTag("Menu").GetComponent<bl_PauseMenu>().DoPause();

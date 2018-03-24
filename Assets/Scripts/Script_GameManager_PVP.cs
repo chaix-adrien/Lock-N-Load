@@ -15,11 +15,13 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	private List<GameObject> players;
 	void Start () {
 		Debug.Assert(map && player);
+		players = new List<GameObject>();
 		restart();
 	}
 	
 	public void restart() {
 		Debug.Assert(playerColors.Length == 4);
+		removePlayers();
 		getPlayers();
 		int i = 0;
 		foreach (var player in players) {
@@ -47,14 +49,20 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		if (Input.GetKey("return")) {
 			restart();
 		}
-			
+	}
+
+	private void removePlayers() {
+		if (players.Count >= 1)
+			foreach (var player in players) {
+				Destroy(player);
+			}
 	}
 
 	private void getPlayers() {
 		players = new List<GameObject>();
-		GamePad.Index[] index = {GamePad.Index.One, GamePad.Index.Two, GamePad.Index.Three, GamePad.Index.Four};
 		string [] names = Input.GetJoystickNames();
 		for (int i = 0; i < names.Length; i++) {
+			Debug.Log(names[i]);
 			if (names[i] != "") {
 				players.Add(Instantiate(player, Vector3.zero, Quaternion.identity));
 			}
