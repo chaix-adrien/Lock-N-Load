@@ -12,10 +12,9 @@ public class Script_ButtonMenuNavigation : MonoBehaviour {
 	private int selection;
 	void Start () {
 		buttons = new List<Button>();
-		for (int i = 0; i < transform.childCount; i++) {
-			Button child = transform.GetChild(i).gameObject.GetComponent<Button>();
-			if (child)
-				buttons.Add(child);
+		GetComponentsInChildren<Button>(buttons);
+		foreach (var button in buttons) {
+			button.gameObject.AddComponent<HighlightFix>();
 		}
 		selectDefault();
 	}
