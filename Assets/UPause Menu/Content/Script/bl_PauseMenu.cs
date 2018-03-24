@@ -60,6 +60,9 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        #if UNITY_EDITOR
+            LookCursor = false;
+        #endif
         if (Overlay)
             Overlay.gameObject.SetActive(true);
         if (LookCursor)
@@ -78,10 +81,18 @@ public class bl_PauseMenu : MonoBehaviour {
         {
             DoPause();
         }
+        if (!onlyOption &&  GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
+        {
+            if (OptionsUI.activeSelf)
+                DoOptions();
+            else
+                DoPause();
+        }
         if (onlyOption && (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))) {
             if (m_Pause)
                 DoPause();
         }
+
         //Fade effect
         if (Overlay != null)
         {

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class bl_PauseOptions : MonoBehaviour {
 
-    public bool OnEditorMode = false;
     public Transform ResolutionPanel = null;
     public GameObject ResolutionButtons = null;
     [Space(5)]
@@ -25,11 +24,6 @@ public class bl_PauseOptions : MonoBehaviour {
     /// </summary>
     void Awake()
     {
-        #if UNITY_EDITOR
-           if (!OnEditorMode) {
-                gameObject.SetActive(false);
-            }
-        #endif
         PostResolutions();
         if (FPSFrames != null) { FPSFrames.gameObject.SetActive(ShowFramesPerSecond); }
         timeleft = UpdateInterval;

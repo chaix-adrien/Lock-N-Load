@@ -8,15 +8,21 @@ public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
 
 	private List<GraphicRaycaster> raycast;
+	private List<Script_ButtonMenuNavigation> menus;
 
 	void Start() {
 		raycast = new List<GraphicRaycaster>();
+		menus = new List<Script_ButtonMenuNavigation>();
 		GetComponentsInChildren<GraphicRaycaster>(raycast);
+		GetComponentsInChildren<Script_ButtonMenuNavigation>(menus);
 	}
 
 	void Update() {
 		foreach (var ray in raycast) {
 			ray.enabled = !option.activeSelf;
+		}
+		foreach (var menu in menus) {
+			menu.enabled = !option.activeSelf;
 		}
 	}
 

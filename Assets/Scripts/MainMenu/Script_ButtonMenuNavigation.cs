@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 
 public class Script_ButtonMenuNavigation : MonoBehaviour {
-	public List<Button> buttons;
+	private List<Button> buttons;
 	public int defaultSelection = -1;
 
 	private int selection;
 	void Start () {
 		buttons = new List<Button>();
-		selection = defaultSelection;
 		for (int i = 0; i < transform.childCount; i++) {
 			Button child = transform.GetChild(i).gameObject.GetComponent<Button>();
 			if (child)
 				buttons.Add(child);
 		}
+		selectDefault();
 	}
 	
 	private bool stickState = false;
@@ -54,6 +54,11 @@ public class Script_ButtonMenuNavigation : MonoBehaviour {
 				selection = i;
 				obj.Select();
 			}
-		}			
-	}	
+		}
+	}
+
+	public void selectDefault() {
+		selection = defaultSelection;
+		selectObject(buttons[selection]);
+	}
 }
