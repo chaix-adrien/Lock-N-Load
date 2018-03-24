@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
+	public GameObject warningPannel;
+	
 
 	private List<GraphicRaycaster> raycast;
 	private List<Script_ButtonMenuNavigation> menus;
@@ -29,10 +31,15 @@ public class Script_MainMenu : MonoBehaviour  {
 	public void quickPlay() {
 		string[] names = Input.GetJoystickNames();
 #if UNITY_EDITOR
-#else
-	if (names.Length >= 2)
-#endif
 		SceneManager.LoadScene("Game");
+#else
+		if (names.Length >= 2) {
+			SceneManager.LoadScene("Game");
+		} else {
+			warningPannel.SetActive(true);
+			warningPannel.transform.GetChild(0).gameObject.SetActive(true);
+		}
+#endif
 	}
 
 
