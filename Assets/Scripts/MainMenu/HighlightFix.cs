@@ -13,13 +13,7 @@ using UnityEngine.UI;
      {
         if (!EventSystem.current.alreadySelecting) {
 			EventSystem.current.SetSelectedGameObject(this.gameObject);
-			if (GetComponentInParent<Script_NavigatorMenuNavigator>())
-				GetComponentInParent<Script_NavigatorMenuNavigator>().selectObject(GetComponentInParent<Script_ButtonMenuNavigation>());
-			GetComponentInParent<Script_ButtonMenuNavigation>().selectObject(GetComponent<Button>());
-
-		}
-             
-			
+		}			
      }
  
      public void OnDeselect(BaseEventData eventData)

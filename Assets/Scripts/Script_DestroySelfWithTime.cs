@@ -36,11 +36,11 @@ public class Script_DestroySelfWithTime : MonoBehaviour {
 
 	private void applyColor(Color faded) {
 		if (GetComponent<SpriteRenderer>())
-			faded = GetComponent<SpriteRenderer>().color = faded;
+			GetComponent<SpriteRenderer>().color = faded;
 		else if (GetComponent<Image>())
-			faded = GetComponent<Image>().color = faded;
+			GetComponent<Image>().color = faded;
 		else if (GetComponent<Text>())
-			faded = GetComponent<Text>().color = faded;
+			GetComponent<Text>().color = faded;
 	}
 
 	void destroySelf() {

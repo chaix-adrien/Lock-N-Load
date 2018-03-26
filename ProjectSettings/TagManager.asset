@@ -11,6 +11,7 @@ TagManager:
   - InteractionIcon
   - AudioPlayer
   - Menu
+  - EventSystem
   layers:
   - Default
   - TransparentFX
