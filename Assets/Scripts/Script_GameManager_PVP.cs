@@ -62,7 +62,6 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		players = new List<GameObject>();
 		string [] names = Input.GetJoystickNames();
 		for (int i = 0; i < names.Length; i++) {
-			Debug.Log(names[i]);
 			if (names[i] != "") {
 				players.Add(Instantiate(player, Vector3.zero, Quaternion.identity));
 			}

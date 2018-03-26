@@ -143,7 +143,6 @@ GameObject:
   - component: {fileID: 224920990894780044}
   - component: {fileID: 222430579431581034}
   - component: {fileID: 114182997378765226}
-  - component: {fileID: 114999898176875632}
   m_Layer: 5
   m_Name: VSync Count
   m_TagString: Untagged
@@ -398,7 +397,6 @@ GameObject:
   - component: {fileID: 224316856685006038}
   - component: {fileID: 222003069903488642}
   - component: {fileID: 114779380782919616}
-  - component: {fileID: 114226998615039952}
   m_Layer: 5
   m_Name: Anti-Aliasing
   m_TagString: Untagged
@@ -538,7 +536,6 @@ GameObject:
   - component: {fileID: 224610787556614366}
   - component: {fileID: 222814872573418366}
   - component: {fileID: 114573192520903134}
-  - component: {fileID: 114052435931571878}
   m_Layer: 5
   m_Name: ShadowCascades
   m_TagString: Untagged
@@ -641,7 +638,6 @@ GameObject:
   - component: {fileID: 224815622800273672}
   - component: {fileID: 222489974184038850}
   - component: {fileID: 114707501598560184}
-  - component: {fileID: 114630666045782620}
   m_Layer: 5
   m_Name: Blend Weights
   m_TagString: Untagged
@@ -918,7 +914,6 @@ GameObject:
   - component: {fileID: 224529585977117496}
   - component: {fileID: 222520369961297002}
   - component: {fileID: 114867256729548288}
-  - component: {fileID: 114169429089854930}
   m_Layer: 5
   m_Name: Quality
   m_TagString: Untagged
@@ -1075,7 +1070,6 @@ GameObject:
   - component: {fileID: 224439453020622542}
   - component: {fileID: 222157726855935360}
   - component: {fileID: 114249975854037006}
-  - component: {fileID: 114978881801137604}
   m_Layer: 5
   m_Name: TextureQuality
   m_TagString: Untagged
@@ -1184,7 +1178,6 @@ GameObject:
   - component: {fileID: 224529959852642262}
   - component: {fileID: 222870045066009178}
   - component: {fileID: 114077334916279238}
-  - component: {fileID: 114232014151461296}
   m_Layer: 5
   m_Name: Anisotropic
   m_TagString: Untagged
@@ -1509,18 +1502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelection: 0
---- !u!114 &114052435931571878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1306981113709916}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
 --- !u!114 &114057613297570882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1834,18 +1815,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
---- !u!114 &114169429089854930
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1574044006280626}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
 --- !u!114 &114182997378765226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2049,30 +2018,6 @@ MonoBehaviour:
   downSelectable: {fileID: 0}
   leftSelectable: {fileID: 114208459495805800}
   rightSelectable: {fileID: 0}
---- !u!114 &114226998615039952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220399141509636}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
---- !u!114 &114232014151461296
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1835681524642928}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
 --- !u!114 &114237173562621868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4042,18 +3987,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114630666045782620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355337506535200}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
 --- !u!114 &114635376933485018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5305,18 +5238,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114978881801137604
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707933756348362}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
 --- !u!114 &114990700011613296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5371,18 +5292,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114999898176875632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1107022527450348}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fea77160dcbc9340b22af66079e50b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelection: 0
 --- !u!222 &222003069903488642
 CanvasRenderer:
   m_ObjectHideFlags: 1

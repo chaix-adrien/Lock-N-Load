@@ -4,6 +4,8 @@ using System.Collections;
 using GamepadInput;
 using UnityEngine.SceneManagement;
 
+ 
+
 public class bl_PauseMenu : MonoBehaviour {
 
     public static PauseState m_PauseState = PauseState.None;
@@ -83,10 +85,10 @@ public class bl_PauseMenu : MonoBehaviour {
         }
         if (!onlyOption &&  GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
         {
-            if (OptionsUI.activeSelf)
-                DoOptions();
-            else
+            if (m_PauseState == PauseState.Main)
                 DoPause();
+            else
+                DoMain();
         }
         if (onlyOption && (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))) {
             if (m_Pause)
@@ -184,7 +186,7 @@ public class bl_PauseMenu : MonoBehaviour {
             DoPause();
             return;
         }
-            
+        
         if (OptionsUI.activeSelf)
         {
             OptionsUI.GetComponent<Animator>().SetBool("show", false);
@@ -195,6 +197,7 @@ public class bl_PauseMenu : MonoBehaviour {
             CreditsUI.GetComponent<Animator>().SetBool("show", false);
         }
         PauseUI.GetComponent<Animator>().Play(m_PauseMoveReturnAnim, 0, 0);
+        PauseUI.GetComponent<Script_UIDefaultSelected>().selectDefault();
         isMoved = false;
         m_PauseState = PauseState.Main;
 
@@ -206,7 +209,6 @@ public class bl_PauseMenu : MonoBehaviour {
     {
         if (!OptionsUI.activeSelf )
         {
-           
             if (CreditsUI.activeSelf)
             {
                 CreditsUI.GetComponent<Animator>().SetBool("show", false);
@@ -220,7 +222,7 @@ public class bl_PauseMenu : MonoBehaviour {
             {
                 OptionsUI.SetActive(true);
                 OptionsUI.GetComponent<Animator>().SetBool("show", true);
-            }
+            }            
             isMoved = true;
             //If you do not want to disable animation for event
             //use this:

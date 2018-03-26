@@ -8,28 +8,7 @@ public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
 	public GameObject warningPannel;
 	
-
-	private List<GraphicRaycaster> raycast;
-	//private List<Script_ButtonMenuNavigation> menus;
-
-	void Start() {
-		/*raycast = new List<GraphicRaycaster>();
-		menus = new List<Script_ButtonMenuNavigation>();
-		GetComponentsInChildren<GraphicRaycaster>(raycast);
-		GetComponentsInChildren<Script_ButtonMenuNavigation>(menus);*/
-	}
-
-	void Update() {
-	/*	foreach (var ray in raycast) {
-			ray.enabled = !option.activeSelf;
-		}
-		foreach (var menu in menus) {
-			menu.enabled = !option.activeSelf;
-		}*/
-	}
-
 	public void quickPlay() {
-		string[] names = Input.GetJoystickNames();
 #if UNITY_EDITOR
 		SceneManager.LoadScene("Game");
 #else
