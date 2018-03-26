@@ -87,7 +87,7 @@ public class bl_PauseMenu : MonoBehaviour {
         {
             if (m_PauseState == PauseState.Main)
                 DoPause();
-            else
+            else if (m_Pause == true)
                 DoMain();
         }
         if (onlyOption && (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))) {
@@ -122,7 +122,8 @@ public class bl_PauseMenu : MonoBehaviour {
             {
                 //Active Pause UI with animation
                 PauseUI.SetActive(true);
-                PauseUI.GetComponent<Animator>().Play(m_PauseShowAnim,0,0);
+                if (!onlyOption)
+                    PauseUI.GetComponent<Animator>().Play(m_PauseShowAnim,0,0);
                 m_PauseState = PauseState.Main;
                 if (LookCursor)
                 {
@@ -151,7 +152,7 @@ public class bl_PauseMenu : MonoBehaviour {
                 {
                     PauseUI.GetComponent<Animator>().Play(m_PauseMovedHideAnim, 0, 0);
                 }
-                else
+                else if (!onlyOption)
                 {
                     PauseUI.GetComponent<Animator>().Play(m_PauseHideAnim, 0, 0);
                 }

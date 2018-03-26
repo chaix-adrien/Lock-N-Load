@@ -10,8 +10,12 @@ public class Script_UIDefaultSelected : MonoBehaviour {
 	void Start () {
 		selectDefault();
 	}
+	void OnEnable() {
+		selectDefault();
+	}
 
 	public void selectDefault() {
-		GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(selected);
+		selected.GetComponent<Selectable>().Select();
+		selected.GetComponent<Selectable>().OnSelect(null);
 	}
 }

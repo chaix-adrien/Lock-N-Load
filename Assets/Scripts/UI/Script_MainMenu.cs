@@ -7,18 +7,35 @@ using UnityEngine.UI;
 public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
 	public GameObject warningPannel;
-	
+	public GameObject sizeMapPanel;
+	private enum MenuState {Main, QuickPlay};
+	private MenuState state;
+
+	void Start() {
+		state = MenuState.Main;
+	}
+
+	void Update() {
+		if (Input.GetAxis("Cancel") > 0) {
+			if (state == MenuState.QuickPlay) {
+				sizeMapPanel.SetActive(false);
+				GetComponent<Script_UIDefaultSelected>().selectDefault();
+				state = MenuState.Main;
+			}
+		}
+	}
+
 	public void quickPlay() {
 #if UNITY_EDITOR
-		SceneManager.LoadScene("Game");
 #else
-		if (names.Length >= 2) {
-			SceneManager.LoadScene("Game");
-		} else {
+		if (names.Length <= 2) {
 			warningPannel.SetActive(true);
 			warningPannel.transform.GetChild(0).gameObject.SetActive(true);
+			return;
 		}
 #endif
+		sizeMapPanel.SetActive(true);
+		state = MenuState.QuickPlay;
 	}
 
 
@@ -32,5 +49,19 @@ public class Script_MainMenu : MonoBehaviour  {
 #else
 		Application.Quit();
 #endif
+	}
+
+	public void launchQuickPlay(int size) {
+		Vector2Int dim = Vector2Int.zero;
+		if (size == 0)
+			dim = new Vector2Int(12, 7);
+		else if (size == 1)
+			dim = new Vector2Int(19, 10);
+		else if (size == 2)
+			dim = new Vector2Int(25, 14);
+		else
+			Debug.Assert(false);
+		Static_Datas.sizeMap = dim;
+		SceneManager.LoadScene("Game");
 	}
 }

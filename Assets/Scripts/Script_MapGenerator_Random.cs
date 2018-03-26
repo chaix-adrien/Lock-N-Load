@@ -13,13 +13,14 @@ public class Script_MapGenerator_Random : Script_MapGenerator {
 	public Tile floor = null;
 	public Tile wall = null;
 	public avialableTile[] tiles;
-	public Vector2Int size = new Vector2Int(19, 10);
+	private Vector2Int size = new Vector2Int(19, 10);
 
 	private List<float>chances;
 	private float chancesTotal;
 	
 	protected override void Start() {
 		base.Start();
+		size = Static_Datas.sizeMap;
 	}
 
 	private void generateChances() {
