@@ -34,7 +34,7 @@ public class Script_WeaponBase : MonoBehaviour {
 	}
 
 	protected virtual void shootOnEntity(Script_Entity entity, Vector2 point) {
-		entity.hit(damagePerShot, GetComponent<Script_Entity>().entityColor, "weapon", weaponName);
+		entity.hit(damagePerShot, GetComponent<Script_Entity>().entityColor, "weapon", weaponName, gameObject);
 	}
 
 	protected virtual void shootOnTile(Script_TileHandler tile, Vector2 point) {

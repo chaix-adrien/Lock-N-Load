@@ -58,7 +58,7 @@ public class Script_Entity : MonoBehaviour {
 		return alive;
 	}
 
-	protected virtual void die() {
+	protected virtual void die(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
 		alive = false;
 		gameObject.SetActive(false);
 	}
@@ -69,10 +69,10 @@ public class Script_Entity : MonoBehaviour {
 		gameObject.SetActive(true);
 	}
 
-	protected virtual void onHit(int damages, Color hitColor, string from, string fromDetails) {
+	protected virtual void onHit(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
 	}
 
-	public void hit(int damages, Color hitColor, string from, string fromDetails) {
+	public void hit(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
 		if (!alive)
 			return;
 		if (damages > 0 && Time.time > invincibleUntil) {
@@ -80,11 +80,11 @@ public class Script_Entity : MonoBehaviour {
 			life -= damages;
 			if (life <= minLife) {
 				life = minLife;
-				die();
+				die(damages, hitColor, from, fromDetails, fromObject);
 			}
 			if (lifeBar)
 				lifeBar.GetComponent<Script_LifeBar>().refreshLifeBar(getPercentLife());
-			onHit(damages, hitColor, from, fromDetails);
+			onHit(damages, hitColor, from, fromDetails, fromObject);
 		}
 	}
 

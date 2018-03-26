@@ -12,13 +12,13 @@ public class Script_TileDamageOnWalk : Script_TileHandler {
 	protected override void walkedOnEnter(Collider2D col) {
 		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
 		if (entity) {
-			entity.hit(damages, onHitColor, "environement", environementName);
+			entity.hit(damages, onHitColor, "environement", environementName, gameObject);
 		}
 	}
 	protected override void walkedOnStay(Collider2D col) {
 		Script_Entity entity = col.gameObject.GetComponent<Script_Entity>();
 		if (entity) {
-			entity.hit(damages, onHitColor, "environement", environementName);
+			entity.hit(damages, onHitColor, "environement", environementName , gameObject);
 		}
 	}	
 }

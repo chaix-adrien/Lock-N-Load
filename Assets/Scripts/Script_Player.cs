@@ -17,6 +17,8 @@ public class Script_Player : Script_Entity {
 	public GameObject impactSprite;
 	public GameObject shieldObject;
 	public Script_Cut cut;
+	private int kill = 0;
+	private int score = 0;
 //private
 	private Script_Interactable canInteractWith;
 	private Script_Move moveComp;
@@ -154,7 +156,7 @@ public class Script_Player : Script_Entity {
 		moveComp.move(leftStick);
 	}
 
-	protected override void onHit(int damages, Color hitColor, string from, string fromDetails) {
+	protected override void onHit(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
 		if (from == "weapon") {
 			float impactTime = 1f;
 			impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
@@ -183,4 +185,17 @@ public class Script_Player : Script_Entity {
 		if (interaction)
 			interaction.canInteractWith(GetInstanceID(), false);
 	}
+
+	protected override void die(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
+		if (fromObject.GetComponent<Script_Player>())
+			fromObject.GetComponent<Script_Player>().addKill();
+		base.die(damages, hitColor, from, fromDetails, fromObject);
+	}
+
+	public int getScore() {return score;}
+	public int getKill() {return kill;}
+
+	public void addScore() {score++;}
+	public void addKill() {kill++;}
+	
 }

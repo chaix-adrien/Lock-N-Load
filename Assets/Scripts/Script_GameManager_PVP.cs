@@ -24,12 +24,12 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		removePlayers();
 		getPlayers();
 		int i = 0;
+		map.GetComponent<Script_MapGenerator>().playersToSpawn = players;
 		foreach (var player in players) {
 			gameIsOver = false;
 			player.transform.localScale = new Vector3(1, 1, 1);
 			player.GetComponent<Script_Entity>().entityColor = playerColors[i];
 			player.GetComponent<Script_Entity>().respawn();
-			map.GetComponent<Script_MapGenerator>().playersToSpawn = players;
 			map.GetComponent<Script_MapGenerator>().generateMap();
 			i++;
 		}
@@ -40,9 +40,10 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		if (gameIsOver)
 			return;
 		getAlivePlayers();
-		if (alive.Count <= 1)
+		if (alive.Count <= 1 && players.Count > 1) {
+			alive[0].GetComponent<Script_Player>().addScore();
 			gameOver();
-		
+		}
 	}
 
 	private void checkForRestart() {
