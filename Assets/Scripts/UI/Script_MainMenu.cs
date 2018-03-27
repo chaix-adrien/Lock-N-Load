@@ -8,7 +8,8 @@ public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
 	public GameObject warningPannel;
 	public GameObject sizeMapPanel;
-	private enum MenuState {Main, QuickPlay};
+	public GameObject customGamePanel;
+	private enum MenuState {Main, QuickPlay, customGame};
 	private MenuState state;
 
 	void Start() {
@@ -36,6 +37,13 @@ public class Script_MainMenu : MonoBehaviour  {
 #endif
 		sizeMapPanel.SetActive(true);
 		state = MenuState.QuickPlay;
+	}
+
+	public void customGame() {
+		if (state != MenuState.customGame) {
+			customGamePanel.SetActive(true);
+			state = MenuState.customGame;
+		}
 	}
 
 
