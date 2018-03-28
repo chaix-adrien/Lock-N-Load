@@ -18,7 +18,6 @@ using UnityEngine.Tilemaps;
 		if (path == null)
 			path = folder;
 		loadedTiles = new List<ScriptedTile>();
-		Debug.Log(Resources.LoadAll(path).Length);
 		AssetBundle bundle = new AssetBundle();
 		foreach (ScriptedTile tile in Resources.LoadAll(path)) {
 			loadedTiles.Add(tile);

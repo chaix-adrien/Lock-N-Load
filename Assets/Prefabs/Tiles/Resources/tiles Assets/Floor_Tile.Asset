@@ -37,6 +37,7 @@ MonoBehaviour:
   tileName: Floor
   InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
   floor: 1
+  inMapGeneration: 1
   allowPowerUp: 1
   canBeExplosed: 1
-  defaultRate: 1
+  defaultRate: 5

@@ -12,6 +12,7 @@ public class ScriptedTile : Tile
     public string tileName;
     public Sprite InGameSprite;
     public bool floor = false;
+    public bool inMapGeneration = true;
     public bool allowPowerUp = false;
     public bool canBeExplosed = true;
     public float defaultRate = 0.5f;

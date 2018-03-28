@@ -37,6 +37,7 @@ MonoBehaviour:
   tileName: Mud
   InGameSprite: {fileID: 0}
   floor: 0
+  inMapGeneration: 1
   allowPowerUp: 1
   canBeExplosed: 0
-  defaultRate: 0.7
+  defaultRate: 0.5

@@ -37,6 +37,7 @@ MonoBehaviour:
   tileName: Rock
   InGameSprite: {fileID: 0}
   floor: 0
+  inMapGeneration: 1
   allowPowerUp: 0
   canBeExplosed: 1
-  defaultRate: 1
+  defaultRate: 2
