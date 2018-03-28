@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: Wall_Tile
+  m_Name: PU_Ammo_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 5edc6e343e1a569458b6de6d0f929721, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9dca9f0e787a24408be6e6b57d0cadf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,10 +30,13 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1598604289538266, guid: cde4ef14eeabb214589c6663287bc673,
+  m_InstancedGameObject: {fileID: 1169266244867898, guid: d63c10acd1a6fc34c97fa4e85fc4494f,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 21300000, guid: 5edc6e343e1a569458b6de6d0f929721, type: 3}
+  tileName: PU Ammo
+  InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
+  floor: 0
   allowPowerUp: 0
-  canBeExplosed: 0
+  canBeExplosed: 1
+  defaultRate: 0.5

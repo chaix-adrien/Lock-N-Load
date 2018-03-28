@@ -30,4 +30,4 @@ public class Script_Score : MonoBehaviour {
 
 
 //get score au joueur restant, pas au kill
-//check si explosion de tnt = > de qui
+//check si explosion de tnt = > de quiù

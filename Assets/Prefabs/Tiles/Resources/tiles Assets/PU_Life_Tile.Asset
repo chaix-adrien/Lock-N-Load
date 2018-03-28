@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: Floor_Tile
+  m_Name: PU_Life_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a17e667665a08545bf03b290c2755f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,11 +30,13 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1660515471469412, guid: efcd4016cd572e94986eb8fc1dd0bbc2,
+  m_InstancedGameObject: {fileID: 1623758215999984, guid: 3b13e4380bbe5ae408d1f161c5085b5f,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
-  floor: 1
-  allowPowerUp: 1
+  tileName: PU Life
+  InGameSprite: {fileID: 21300000, guid: 2a17e667665a08545bf03b290c2755f7, type: 3}
+  floor: 0
+  allowPowerUp: 0
   canBeExplosed: 1
+  defaultRate: 0.5

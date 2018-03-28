@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: PU_Ammo_Tile
+  m_Name: Rock_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: e9dca9f0e787a24408be6e6b57d0cadf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bdecc6d438634c408f11bbef15764e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,11 +30,13 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1169266244867898, guid: d63c10acd1a6fc34c97fa4e85fc4494f,
+  m_InstancedGameObject: {fileID: 1680986196080800, guid: 5bdc9f59fbd0f8f47b7e550fd55cbeec,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
+  tileName: Rock
+  InGameSprite: {fileID: 0}
   floor: 0
   allowPowerUp: 0
   canBeExplosed: 1
+  defaultRate: 1

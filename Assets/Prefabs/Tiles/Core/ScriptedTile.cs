@@ -9,11 +9,12 @@ using UnityEngine;
 public class ScriptedTile : Tile 
 {
     private bool init = false;
+    public string tileName;
     public Sprite InGameSprite;
-
     public bool floor = false;
     public bool allowPowerUp = false;
     public bool canBeExplosed = true;
+    public float defaultRate = 0.5f;
 
     private Sprite savedSprite;
 
@@ -32,7 +33,11 @@ public class ScriptedTile : Tile
             gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
         #endif    
     }
-    
+
+    public Sprite getDisplaySprite() {
+        return savedSprite;
+    }
+
     public void resetSprite() {
         sprite = savedSprite;
     }
@@ -67,6 +72,7 @@ public class ScriptedTile : Tile
             Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(texture);
             prefab.GetComponent<SpriteRenderer>().sprite = sprite;
             tile.sprite = sprite;
+            tile.tileName = texture;
             tile.InGameSprite = sprite;
         }
     }

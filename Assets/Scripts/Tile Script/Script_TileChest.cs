@@ -9,7 +9,7 @@ public class Script_TileChest : Script_Interactable {
 	private Tile floor;
 	protected override void Start () {
 		base.Start();
-		floor = Resources.Load("Floor_Tile") as Tile;
+		floor = Resources.Load("tiles Assets/Floor_Tile") as Tile;
 	}
 	public override void interactWith(GameObject interactor) {
 		Tilemap tilemap = GameObject.FindGameObjectWithTag("Map").GetComponent<Tilemap>();

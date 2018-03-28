@@ -26,7 +26,7 @@ public class Script_Tile_Collider : MonoBehaviour {
 			tile.sprite = toset;
 	}
 
-    void OnDestroy() {
+    public void resetSprite() {
 		if (tile)
 			tile.resetSprite();
     }

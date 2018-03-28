@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: ElectricBox_Tile
+  m_Name: Waterbomb_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: ebac06cb6c02e7a42a738ca9153f4a38, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36183234f7c969b45a54106f78847d68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,11 +30,13 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1341752727848186, guid: ae3eb586c758d044b8c16dd8e2492f60,
+  m_InstancedGameObject: {fileID: 1558110777146042, guid: ef341c25b0196a14797b89ba9bc94077,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 21300000, guid: ebac06cb6c02e7a42a738ca9153f4a38, type: 3}
+  tileName: Waterbomb
+  InGameSprite: {fileID: 21300000, guid: 36183234f7c969b45a54106f78847d68, type: 3}
   floor: 0
   allowPowerUp: 0
   canBeExplosed: 1
+  defaultRate: 0.4

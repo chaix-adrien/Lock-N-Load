@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: Waterbomb_Tile
+  m_Name: Wall_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 36183234f7c969b45a54106f78847d68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5edc6e343e1a569458b6de6d0f929721, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,11 +30,13 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1558110777146042, guid: ef341c25b0196a14797b89ba9bc94077,
+  m_InstancedGameObject: {fileID: 1598604289538266, guid: cde4ef14eeabb214589c6663287bc673,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 21300000, guid: 36183234f7c969b45a54106f78847d68, type: 3}
+  tileName: Wall
+  InGameSprite: {fileID: 21300000, guid: 5edc6e343e1a569458b6de6d0f929721, type: 3}
   floor: 0
   allowPowerUp: 0
-  canBeExplosed: 1
+  canBeExplosed: 0
+  defaultRate: 2

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea14ff18bc23c284ebcdaf748466c92f, type: 3}
-  m_Name: Mug_Tile
+  m_Name: ElectricBox_Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 60410653de423004fbf2e3d8735c01b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebac06cb6c02e7a42a738ca9153f4a38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -30,10 +30,13 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 1228880921980494, guid: c359b29c0461fca43892eb19bf20b64f,
+  m_InstancedGameObject: {fileID: 1341752727848186, guid: ae3eb586c758d044b8c16dd8e2492f60,
     type: 2}
   m_Flags: 4
   m_ColliderType: 0
-  InGameSprite: {fileID: 0}
-  allowPowerUp: 1
-  canBeExplosed: 0
+  tileName: Electric Box
+  InGameSprite: {fileID: 21300000, guid: ebac06cb6c02e7a42a738ca9153f4a38, type: 3}
+  floor: 0
+  allowPowerUp: 0
+  canBeExplosed: 1
+  defaultRate: 0.4
