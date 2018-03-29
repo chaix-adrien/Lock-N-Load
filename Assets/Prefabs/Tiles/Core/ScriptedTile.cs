@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Tilemaps;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
     using UnityEditor;
     using System.Collections;
@@ -27,12 +28,14 @@ public class ScriptedTile : Tile
             init = true;
         }
         savedSprite = sprite;
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu")) {
         #if UNITY_EDITOR
             if (EditorApplication.isPlayingOrWillChangePlaymode)
                 gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
         #else
             gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
         #endif    
+        }
     }
 
     public Sprite getDisplaySprite() {

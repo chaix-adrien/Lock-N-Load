@@ -22,6 +22,7 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 	private List<ScriptedTile> tiles;
 	private List<TileData> tileRates;
 	private List<GameObject> generateds;
+	private bool change = false;
 
 	void Start () {
 		tiles = GetComponent<Script_LoadTiles>().getLoadedTiles();
@@ -50,9 +51,12 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 				i += 1.0f;
 			}
 		}
+		customGame.onBlockRate(tileRates);
 	}
 	
-
+	public void valueChanged() {
+		change = true;
+	}
 
 	private void generatePercent() {
 		float chancesTotal;
@@ -67,12 +71,15 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 
 
 	void Update() {
-		generatePercent();
-		customGame.onBlockRate(tileRates);
-		int i = 0;
-		foreach (GameObject obj in generateds) {
-			obj.GetComponentInChildren<Slider>().gameObject.GetComponentInChildren<Text>().text = tileRates[i].percent.ToString("0.0") + "%";
-			i++;
+		if (change) {
+			generatePercent();
+			customGame.onBlockRate(tileRates);
+			int i = 0;
+			foreach (GameObject obj in generateds) {
+				obj.GetComponentInChildren<Slider>().gameObject.GetComponentInChildren<Text>().text = tileRates[i].percent.ToString("0.0") + "%";
+				i++;
+			}
+			change = false;
 		}
 	}
 }

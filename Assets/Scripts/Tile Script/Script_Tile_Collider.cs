@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Script_Tile_Collider : MonoBehaviour {
 	public bool crossableByRay = true;
@@ -10,9 +11,12 @@ public class Script_Tile_Collider : MonoBehaviour {
 	public Vector2Int pos;
 	private Sprite savedSprite;
 	void Start () {
+		if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu")) {
+			Destroy(gameObject);
+			return;
+		}
 		pos.x = Mathf.FloorToInt(transform.localPosition.x);
 		pos.y = Mathf.FloorToInt(transform.localPosition.y);
-	//	Vector3 pos = transform.localPosition;
 		transform.localPosition = new Vector3(pos.x + 0.5f, pos.y + 0.5f, 0);
 		if (crossableByRay) {
 			gameObject.layer = LayerMask.NameToLayer("IgnoredByRay");
