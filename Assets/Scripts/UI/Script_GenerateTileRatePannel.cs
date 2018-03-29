@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class TileData {
 	private float rate;
+	public ScriptedTile tile;
+	public float percent;
 
 	public TileData(float startRate) {rate = startRate;}
 	public void set(float set) {rate = set;}
@@ -16,6 +18,7 @@ public class TileData {
 public class Script_GenerateTileRatePannel : MonoBehaviour {
 	public GameObject tileTemplate;
 	public GameObject pannel;
+	public Script_CustomGame customGame;
 	private List<ScriptedTile> tiles;
 	private List<TileData> tileRates;
 	private List<GameObject> generateds;
@@ -39,6 +42,7 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 				generated.GetComponentInChildren<Slider>().value = tile.defaultRate;
 				generated.GetComponentInChildren<Script_AutoScrollContent>().scrollRatio = 1 - i / (total - 1.0f);
 				TileData tmpRate = new TileData(tile.defaultRate);
+				tmpRate.tile = tile;
 				generated.GetComponentInChildren<Script_RateBlockListener>().tile = tmpRate;
 				generated.SetActive(true);
 				generateds.Add(generated);
@@ -50,25 +54,24 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 	
 
 
-	private List<float> generatePercent() {
+	private void generatePercent() {
 		float chancesTotal;
-		List<float> percent = new List<float>();
 		chancesTotal = 0f;
 		foreach (TileData tile in tileRates) {
-			chancesTotal += (tile.get() > 1f) ? tile.get() : 1f;
+			chancesTotal += tile.get();
 		}
 		foreach (TileData tile in tileRates) {
-			percent.Add(tile.get() / chancesTotal * 100);
+			tile.percent = tile.get() / chancesTotal * 100;
 		}
-		return percent;
 	}
 
 
 	void Update() {
-		List<float> percent = generatePercent();
+		generatePercent();
+		customGame.onBlockRate(tileRates);
 		int i = 0;
 		foreach (GameObject obj in generateds) {
-			obj.GetComponentInChildren<Slider>().gameObject.GetComponentInChildren<Text>().text = percent[i].ToString("0.0") + "%";
+			obj.GetComponentInChildren<Slider>().gameObject.GetComponentInChildren<Text>().text = tileRates[i].percent.ToString("0.0") + "%";
 			i++;
 		}
 	}

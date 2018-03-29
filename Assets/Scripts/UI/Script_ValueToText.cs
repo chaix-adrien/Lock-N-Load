@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Script_ValueToText : MonoBehaviour {
-	public Text text;	 
+	public string prefix = "";
+	public string suffix = "";
+	public Text text;
 	private Slider valueObj;
 
 	void Start() {
@@ -12,8 +14,8 @@ public class Script_ValueToText : MonoBehaviour {
 	}
 	void Update () {
 		if (valueObj.wholeNumbers)
-			text.text = valueObj.value.ToString("0");
+			text.text = prefix + valueObj.value.ToString("0") + suffix;
 		else
-			text.text = valueObj.value.ToString("0.0");
+			text.text = prefix + valueObj.value.ToString("0.0") + suffix;
 	}
 }
