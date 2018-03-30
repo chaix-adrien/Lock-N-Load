@@ -84,7 +84,7 @@
           <tileName>DestructibeWall_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>2</rate>
+          <rate>4.073865</rate>
           <tileName>Rock_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
@@ -100,11 +100,11 @@
           <tileName>Waterbomb_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>1.559052</rate>
+          <rate>2.00344849</rate>
           <tileName>Inflamable_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>1.55904055</rate>
+          <rate>2.43507147</rate>
           <tileName>TNT_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
@@ -124,7 +124,7 @@
           <tileName>Bush_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>0.154876277</rate>
+          <rate>0.1</rate>
           <tileName>Chest_Tile</tileName>
         </ToSaveTileData>
       </value>
@@ -209,6 +209,14 @@
           <tileName>Chest_Tile</tileName>
         </ToSaveTileData>
       </value>
+    </DataContainer>
+    <DataContainer>
+      <key>test2</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
+    </DataContainer>
+    <DataContainer>
+      <key>test4</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
     </DataContainer>
   </serializedData>
   <filePath>D:/code/Lock-N-Load/Assets/PersistentSave/MapGenerationPresset.uml</filePath>

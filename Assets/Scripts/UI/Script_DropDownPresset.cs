@@ -14,6 +14,7 @@ public class Script_DropDownPresset : MonoBehaviour {
 	private SaveData save;
 	private List<Presset> pressets;
 	public List<GameObject> buttons;
+	public Script_DropDownPresset otherDropDown;
 	private string keyPressetNames = "pressetKeys";
 
 	private List<string> pressetNames;
@@ -22,6 +23,7 @@ public class Script_DropDownPresset : MonoBehaviour {
 		dropdown = GetComponent<Dropdown>();
 		save = SaveData.Load(savePath);		
 		loadPresset();
+		showButton(false);
 	}
 	
 	private void loadPressetNames() {
@@ -34,13 +36,21 @@ public class Script_DropDownPresset : MonoBehaviour {
 	public void endInputName(string name) {
 		if (name != "") {
 			saveCurrentPresset(name);
+			dropdown.value = dropdown.options.Count - 2;
+			showButton(true);
 		}
 		textFieldModal.gameObject.SetActive(false);
 	}
 
+	public void setToDefault() {
+		dropdown.value = 0;
+	}
 	private void showButton(bool show) {
 		foreach (GameObject obj in buttons) {
 			obj.SetActive(show);
+		}
+		if (show) {
+			otherDropDown.setToDefault();
 		}
 	}
 
@@ -120,7 +130,7 @@ public class Script_DropDownPresset : MonoBehaviour {
 		save[keyPressetNames] = pressetNames;
 		save[pressetName] = new List<Presset>();
 		save.Save();
-		dropdown.value = 0;
+		setToDefault();
 		loadPresset();
 	}
 
