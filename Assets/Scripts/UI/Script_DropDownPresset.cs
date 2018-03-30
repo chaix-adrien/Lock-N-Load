@@ -13,6 +13,7 @@ public class Script_DropDownPresset : MonoBehaviour {
 	private Dropdown dropdown;
 	private SaveData save;
 	private List<Presset> pressets;
+	public List<GameObject> buttons;
 	private string keyPressetNames = "pressetKeys";
 
 	private List<string> pressetNames;
@@ -37,14 +38,24 @@ public class Script_DropDownPresset : MonoBehaviour {
 		textFieldModal.gameObject.SetActive(false);
 	}
 
+	private void showButton(bool show) {
+		foreach (GameObject obj in buttons) {
+			obj.SetActive(show);
+		}
+	}
+
 	public void doApplyPresset() {
-		if (dropdown.value == 0)
+		if (dropdown.value == 0) {
+			showButton(false);
 			return;
+		}
 		if (dropdown.value == dropdown.options.Count - 1) {
 			textFieldModal.gameObject.SetActive(true);
 			textFieldModal.Select();
+			showButton(false);
 			return;
 		}
+		showButton(true);
 		ratePannel.applyPresset(pressets[dropdown.value - 1]);
 	}
 
