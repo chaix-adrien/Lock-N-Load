@@ -5,11 +5,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class Script_SliderRescaleInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class Script_SliderRescaleInputs : MonoBehaviour, IPointerDownHandler, IDeselectHandler, ISelectHandler , IPointerUpHandler {
 	public float onInput = 0.1f;
 	private float lastValue;
 	private Slider slider;
 	private bool fromMouse = false;
+	private bool select = false;
 	void Start () {
 		slider = GetComponent<Slider>();
 		lastValue = slider.value;
@@ -17,7 +18,7 @@ public class Script_SliderRescaleInputs : MonoBehaviour, IPointerDownHandler, IP
 	}
 	
 	private void rescaleInput() {
-		if (slider.value == lastValue)
+		if (slider.value == lastValue || !select)
 			return;
 		if (!fromMouse) {
 			slider.value = lastValue + ((slider.value < lastValue) ? -1 * onInput : onInput);
@@ -26,6 +27,14 @@ public class Script_SliderRescaleInputs : MonoBehaviour, IPointerDownHandler, IP
 			lastValue = slider.value;
 		}
 	}
+
+	public void OnDeselect(BaseEventData eventData) {
+		select = true;
+    }
+
+	public void OnSelect(BaseEventData eventData) {
+        select = false;
+    }
 
 	public void OnPointerDown(PointerEventData eventData) {
 		fromMouse = true;

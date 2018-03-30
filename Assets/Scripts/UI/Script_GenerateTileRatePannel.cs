@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
 
 public class TileData {
@@ -10,9 +11,50 @@ public class TileData {
 	public ScriptedTile tile;
 	public float percent;
 
+	public TileData() {rate = 0; tile = null; percent = 0;}
 	public TileData(float startRate) {rate = startRate;}
 	public void set(float set) {rate = set;}
 	public float get() {return rate;}
+}
+
+
+[System.Serializable]
+public class ToSaveTileData {
+	public float rate;
+	public string tileName;
+
+	public ToSaveTileData(string name, float tileRate) {
+		tileName = name;
+		rate = tileRate;
+	}
+
+	public ToSaveTileData() {
+		tileName = "none";
+		rate = 0;
+	}
+
+	static public List<ToSaveTileData> Convert(List<TileData> toConvert) {
+		List<ToSaveTileData> ret = new List<ToSaveTileData>();
+		foreach (var data in toConvert) {
+			ret.Add(new ToSaveTileData(data.tile.name, data.get()));
+		}
+		return ret;
+	}
+	static public ToSaveTileData Convert(TileData toConvert) {
+		ToSaveTileData ret = new ToSaveTileData(toConvert.tile.name, toConvert.get());
+		return ret;
+	}
+
+	public static void Apply(List<ToSaveTileData> from, List<TileData> toApply) {
+		foreach (ToSaveTileData toSave in from) {
+			foreach (TileData apply in toApply) {
+				if (toSave.tileName == apply.tile.name) {
+					apply.set(toSave.rate);
+					break;
+				}
+			}
+		}
+	}
 }
 
 public class Script_GenerateTileRatePannel : MonoBehaviour {
@@ -76,9 +118,19 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 		}
 	}
 
+	public Presset getCurentPresset() {
+		return ToSaveTileData.Convert(tileRates);
+	}
+	public void applyPresset(Presset presset) {
+		ToSaveTileData.Apply(presset, tileRates);
+	}
 
 	void Update() {
 		if (change) {
+		foreach (TileData apply in tileRates) {
+			apply.set(apply.get());
+		}
+		change = true;
 			generatePercent();
 			customGame.onBlockRate(tileRates);
 			int i = 0;

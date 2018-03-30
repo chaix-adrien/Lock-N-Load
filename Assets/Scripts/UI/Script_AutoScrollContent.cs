@@ -5,19 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Selectable))]
-public class Script_AutoScrollContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDeselectHandler, ISelectHandler {
+public class Script_AutoScrollContent : MonoBehaviour, IDeselectHandler, ISelectHandler {
 	public Scrollbar scrollbar;
 	public RectTransform rectToCheck;
 	public RectTransform toBeWithin;
 	public float scrollRatio;
-
-	private bool fromMouse = false;
 	private bool selected = false;
 	private int side = 0;
-	public void OnSelect(BaseEventData eventData)
-     {
-		 selected = true;
-     }
 
 	void Update() {
 		if (selected) {
@@ -31,18 +25,14 @@ public class Script_AutoScrollContent : MonoBehaviour, IPointerEnterHandler, IPo
 		
 	}
 
-    public void OnPointerEnter(PointerEventData eventData)
+
+	public void OnSelect(BaseEventData eventData)
      {
-		 fromMouse = true;
-     }
-	 public void OnPointerExit(PointerEventData eventData)
-     {
-		 fromMouse = false;
+		 selected = true;
      }
 
      public void OnDeselect(BaseEventData eventData)
      {
 		 selected = false;
-		 fromMouse = false;
      }
 }
