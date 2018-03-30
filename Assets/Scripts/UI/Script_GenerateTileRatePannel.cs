@@ -31,9 +31,10 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 		float i = 0;
 		float total = 0;
 		foreach (ScriptedTile tile in tiles) {
-			if (tile.floor == false)
+			if (tile.inMapGeneration)
 				total += 1;
 		}
+		tiles.Sort(sortTilesByRate);
 		foreach (ScriptedTile tile in tiles) {
 			if (tile.inMapGeneration) {
 				var generated = Instantiate(tileTemplate, Vector3.zero, Quaternion.identity);
@@ -41,6 +42,8 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 				generated.transform.GetChild(0).GetComponentInChildren<Image>().sprite = tile.getDisplaySprite();
 				generated.GetComponentInChildren<Text>().text = tile.tileName;
 				generated.GetComponentInChildren<Slider>().value = tile.defaultRate;
+				if (tile.floor)
+					generated.GetComponentInChildren<Slider>().minValue = 1.0f;
 				generated.GetComponentInChildren<Script_AutoScrollContent>().scrollRatio = 1 - i / (total - 1.0f);
 				TileData tmpRate = new TileData(tile.defaultRate);
 				tmpRate.tile = tile;
@@ -54,6 +57,10 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 		customGame.onBlockRate(tileRates);
 	}
 	
+	static int sortTilesByRate(ScriptedTile t1, ScriptedTile t2) {
+		return t2.defaultRate.CompareTo(t1.defaultRate);
+	}
+
 	public void valueChanged() {
 		change = true;
 	}

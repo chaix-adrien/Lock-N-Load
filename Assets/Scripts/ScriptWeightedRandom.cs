@@ -12,7 +12,7 @@
     /// </summary>
     public static class WeightedRandomizer
     {
-        public static WeightedRandomizer<R> From<R>(Dictionary<R, int> spawnRate)
+        public static WeightedRandomizer<R> From<R>(Dictionary<R, float> spawnRate)
         {
             return new WeightedRandomizer<R>(spawnRate);
         }
@@ -20,8 +20,8 @@
  
     public class WeightedRandomizer<T>
     {
-        private static System.Random _random = new System.Random();
-        private Dictionary<T, int> _weights;
+        //private static UnityEngine.Random _random = UnityEngine.Random;
+        private Dictionary<T, float> _weights;
  
         /// <summary>
         /// Instead of calling this constructor directly,
@@ -34,7 +34,7 @@
         /// 
         /// </summary>
         /// <param name="weights"></param>
-        public WeightedRandomizer(Dictionary<T, int> weights)
+        public WeightedRandomizer(Dictionary<T, float> weights)
         {
             _weights = weights;
         }
@@ -50,17 +50,19 @@
             var sortedSpawnRate = Sort(_weights);
  
             // Sums all spawn rates
-            int sum = 0;
+            float sum = 0;
             foreach (var spawn in _weights)
             {
                 sum += spawn.Value;
             }
  
             // Randomizes a number from Zero to Sum
-            int roll = _random.Next(0, sum);
+            float roll = (float)UnityEngine.Random.Range(0.0f, sum);
  
             // Finds chosen item based on spawn rate
-            T selected = sortedSpawnRate[sortedSpawnRate.Count - 1].Key;
+            T selected = default(T);
+            if (sortedSpawnRate.Count >= 1)
+                selected = sortedSpawnRate[sortedSpawnRate.Count - 1].Key;
             foreach (var spawn in sortedSpawnRate)
             {
                 if (roll < spawn.Value)
@@ -75,14 +77,14 @@
             return selected;
         }
  
-        private List<KeyValuePair<T, int>> Sort(Dictionary<T, int> weights)
+        private List<KeyValuePair<T, float>> Sort(Dictionary<T, float> weights)
         {
-            var list = new List<KeyValuePair<T, int>>(weights);
+            var list = new List<KeyValuePair<T, float>>(weights);
  
             // Sorts the Spawn Rate List for randomization later
             list.Sort(
-                delegate(KeyValuePair<T, int> firstPair,
-                         KeyValuePair<T, int> nextPair)
+                delegate(KeyValuePair<T, float> firstPair,
+                         KeyValuePair<T, float> nextPair)
                 {
                     return firstPair.Value.CompareTo(nextPair.Value);
                 }

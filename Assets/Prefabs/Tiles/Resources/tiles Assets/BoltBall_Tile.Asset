@@ -40,4 +40,4 @@ MonoBehaviour:
   inMapGeneration: 1
   allowPowerUp: 0
   canBeExplosed: 1
-  defaultRate: 0.5
+  defaultRate: 0.2

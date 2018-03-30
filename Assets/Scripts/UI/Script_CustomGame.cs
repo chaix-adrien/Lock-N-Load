@@ -11,19 +11,20 @@ public class Script_CustomGame : MonoBehaviour {
 	public GameObject mapPrerender;
 	private GridLayoutGroup mapGrid;
 	private Vector2 prerenderSize;
-	private Dictionary<Sprite, int> tileWeight;
+	private Dictionary<Sprite, float> tileWeight;
 	private List<TileData> tileToGenerate;
 	private bool changed = false;
 	
 
 	void Start() {
-		tileWeight = new Dictionary<Sprite, int>();
+		tileWeight = new Dictionary<Sprite, float>();
 		mapGrid = mapPrerender.GetComponent<GridLayoutGroup>();
 		Vector3[] corners = new Vector3[4];
 		prerenderSize = mapPrerender.GetComponent<RectTransform>().rect.size;
 		prerenderSize.x -= (mapGrid.padding.left + mapGrid.padding.right);
 		prerenderSize.y -= (mapGrid.padding.bottom + mapGrid.padding.top);
 		refreshPrerenderMap();
+		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
 		
 	}
 	public void onScrore(float s) {
@@ -37,10 +38,10 @@ public class Script_CustomGame : MonoBehaviour {
 		tileToGenerate = tileDatas;
 		if (tileWeight.Count == 0) {
 			foreach (TileData data in tileDatas)
-				tileWeight.Add(data.tile.sprite, Mathf.RoundToInt(data.percent));
+				tileWeight.Add(data.tile.sprite, data.percent);
 		} else {
 			foreach (TileData data in tileDatas)
-				tileWeight[data.tile.sprite] = Mathf.RoundToInt(data.percent);
+				tileWeight[data.tile.sprite] = data.percent;
 		}
 		
 		changed = true;

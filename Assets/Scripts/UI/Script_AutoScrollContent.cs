@@ -13,6 +13,7 @@ public class Script_AutoScrollContent : MonoBehaviour, IPointerEnterHandler, IPo
 
 	private bool fromMouse = false;
 	private bool selected = false;
+	private int side = 0;
 	public void OnSelect(BaseEventData eventData)
      {
 		 selected = true;
@@ -21,12 +22,11 @@ public class Script_AutoScrollContent : MonoBehaviour, IPointerEnterHandler, IPo
 	void Update() {
 		if (selected) {
 			if (!rectToCheck.IsFullyVisibleFrom(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(), toBeWithin)) {
-				if (scrollRatio > scrollbar.value)
-					scrollbar.value += 0.01f;
-				else
-					scrollbar.value -= 0.01f;
-			}
-
+				if (side == 0)
+					side = scrollRatio > scrollbar.value ? 1 : -1;
+				scrollbar.value += 0.01f * side;
+			} else
+				side = 0;
 		}
 		
 	}
