@@ -18,8 +18,10 @@ public class Script_SliderRescaleInputs : MonoBehaviour, IPointerDownHandler, ID
 	}
 	
 	private void rescaleInput() {
-		if (slider.value == lastValue || !select)
+		if (slider.value == lastValue || !select) {
 			return;
+		}
+			
 		if (!fromMouse) {
 			slider.value = lastValue + ((slider.value < lastValue) ? -1 * onInput : onInput);
 			lastValue = slider.value;
@@ -29,11 +31,11 @@ public class Script_SliderRescaleInputs : MonoBehaviour, IPointerDownHandler, ID
 	}
 
 	public void OnDeselect(BaseEventData eventData) {
-		select = true;
+		select = false;
     }
 
 	public void OnSelect(BaseEventData eventData) {
-        select = false;
+        select = true;
     }
 
 	public void OnPointerDown(PointerEventData eventData) {

@@ -4,6 +4,7 @@
   <serializedTypes>
     <string>System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
     <string>System.Collections.Generic.List`1[[ToSaveTileData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
+    <string>System.Collections.Generic.List`1[[System.Collections.Generic.List`1[[ToSaveTileData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
   </serializedTypes>
   <serializedData>
     <DataContainer>
@@ -78,7 +79,7 @@
           <tileName>Floor_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>5.01416254</rate>
+          <rate>4.10000038</rate>
           <tileName>DestructibeWall_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
@@ -86,7 +87,7 @@
           <tileName>Rock_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>2</rate>
+          <rate>10</rate>
           <tileName>Wall_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
@@ -126,6 +127,30 @@
           <tileName>Chest_Tile</tileName>
         </ToSaveTileData>
       </value>
+    </DataContainer>
+    <DataContainer>
+      <key />
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
+    </DataContainer>
+    <DataContainer>
+      <key>da</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
+    </DataContainer>
+    <DataContainer>
+      <key>t</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
+    </DataContainer>
+    <DataContainer>
+      <key>k</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
+    </DataContainer>
+    <DataContainer>
+      <key>d</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
+    </DataContainer>
+    <DataContainer>
+      <key>TNT !!!!!</key>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
     </DataContainer>
   </serializedData>
   <filePath>D:/code/Lock-N-Load/Assets/PersistentSave/MapGenerationPresset.uml</filePath>

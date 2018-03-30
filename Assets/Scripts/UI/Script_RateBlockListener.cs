@@ -13,8 +13,8 @@ public class Script_RateBlockListener : MonoBehaviour {
 	
 	void Update() {
 		if (GetComponent<Slider>().value != tile.get()) {
-			GetComponent<Slider>().value = tile.get();
 			fromUpdate = true;
+			GetComponent<Slider>().value = tile.get();
 		}
 	}
 
