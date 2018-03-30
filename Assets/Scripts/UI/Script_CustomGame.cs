@@ -26,6 +26,7 @@ public class Script_CustomGame : MonoBehaviour {
 		prerenderSize.x -= (mapGrid.padding.left + mapGrid.padding.right);
 		prerenderSize.y -= (mapGrid.padding.bottom + mapGrid.padding.top);
 		refreshPrerenderMap();
+		mapPrerender.GetComponent<ContentSizeFitter>().enabled = true;
 		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
 	}
 	public void onScrore(float s) {
@@ -33,6 +34,10 @@ public class Script_CustomGame : MonoBehaviour {
 	}
 	public void onPowerUp(float p) {
 		powerUpFrequency = Mathf.RoundToInt(p);
+	}
+
+	public void onBack() {
+		gameObject.SetActive(false);
 	}
 
 	public void onBlockRate(List<TileData> tileDatas) {
