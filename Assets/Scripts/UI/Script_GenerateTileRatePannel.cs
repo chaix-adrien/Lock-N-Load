@@ -11,10 +11,24 @@ public class TileData {
 	public ScriptedTile tile;
 	public float percent;
 
+	public TileData(float r, ScriptedTile t) {rate = r; tile = t; percent = 0;}
 	public TileData() {rate = 0; tile = null; percent = 0;}
 	public TileData(float startRate) {rate = startRate;}
 	public void set(float set) {rate = set;}
 	public float get() {return rate;}
+
+	public static List<TileData> Combine(List<ScriptedTile> scripted, Presset presset) {
+		List<TileData> ret = new List<TileData>();
+		foreach (var pressetInfo in presset) {
+			foreach (var tile in scripted) {
+				if (pressetInfo.tileName == tile.name) {
+					ret.Add(new TileData(pressetInfo.rate, tile));
+					break;
+				}
+			}
+		}
+		return ret;
+	}
 }
 
 

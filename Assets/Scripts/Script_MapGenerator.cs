@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
 
 public class Script_MapGenerator : MonoBehaviour {
 	public bool clearAtGeneration = true;
+
+	protected Presset presset;
 	public List<GameObject> playersToSpawn;
 	protected Tilemap tilemap;
+	protected List<ScriptedTile> avialableTiles;
 	protected List<Vector3Int> floors;
 
 	protected virtual void Start() {
 		tilemap = GetComponent<Tilemap>();
+		avialableTiles = GetComponent<Script_LoadTiles>().getLoadedTiles();
 	}
 
 	protected void spawnPlayer() {
@@ -21,6 +26,10 @@ public class Script_MapGenerator : MonoBehaviour {
 			playersToSpawn[i].transform.localPosition = new Vector3(pos.x + tilemap.tileAnchor.x, pos.y + tilemap.tileAnchor.y, pos.z + tilemap.tileAnchor.z);
 			playersToSpawn[i].transform.Rotate(Vector3.forward, Random.Range(0, 360));
 		}
+	}
+
+	public void setPresset(Presset pres) {
+		presset = pres;
 	}
 
 	protected void getFloorsTiles() {

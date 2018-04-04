@@ -22,28 +22,31 @@ public class ScriptedTile : Tile
 
 
     void OnEnable() {
-        if (!init) {
-            flags = TileFlags.InstantiateGameObjectRuntimeOnly;
-            colliderType = ColliderType.None;
-            init = true;
-        }
+        init = false;
+        flags = TileFlags.InstantiateGameObjectRuntimeOnly;
+        colliderType = ColliderType.None;
         savedSprite = sprite;
-        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu")) {
-        #if UNITY_EDITOR
-            if (EditorApplication.isPlayingOrWillChangePlaymode)
-                gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
-        #else
-            gameObject.GetComponent<Script_Tile_Collider>().setSprite(InGameSprite);
-        #endif    
-        }
+    }
+
+    public bool isInit() {
+        return init;
     }
 
     public Sprite getDisplaySprite() {
         return savedSprite;
     }
 
+    public void setInGameSprite() {
+        if (!init) {
+            init = true;
+            sprite = InGameSprite;
+        }
+    }
     public void resetSprite() {
-        sprite = savedSprite;
+        if (init) {
+            init = false;
+            sprite = savedSprite;
+        }
     }
 
 #if UNITY_EDITOR

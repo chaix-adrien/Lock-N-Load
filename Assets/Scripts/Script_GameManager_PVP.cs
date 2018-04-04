@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GamepadInput;
+using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
 public class Script_GameManager_PVP : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	public Color[] playerColors;
 
 	private  bool gameIsOver = false;
+	private int scoreToWin = 0;
 	private List<GameObject> alive;
 	private List<GameObject> players;
 	void Start () {
@@ -21,6 +23,11 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	
 	public void restart() {
 		Debug.Assert(playerColors.Length == 4);
+		GameObject.FindGameObjectWithTag("PowerUpSpawner").GetComponent<Script_PowerUpSpawner>().spawnRate = Static_Datas.poerUpSpawnTime;
+		GameObject.FindGameObjectWithTag("PowerUpSpawner").GetComponent<Script_PowerUpSpawner>().timeBeforeFirst = Static_Datas.poerUpSpawnTime;
+		GameObject.FindGameObjectWithTag("Map").GetComponent<Script_MapGenerator>().setPresset(Static_Datas.presset);
+		
+		scoreToWin = Static_Datas.scoreToWin;
 		removePlayers();
 		getPlayers();
 		int i = 0;
@@ -42,8 +49,15 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		getAlivePlayers();
 		if (alive.Count <= 1 && players.Count > 1) {
 			alive[0].GetComponent<Script_Player>().addScore();
+			if (alive[0].GetComponent<Script_Player>().getScore() >= scoreToWin) {
+				playerWin(alive[0]);
+			}
 			gameOver();
 		}
+	}
+
+	private void playerWin(GameObject player) {
+		gameOver();
 	}
 
 	private void checkForRestart() {

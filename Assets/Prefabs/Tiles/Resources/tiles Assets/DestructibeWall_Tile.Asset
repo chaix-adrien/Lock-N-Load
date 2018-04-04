@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: DestructibeWall_Tile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 453a97776a7cc7b46a0d087b7d1fb4ef, type: 3}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212813090318110406}
   - component: {fileID: 61194662787831826}
   - component: {fileID: 114736997465306362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rock_Tile
   m_TagString: TileCollider
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680986196080800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossableByRay: 1
+  walkable: 0
   tile: {fileID: 11400000, guid: da3ac030bec33aa418aef32c00ddae21, type: 2}
+  pos: {x: 0, y: 0}
 --- !u!212 &212813090318110406
 SpriteRenderer:
   m_ObjectHideFlags: 1

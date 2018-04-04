@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Script_LoadTiles))]
 public class Script_ResetTiles : MonoBehaviour {
-
+	List<ScriptedTile> tiles;
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		tiles = GetComponent<Script_LoadTiles>().getLoadedTiles();
+		foreach (ScriptedTile tile in tiles) {
+			tile.setInGameSprite();
+		}
 	}
 
 	void OnDestroy() {
-		foreach (Script_Tile_Collider tile in GameObject.FindObjectsOfTypeAll(typeof(Script_Tile_Collider))) {
+		foreach (ScriptedTile tile in tiles) {
 			tile.resetSprite();
 		}
 	}

@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
 [System.Serializable]
 public class Script_CustomGame : MonoBehaviour {
 	public GameObject mapPrerender;
-	private Vector2Int mapSize = new Vector2Int(19, 10);	
-	private int scoreToWin = 10;
-	private int powerUpFrequency = 30;
 	private GridLayoutGroup mapGrid;
 	private Vector2 prerenderSize;
 	private Dictionary<Sprite, float> tileWeight;
@@ -30,10 +28,10 @@ public class Script_CustomGame : MonoBehaviour {
 		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
 	}
 	public void onScrore(float s) {
-		scoreToWin = Mathf.RoundToInt(s);
+		Static_Datas.scoreToWin = Mathf.RoundToInt(s);
 	}
 	public void onPowerUp(float p) {
-		powerUpFrequency = Mathf.RoundToInt(p);
+		Static_Datas.poerUpSpawnTime = Mathf.RoundToInt(p);
 	}
 
 	public void onBack() {
@@ -44,46 +42,49 @@ public class Script_CustomGame : MonoBehaviour {
 		tileToGenerate = tileDatas;
 		if (tileWeight.Count == 0) {
 			foreach (TileData data in tileDatas)
-				tileWeight.Add(data.tile.sprite, data.percent);
+				tileWeight.Add(data.tile.getDisplaySprite(), data.percent);
 		} else {
 			foreach (TileData data in tileDatas)
-				tileWeight[data.tile.sprite] = data.percent;
+				tileWeight[data.tile.getDisplaySprite()] = data.percent;
 		}
 		
 		changed = true;
 	}
 
 	public void onHeight(float h) {
-		mapSize.y = Mathf.RoundToInt(h);
+		Static_Datas.sizeMap.y = Mathf.RoundToInt(h);
 		changed = true;
 	}
 	public void onWidth(float w) {
-		mapSize.x = Mathf.RoundToInt(w);
+		Static_Datas.sizeMap.x = Mathf.RoundToInt(w);
 		changed = true;
 	}
 
 	private void refreshPrerenderMap() {
 		float size = 0f;
-		if (prerenderSize.x / mapSize.x < prerenderSize.y / mapSize.y)
-			size = prerenderSize.x / mapSize.x;
+		if (prerenderSize.x / Static_Datas.sizeMap.x < prerenderSize.y / Static_Datas.sizeMap.y)
+			size = prerenderSize.x / Static_Datas.sizeMap.x;
 		else
-			size = prerenderSize.y / mapSize.y;
-		mapGrid.constraintCount = mapSize.x;
+			size = prerenderSize.y / Static_Datas.sizeMap.y;
+		mapGrid.constraintCount = Static_Datas.sizeMap.x;
 		mapGrid.cellSize = new Vector2(size, size);
 		foreach (Transform child in mapPrerender.transform) {
      		GameObject.Destroy(child.gameObject);
  		}
-		for (int i = 0; i < mapSize.x * mapSize.y; i++) {
+		for (int i = 0; i < Static_Datas.sizeMap.x * Static_Datas.sizeMap.y; i++) {
 			Sprite selected = WeightedRandomizer.From(tileWeight).TakeOne();
-			GameObject NewObj = new GameObject(); //Create the GameObject
-			Image NewImage = NewObj.AddComponent<Image>(); //Add the Image Component script
-			NewImage.sprite = selected; //Set the Sprite of the Image Component on the new GameObject
+			GameObject NewObj = new GameObject();
+			Image NewImage = NewObj.AddComponent<Image>();
+			NewImage.sprite = selected;
 
 			NewObj.GetComponent<RectTransform>().SetParent(mapPrerender.transform, false);
-			NewObj.SetActive(true); //Activate the GameObject
+			NewObj.SetActive(true);
 		}
+	}
 
-
+	public void onGenerate() {
+		Static_Datas.presset = ToSaveTileData.Convert(tileToGenerate);
+		SceneManager.LoadScene("Game");
 	}
 
 	void Update() {
@@ -92,5 +93,4 @@ public class Script_CustomGame : MonoBehaviour {
 			changed = false;
 		}
 	}
-
 }

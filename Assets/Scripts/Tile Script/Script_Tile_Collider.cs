@@ -11,10 +11,15 @@ public class Script_Tile_Collider : MonoBehaviour {
 	public Vector2Int pos;
 	private Sprite savedSprite;
 	void Start () {
-		if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu")) {
-			Destroy(gameObject);
+		init(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+	}
+
+	private void init(Scene scene, LoadSceneMode mode) {
+		if (scene == SceneManager.GetSceneByName("MainMenu")) {
+			gameObject.SetActive(false);
 			return;
 		}
+		gameObject.SetActive(true);
 		pos.x = Mathf.FloorToInt(transform.localPosition.x);
 		pos.y = Mathf.FloorToInt(transform.localPosition.y);
 		transform.localPosition = new Vector3(pos.x + 0.5f, pos.y + 0.5f, 0);
@@ -25,13 +30,4 @@ public class Script_Tile_Collider : MonoBehaviour {
 		if (col)
 			col.isTrigger = walkable;
 	}
-	public void setSprite(Sprite toset) {
-		if (tile)
-			tile.sprite = toset;
-	}
-
-    public void resetSprite() {
-		if (tile)
-			tile.resetSprite();
-    }
 }

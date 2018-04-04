@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1124513224340498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +82,7 @@ MonoBehaviour:
   crossableByRay: 0
   walkable: 0
   tile: {fileID: 11400000, guid: 47cacc25b398c02419286bfe095242bc, type: 2}
+  pos: {x: 0, y: 0}
 --- !u!114 &114743149766053802
 MonoBehaviour:
   m_ObjectHideFlags: 1

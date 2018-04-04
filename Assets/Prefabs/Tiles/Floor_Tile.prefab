@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4377184123863622}
   - component: {fileID: 212799519641200460}
   - component: {fileID: 114880644666620362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor_Tile
   m_TagString: TileCollider
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660515471469412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
