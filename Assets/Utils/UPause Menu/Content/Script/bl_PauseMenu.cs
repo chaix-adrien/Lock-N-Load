@@ -236,6 +236,12 @@ public class bl_PauseMenu : MonoBehaviour {
             isMoved = false;
         }
     }
+
+    public void DoMainMenu() {
+        DoPause();
+        SceneManager.LoadScene("MainMenu");
+    }
+
     /// <summary>
     /// 
     /// </summary>

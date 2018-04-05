@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
 public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
@@ -12,12 +11,9 @@ public class Script_MainMenu : MonoBehaviour  {
 	public GameObject customGamePanel;
 	private enum MenuState {Main, QuickPlay, customGame};
 	private MenuState state;
-	private SaveData savePresset;
 
 	void Start() {
 		state = MenuState.Main;
-		savePresset = GetComponent<Script_PersistentLoader>().getSave();
-		Static_Datas.presset = savePresset.GetValue<Presset>("Default");;
 	}
 
 	void Update() {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Script_PersistentLoader : MonoBehaviour {
 	public string saveFile;
 	private string savePath;
-	private SaveData save;
+	private SaveData save = null;
 
 	void Start () {
 		savePath = Application.dataPath + "/PersistentSave/" + saveFile + ".uml";
@@ -13,7 +13,8 @@ public class Script_PersistentLoader : MonoBehaviour {
 	}
 
 	public SaveData getSave() {
-		Debug.Log(save);
+		if (save == null)
+			Start();
 		return save;
 	}
 }

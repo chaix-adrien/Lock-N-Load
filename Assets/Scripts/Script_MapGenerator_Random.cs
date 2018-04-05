@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
 public class Script_MapGenerator_Random : Script_MapGenerator {
 	public Tile floor = null;
@@ -9,13 +10,15 @@ public class Script_MapGenerator_Random : Script_MapGenerator {
 	private Vector2Int size = new Vector2Int(19, 10);
 	private List<TileData> tileDatas;
 	private Dictionary<ScriptedTile, float> tileWeight;
-
 	private List<float>chances;
 	private float chancesTotal;
 	
 	protected override void Start() {
 		base.Start();
 		size = Static_Datas.sizeMap;
+		if (Static_Datas.presset == null) {
+			Static_Datas.presset = GetComponent<Script_PersistentLoader>().getSave().GetValue<Presset>("Default");			
+		}
 	}
 
 	private void generateChances() {
