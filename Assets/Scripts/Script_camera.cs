@@ -53,7 +53,7 @@ public class Script_camera : MonoBehaviour {
 					break;
 			}
 			if (!allGood)
-				GetComponent<Camera>().orthographicSize += 0.02f;
+				GetComponent<Camera>().orthographicSize += 0.05f;
 			else
 				placed = true;
 			/*BoundsInt bounds = tilemap.cellBounds;

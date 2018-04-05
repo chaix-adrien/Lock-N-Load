@@ -1347,6 +1347,7 @@ GameObject:
   - component: {fileID: 225129193}
   - component: {fileID: 225129192}
   - component: {fileID: 225129191}
+  - component: {fileID: 225129196}
   - component: {fileID: 225129194}
   - component: {fileID: 225129195}
   m_Layer: 5
@@ -1489,7 +1490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb2442a5d2216641831b69b825c22d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveFile: MapGenerationPresset.uml
   ratePannel: {fileID: 454043098}
   saveOnlyInEditor: 1
   textFieldModal: {fileID: 440108160}
@@ -1516,6 +1516,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &225129196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 225129189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2bb94e02941f4f4d9a1553b9622fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFile: MapGenerationPresset
 --- !u!1 &257905215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,6 +3655,7 @@ GameObject:
   - component: {fileID: 786314917}
   - component: {fileID: 786314916}
   - component: {fileID: 786314915}
+  - component: {fileID: 786314919}
   - component: {fileID: 786314913}
   - component: {fileID: 786314914}
   m_Layer: 5
@@ -3663,7 +3676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb2442a5d2216641831b69b825c22d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveFile: MapGenerationPressetPlayer.uml
   ratePannel: {fileID: 454043098}
   saveOnlyInEditor: 0
   textFieldModal: {fileID: 95436676}
@@ -3812,6 +3824,18 @@ RectTransform:
   m_AnchoredPosition: {x: 66.533356, y: -16.499565}
   m_SizeDelta: {x: 133.06671, y: 32.99913}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &786314919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 786314912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2bb94e02941f4f4d9a1553b9622fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFile: MapGenerationPressetPlayer
 --- !u!1 &796181352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5928,7 +5952,7 @@ Prefab:
     - target: {fileID: 224214782845337998, guid: e2112ce69df8bbd48bded9a13abea2fe,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00000041094137
+      value: 0.000026595302
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114427021904062436, guid: e2112ce69df8bbd48bded9a13abea2fe, type: 2}
@@ -6087,8 +6111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 143.54999, y: -35.7778}
-  m_SizeDelta: {x: 92.36666, y: 61.555603}
+  m_AnchoredPosition: {x: 98.49999, y: -33.576546}
+  m_SizeDelta: {x: 62.333332, y: 57.15309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1226947880
 MonoBehaviour:
@@ -6906,8 +6930,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 235.91666, y: -35.7778}
-  m_SizeDelta: {x: 92.36666, y: 61.555603}
+  m_AnchoredPosition: {x: 160.83333, y: -33.576546}
+  m_SizeDelta: {x: 62.333332, y: 57.15309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343566949
 MonoBehaviour:
@@ -7537,8 +7561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 51.18333, y: -35.7778}
-  m_SizeDelta: {x: 92.36666, y: 61.555603}
+  m_AnchoredPosition: {x: 36.166664, y: -33.576546}
+  m_SizeDelta: {x: 62.333332, y: 57.15309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489589168
 MonoBehaviour:
@@ -7882,6 +7906,7 @@ GameObject:
   - component: {fileID: 1601331515}
   - component: {fileID: 1601331514}
   - component: {fileID: 1601331513}
+  - component: {fileID: 1601331520}
   - component: {fileID: 1601331517}
   - component: {fileID: 1601331518}
   - component: {fileID: 1601331519}
@@ -8010,6 +8035,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: {fileID: 1979367133}
+--- !u!114 &1601331520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601331512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2bb94e02941f4f4d9a1553b9622fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFile: MapGenerationPresset
 --- !u!1 &1612240178
 GameObject:
   m_ObjectHideFlags: 0
@@ -10226,10 +10263,10 @@ RectTransform:
   m_Father: {fileID: 1601331516}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 246.91, y: -48.95}
-  m_SizeDelta: {x: -512.9, y: -316.7}
+  m_AnchorMin: {x: 0.625, y: 0.36274025}
+  m_AnchorMax: {x: 0.87125, y: 0.536}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143446032
 MonoBehaviour:

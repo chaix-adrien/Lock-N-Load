@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 60199538085505466}
   - component: {fileID: 114232609675791124}
   - component: {fileID: 114005799194109576}
-  - component: {fileID: 114522552742171940}
   m_Layer: 0
   m_Name: TNT_Tile
   m_TagString: TileCollider
@@ -127,19 +126,6 @@ MonoBehaviour:
   walkable: 0
   tile: {fileID: 11400000, guid: fc21f1a40e4fc6841936e3ef73a74963, type: 2}
   pos: {x: 0, y: 0}
---- !u!114 &114522552742171940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1990210332870742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03e0de0a11fb5e49961d6c17eb3b9c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damages: 40
-  onHitColor: {r: 0, g: 1, b: 0.08965492, a: 1}
 --- !u!212 &212246652232704300
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Presset = System.Collections.Generic.List<ToSaveTileData>;
 
+[RequireComponent(typeof(Script_PersistentLoader))]
 public class Script_DropDownPresset : MonoBehaviour {
-	public string saveFile;
 	public Script_GenerateTileRatePannel ratePannel;
 	public bool saveOnlyInEditor = false;
 	public InputFieldSubmitOnly textFieldModal;
-	private string savePath;
 	private Dropdown dropdown;
 	private SaveData save;
 	private List<Presset> pressets;
@@ -19,9 +18,8 @@ public class Script_DropDownPresset : MonoBehaviour {
 
 	private List<string> pressetNames;
 	void Start () {
-		savePath = Application.dataPath + "/PersistentSave/" + saveFile;
 		dropdown = GetComponent<Dropdown>();
-		save = SaveData.Load(savePath);		
+		save = GetComponent<Script_PersistentLoader>().getSave();
 		loadPresset();
 		showButton(false);
 	}
@@ -94,7 +92,7 @@ public class Script_DropDownPresset : MonoBehaviour {
 #endif
 		dropdown.AddOptions(options);
 		save[keyPressetNames] = pressetNames;
-		save.Save(savePath);
+		save.Save();
 	}
 
 	public void doRemoveCurrentPresset() {

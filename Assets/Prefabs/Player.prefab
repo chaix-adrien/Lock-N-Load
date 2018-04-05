@@ -408,7 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadTime: 0
   magazineMax: 0
-  speedFire: 1
+  speedFire: 0.7
   range: 0.25
   damagePerShot: 10
   startRay: {fileID: 4085814378830992}

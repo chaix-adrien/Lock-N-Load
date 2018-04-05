@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4416038166021992}
   - component: {fileID: 212885369360341714}
   - component: {fileID: 61971785271287204}
-  - component: {fileID: 114355339544690670}
   - component: {fileID: 114900507701340962}
+  - component: {fileID: 114355339544690670}
   m_Layer: 0
   m_Name: ElectricBox_Tile
   m_TagString: TileCollider
