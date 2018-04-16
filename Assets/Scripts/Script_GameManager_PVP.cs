@@ -22,12 +22,19 @@ namespace DictionaryPersonal
 
 
 public class Script_GameManager_PVP : MonoBehaviour {
+	public enum GameState {
+		PLAYING,
+		ENDROUND,
+		ENDGAME
+	}
 
+	public GameState state;
 	public GameObject player = null;
 	public GameObject map = null;
 	public AudioClip onWinSound;
 	public Color[] playerColors;
 	public GameObject playerWinUI;
+	public GameObject NextRoundUI;
 	private  bool gameIsOver = false;
 	private int scoreToWin = 0;
 	private List<GameObject> alive;
@@ -40,6 +47,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	
 	public void restart(bool resetScore) {
 		Debug.Assert(playerColors.Length == 4);
+		NextRoundUI.SetActive(false);
 		playerWinUI.SetActive(false);
 		GameObject.FindGameObjectWithTag("PowerUpSpawner").GetComponent<Script_PowerUpSpawner>().spawnRate = Static_Datas.poerUpSpawnTime;
 		GameObject.FindGameObjectWithTag("PowerUpSpawner").GetComponent<Script_PowerUpSpawner>().timeBeforeFirst = Static_Datas.poerUpSpawnTime;
@@ -61,6 +69,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 			map.GetComponent<Script_MapGenerator>().generateMap();
 			i++;
 		}
+		state = GameState.PLAYING;
 	}
 
 	void Update () {
@@ -69,21 +78,17 @@ public class Script_GameManager_PVP : MonoBehaviour {
 			return;
 		getAlivePlayers();
 		if (alive.Count <= 1 && players.Count > 1) {
-			Debug.Log("Add Score before " + alive[0].GetComponent<Script_Player>().getScore());
 			alive[0].GetComponent<Script_Player>().addScore();
-			Debug.Log("Add Score after " + alive[0].GetComponent<Script_Player>().getScore());
-			Debug.Log("Score to win : " + Static_Datas.scoreToWin);
 			if (Static_Datas.scoreToWin > 0 && alive[0].GetComponent<Script_Player>().getScore() >= Static_Datas.scoreToWin) {
-				Debug.Log("player Win");
 				playerWin(alive[0]);
 			} else {
-				Debug.Log("gameOver");
 				gameOver();
 			}	
 		}
 	}
 
 	private void playerWin(GameObject player) {
+		state = GameState.ENDGAME;
 		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onWinSound);
 		gameIsOver = true;
 		foreach (var playerAlive in alive) {
@@ -93,7 +98,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	}
 
 	private void checkForRestart() {
-		if (Input.GetKey("return")) {
+		if (state == GameState.ENDROUND && GamePad.GetButton(GamePad.Button.A, alive[0].GetComponent<Script_Player>().gamepad)) {
 			restart(false);
 		}
 	}
@@ -117,7 +122,6 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		for (int i = 0; i < names.Length; i++) {
 			if (names[i] != "") {
 				if (!players.ContainsKey(i)) {
-					Debug.Log("Dont Contain Key " + i);
 					players.Add(i, Instantiate(player, Vector3.zero, Quaternion.identity));
 				}
 			}
@@ -133,6 +137,8 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	}
 
 	private void gameOver() {
+		state = GameState.ENDROUND;
+		NextRoundUI.SetActive(true);
 		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onWinSound);
 		gameIsOver = true;
 		alive[0].transform.localScale = new Vector3(2, 2, 1);

@@ -16,6 +16,14 @@ namespace GamepadInput
         public enum Axis { LeftStick, RightStick, Dpad }
         public enum Index { Any, One, Two, Three, Four }
 
+        public static bool IsConnected(Index idx) {
+            string [] names = Input.GetJoystickNames();
+            if (names.Length > (int)idx && names[(int)idx] != "") {
+                return true;
+            }
+            return false;
+        }
+
         public static bool GetButtonDown(Button button, Index controlIndex)
         {
             KeyCode code = GetKeycode(button, controlIndex);

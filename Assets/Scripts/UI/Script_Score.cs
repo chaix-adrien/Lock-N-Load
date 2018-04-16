@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using GamepadInput;
 public class Script_Score : MonoBehaviour {
 	public int playerNumber;
 	
-	private Script_Player player;
+	private Script_Player player = null;
 	private Text killText;
 	private Text ScoreText;
+	public GameObject joinPannel;
+	public Text joinText;
 	void Start () {
 		List<GameObject> playerObjs = GameObject.FindGameObjectWithTag("Map").GetComponent<Script_MapGenerator>().playersToSpawn;
 		if (playerNumber >= playerObjs.Count) {
-			gameObject.SetActive(false);
+			HideAll(true);
 			return;
 		}
 		player = playerObjs[playerNumber].GetComponent<Script_Player>();
@@ -23,8 +25,40 @@ public class Script_Score : MonoBehaviour {
 	}
 	
 	void Update () {
-		killText.text = player.getKill() + "";
-		ScoreText.text = player.getScore() + "";
+		string [] names = Input.GetJoystickNames();
+		Debug.Log(names.Length + "  " + playerNumber);
+		if (player) {
+			killText.text = player.getKill() + "";
+			ScoreText.text = player.getScore() + "";
+			if (!GamePad.IsConnected((GamePad.Index)playerNumber)) {
+				ShowPannel("Controller Disconected");
+			} else {
+				HidePannel();
+			}
+		} else if (GamePad.IsConnected((GamePad.Index)playerNumber)) {
+			ShowPannel("Press Start to join !");
+		} else {
+			HideAll(true);
+		}
+	}
+
+	private void ShowPannel(string text) {
+		HideAll(true);
+		joinText.text = text;
+		joinPannel.SetActive(true);
+	}
+
+	private void HideAll(bool hide) {
+		foreach (Transform child in transform) {
+			child.gameObject.SetActive(!hide);
+		}
+	}
+
+	
+
+	private void HidePannel() {
+		HideAll(false);
+		joinPannel.SetActive(false);
 	}
 }
 
