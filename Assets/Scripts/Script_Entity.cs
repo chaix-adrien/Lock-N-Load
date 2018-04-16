@@ -21,6 +21,7 @@ public class Script_Entity : MonoBehaviour {
 
 	private SpriteRenderer rend;
 	public Color entityColor;
+	public string entityName = "none";
 
 	// Use this for initialization
 	protected void Start () {

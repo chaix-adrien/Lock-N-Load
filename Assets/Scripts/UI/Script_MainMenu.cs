@@ -35,6 +35,7 @@ public class Script_MainMenu : MonoBehaviour  {
 			return;
 		}
 #endif
+		Static_Datas.scoreToWin = 0;
 		sizeMapPanel.SetActive(true);
 		state = MenuState.QuickPlay;
 	}

@@ -12,6 +12,7 @@ TagManager:
   - AudioPlayer
   - Menu
   - EventSystem
+  - GameManager
   layers:
   - Default
   - TransparentFX

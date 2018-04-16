@@ -293,7 +293,7 @@ public class bl_PauseMenu : MonoBehaviour {
         //m_Pause = false;
         //m_PauseState = PauseState.None;
         DoPause();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<Script_GameManager_PVP>().restart(false);
     }
     /// <summary>
     /// 

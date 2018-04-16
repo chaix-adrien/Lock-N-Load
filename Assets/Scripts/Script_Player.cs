@@ -8,7 +8,7 @@ public class Script_Player : Script_Entity {
 	 [Header("Player parameters")]
 	public GamepadInput.GamePad.Index gamepad;
 
-		public enum moveMode {
+	public enum moveMode {
 		KEYBOARD,
 		CONTROLLER,
 	};
@@ -198,4 +198,9 @@ public class Script_Player : Script_Entity {
 	public void addScore() {score++;}
 	public void addKill() {kill++;}
 	
+	public void Reset() {
+		score = 0;
+		kill = 0;
+		respawn();
+	}
 }
