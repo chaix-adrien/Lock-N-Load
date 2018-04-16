@@ -30,6 +30,7 @@ public class Script_Score : MonoBehaviour {
 	}
 
 	void Update () {
+		Debug.Log(Static_Datas.scoreToWin);
 		string [] names = Input.GetJoystickNames();
 		if (player) {
 			killText.text = player.getKill() + "";

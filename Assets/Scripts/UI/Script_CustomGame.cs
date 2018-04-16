@@ -27,6 +27,7 @@ public class Script_CustomGame : MonoBehaviour {
 		mapPrerender.GetComponent<ContentSizeFitter>().enabled = true;
 		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
 	}
+
 	public void onScrore(float s) {
 		Static_Datas.scoreToWin = Mathf.RoundToInt(s);
 	}

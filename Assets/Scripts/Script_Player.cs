@@ -206,8 +206,8 @@ public class Script_Player : Script_Entity {
 	public void addScore() {score++;}
 	public void addKill() {kill++;}
 	
-	public void Reset(bool keepScore) {
-		if (!keepScore) {
+	public void Reset(bool resetScore) {
+		if (resetScore) {
 			score = 0;
 			kill = 0;
 		}

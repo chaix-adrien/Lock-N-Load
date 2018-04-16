@@ -42,6 +42,7 @@ public class Script_MainMenu : MonoBehaviour  {
 
 	public void customGame() {
 		if (state != MenuState.customGame) {
+			Static_Datas.scoreToWin = 5;
 			customGamePanel.SetActive(true);
 			state = MenuState.customGame;
 		}

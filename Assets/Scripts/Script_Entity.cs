@@ -67,6 +67,7 @@ public class Script_Entity : MonoBehaviour {
 	public virtual void respawn() {
 		alive = true;
 		heal(maxLife);
+		transform.localScale = new Vector3(1, 1, 1);
 		gameObject.SetActive(true);
 	}
 
