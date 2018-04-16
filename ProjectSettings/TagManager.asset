@@ -13,6 +13,7 @@ TagManager:
   - Menu
   - EventSystem
   - GameManager
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

@@ -79,7 +79,7 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        if (!onlyOption &&  (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any)))
+        if (!onlyOption &&  Input.GetKeyDown(KeyCode.Escape))
         {
             DoPause();
         }

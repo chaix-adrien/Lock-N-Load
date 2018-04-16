@@ -29,7 +29,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	}
 
 	public GameState state;
-	public GameObject player = null;
+	public GameObject playerPrefab = null;
 	public GameObject map = null;
 	public AudioClip onWinSound;
 	public Color[] playerColors;
@@ -40,7 +40,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	private List<GameObject> alive;
 	private Dictionary<int, GameObject> players;
 	void Start () {
-		Debug.Assert(map && player);
+		Debug.Assert(map && playerPrefab);
 		players = new Dictionary<int, GameObject>();
 		restart(true);
 	}
@@ -52,24 +52,12 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		GameObject.FindGameObjectWithTag("PowerUpSpawner").GetComponent<Script_PowerUpSpawner>().spawnRate = Static_Datas.poerUpSpawnTime;
 		GameObject.FindGameObjectWithTag("PowerUpSpawner").GetComponent<Script_PowerUpSpawner>().timeBeforeFirst = Static_Datas.poerUpSpawnTime;
 		GameObject.FindGameObjectWithTag("Map").GetComponent<Script_MapGenerator>().setPresset(Static_Datas.presset);
-		if (resetScore) {
-			resetPlayers();
-		}
+		map.GetComponent<Script_MapGenerator>().generateMap();
+		resetPlayers(resetScore);
 		getPlayers();
-		int i = 0;
-		map.GetComponent<Script_MapGenerator>().playersToSpawn = players.ToList();
-		foreach (var player in players) {
-			gameIsOver = false;
-			player.Value.transform.localScale = new Vector3(1, 1, 1);
-			player.Value.GetComponent<Script_Entity>().entityColor = playerColors[i];
-			player.Value.GetComponent<Script_Entity>().entityName = "Player " + (i + 1);
-			player.Value.GetComponent<Script_Player>().controllMode = Script_Player.moveMode.CONTROLLER;
-			player.Value.GetComponent<Script_Player>().gamepad = (GamePad.Index)(i + 1);
-			player.Value.GetComponent<Script_Entity>().respawn();
-			map.GetComponent<Script_MapGenerator>().generateMap();
-			i++;
-		}
+		gameIsOver = false;
 		state = GameState.PLAYING;
+		map.GetComponent<Script_MapGenerator>().spawnPlayers();
 	}
 
 	void Update () {
@@ -83,7 +71,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 				playerWin(alive[0]);
 			} else {
 				gameOver();
-			}	
+			}
 		}
 	}
 
@@ -103,9 +91,9 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		}
 	}
 
-	private void resetPlayers() {
+	private void resetPlayers(bool resetScore) {
 		foreach (var player in players) {
-			player.Value.GetComponent<Script_Player>().Reset();
+			player.Value.GetComponent<Script_Player>().Reset(resetScore);
 		}
 	}
 
@@ -120,12 +108,26 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	private void getPlayers() {
 		string [] names = Input.GetJoystickNames();
 		for (int i = 0; i < names.Length; i++) {
-			if (names[i] != "") {
+			if (GamePad.IsConnected((GamePad.Index)i)) {
 				if (!players.ContainsKey(i)) {
-					players.Add(i, Instantiate(player, Vector3.zero, Quaternion.identity));
+					CreatePlayer(i);
 				}
 			}
 		}
+	}
+
+	public GameObject CreatePlayer(int idx) {
+		GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+		player.transform.localScale = new Vector3(1, 1, 1);
+		player.GetComponent<Script_Entity>().entityColor = playerColors[idx];
+		player.GetComponent<Script_Entity>().entityName = "Player " + (idx + 1);
+		player.GetComponent<Script_Player>().controllMode = Script_Player.moveMode.CONTROLLER;
+		player.GetComponent<Script_Player>().gamepad = (GamePad.Index)(idx + 1);
+		player.GetComponent<Script_Entity>().respawn();
+		players.Add(idx, player);
+		map.GetComponent<Script_MapGenerator>().playersToSpawn = players.ToList();
+		map.GetComponent<Script_MapGenerator>().spawnPlayer(player);
+		return player;
 	}
 
 	private void getAlivePlayers() {

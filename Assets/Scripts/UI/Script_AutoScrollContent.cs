@@ -22,7 +22,6 @@ public class Script_AutoScrollContent : MonoBehaviour, IDeselectHandler, ISelect
 			} else
 				side = 0;
 		}
-		
 	}
 
 

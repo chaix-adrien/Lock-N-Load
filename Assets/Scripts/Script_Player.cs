@@ -41,11 +41,19 @@ public class Script_Player : Script_Entity {
 	void FixedUpdate () {
 		move();
 		rotate();
+		checkForPause();
 		checkForReload();
 		checkForShield();
 		checkForFire();
 		checkForCut();
 		checkForAction();
+	}
+
+	void checkForPause() {
+		
+		if (controllMode == moveMode.CONTROLLER && GamePad.GetButtonDown(GamePad.Button.Start, gamepad)) {
+			GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<bl_PauseMenu>().DoPause();
+		}
 	}
 
 	bool triggerStateRight = false;
@@ -198,9 +206,11 @@ public class Script_Player : Script_Entity {
 	public void addScore() {score++;}
 	public void addKill() {kill++;}
 	
-	public void Reset() {
-		score = 0;
-		kill = 0;
+	public void Reset(bool keepScore) {
+		if (!keepScore) {
+			score = 0;
+			kill = 0;
+		}
 		respawn();
 	}
 }

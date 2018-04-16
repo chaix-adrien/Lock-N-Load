@@ -19,13 +19,17 @@ public class Script_MapGenerator : MonoBehaviour {
 		avialableTiles = GetComponent<Script_LoadTiles>().getLoadedTiles();
 	}
 
-	protected void spawnPlayer() {
+	public void spawnPlayers() {
 		for (int i = 0; i < playersToSpawn.Count; i++) {
-			playersToSpawn[i].transform.SetParent(transform);
-			Vector3Int pos = floors[Mathf.FloorToInt(Random.Range(0, floors.Count))];
-			playersToSpawn[i].transform.localPosition = new Vector3(pos.x + tilemap.tileAnchor.x, pos.y + tilemap.tileAnchor.y, pos.z + tilemap.tileAnchor.z);
-			playersToSpawn[i].transform.Rotate(Vector3.forward, Random.Range(0, 360));
+			spawnPlayer(playersToSpawn[i]);
 		}
+	}
+
+	public void spawnPlayer(GameObject player) {
+		player.transform.SetParent(transform);
+		Vector3Int pos = floors[Mathf.FloorToInt(Random.Range(0, floors.Count))];
+		player.transform.localPosition = new Vector3(pos.x + tilemap.tileAnchor.x, pos.y + tilemap.tileAnchor.y, pos.z + tilemap.tileAnchor.z);
+		player.transform.Rotate(Vector3.forward, Random.Range(0, 360));
 	}
 
 	public void setPresset(Presset pres) {
@@ -48,6 +52,5 @@ public class Script_MapGenerator : MonoBehaviour {
 	public virtual void generateMap() {
 		tilemap.CompressBounds();
 		getFloorsTiles();
-		spawnPlayer();
 	}
 }

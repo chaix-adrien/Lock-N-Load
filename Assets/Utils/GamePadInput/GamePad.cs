@@ -18,8 +18,14 @@ namespace GamepadInput
 
         public static bool IsConnected(Index idx) {
             string [] names = Input.GetJoystickNames();
-            if (names.Length > (int)idx && names[(int)idx] != "") {
-                return true;
+            int y = 0;
+            for (int i = 0; i < names.Length; i++) {
+                if (y == (int)idx) {
+                    if (names.Length > (int)idx && names[i] != "") {
+                       return true;
+                    }
+                }
+                y++;
             }
             return false;
         }
