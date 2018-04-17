@@ -30,19 +30,21 @@ public class Script_Score : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.Log(Static_Datas.scoreToWin);
 		string [] names = Input.GetJoystickNames();
 		if (player) {
 			killText.text = player.getKill() + "";
 			ScoreText.text = player.getScore() + "";
 			if (!GamePad.IsConnected((GamePad.Index)playerNumber)) {
 				ShowPannel("Controller Disconected");
+				Time.timeScale = 0.0f;
 			} else {
 				HidePannel();
+				Time.timeScale = 1f;
 			}
 		} else if (Static_Datas.scoreToWin <= 0 && GamePad.IsConnected((GamePad.Index)playerNumber)) {
 			ShowPannel("Press Start to join !");
 			CheckToJoin();
+			
 		} else {
 			HideAll(true);
 		}

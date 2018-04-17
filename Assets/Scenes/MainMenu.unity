@@ -1659,6 +1659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapPrerender: {fileID: 576392640}
+  onStart: {fileID: 649788276}
+  onB: {fileID: 1731076541}
 --- !u!114 &263576655
 MonoBehaviour:
   m_ObjectHideFlags: 0

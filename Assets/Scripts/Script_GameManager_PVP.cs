@@ -146,10 +146,3 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		alive[0].transform.localScale = new Vector3(2, 2, 1);
 	}
 }
-
-
-/*
-	custome Gamee: start / b
-	score to win: min = unlimited
-	quand gameOVer: afficher panel "next round"
- */
