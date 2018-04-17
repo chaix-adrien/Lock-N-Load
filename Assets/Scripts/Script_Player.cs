@@ -180,18 +180,22 @@ public class Script_Player : Script_Entity {
 		if (!interaction)
 			interaction = col.gameObject.GetComponentInParent<Script_Interactable>();
 		if (interaction) {
+			Debug.Log("interact ON");
 			canInteractWith = interaction;
 			interaction.canInteractWith(GetInstanceID(), true);
 		}
-		
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
+		
+		Debug.Log("trigger off + " + col.gameObject);
 		Script_Interactable interaction = col.gameObject.GetComponent<Script_Interactable>();
 		if (interaction && canInteractWith == interaction)	
 			canInteractWith = null;
-		if (interaction)
+		if (interaction) {
 			interaction.canInteractWith(GetInstanceID(), false);
+			Debug.Log("interact OFF");
+		}
 	}
 
 	protected override void die(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
