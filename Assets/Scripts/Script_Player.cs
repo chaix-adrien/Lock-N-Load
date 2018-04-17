@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GamepadInput;
-
+using XboxCtrlrInput;
 public class Script_Player : Script_Entity {
 //public
 	 [Header("Player parameters")]
-	public GamepadInput.GamePad.Index gamepad;
+	//public GamepadInput.GamePad.Index gamepad;
+	public XboxController gamepad;
 
 	public enum moveMode {
 		KEYBOARD,
@@ -50,8 +50,7 @@ public class Script_Player : Script_Entity {
 	}
 
 	void checkForPause() {
-		
-		if (controllMode == moveMode.CONTROLLER && GamePad.GetButtonDown(GamePad.Button.Start, gamepad)) {
+		if (controllMode == moveMode.CONTROLLER && XCI.GetButtonDown(XboxButton.Start, gamepad)) {
 			GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<bl_PauseMenu>().DoPause();
 		}
 	}
@@ -62,7 +61,7 @@ public class Script_Player : Script_Entity {
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
 		if (controllMode == moveMode.CONTROLLER)
-			trigger = GamePad.GetTrigger(GamePad.Trigger.RightTrigger, gamepad);
+			trigger = XCI.GetAxis(XboxAxis.RightTrigger, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("space") ? 1f : 0f;
 		if (!triggerStateRight
@@ -80,7 +79,7 @@ public class Script_Player : Script_Entity {
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
 		if (controllMode == moveMode.CONTROLLER)
-			trigger = GamePad.GetTrigger(GamePad.Trigger.LeftTrigger, gamepad);
+			trigger = XCI.GetAxis(XboxAxis.LeftTrigger, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("x") ? 1f : 0f;
 		if (!triggerStateLeft
@@ -100,7 +99,7 @@ public class Script_Player : Script_Entity {
 	private void checkForCut() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = GamePad.GetButtonDown(GamePad.Button.B, gamepad);
+			doIt = XCI.GetButton(XboxButton.B, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("c");
 		if (doIt) {
@@ -111,7 +110,7 @@ public class Script_Player : Script_Entity {
 	private void checkForReload() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = GamePad.GetButtonDown(GamePad.Button.X, gamepad);
+			doIt = XCI.GetButton(XboxButton.X, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("e");
 		if (doIt) {
@@ -122,7 +121,7 @@ public class Script_Player : Script_Entity {
 	private void checkForAction() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = GamePad.GetButtonDown(GamePad.Button.X, gamepad);
+			doIt = XCI.GetButton(XboxButton.X, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("a");
 		if (doIt) {
@@ -141,7 +140,8 @@ public class Script_Player : Script_Entity {
 			return;
 		Vector2 rightStick = new Vector2(0f, 0f);
 		if (controllMode == moveMode.CONTROLLER) {
-			rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, gamepad);
+			rightStick.y = XCI.GetAxis(XboxAxis.RightStickY, gamepad);
+			rightStick.x = XCI.GetAxis(XboxAxis.RightStickX, gamepad);
 		} else if (controllMode == moveMode.KEYBOARD) {
 			rightStick.x = Input.GetAxis("Horizontal_arrow");
 			rightStick.y = Input.GetAxis("Hertical_arrow");
@@ -155,7 +155,8 @@ public class Script_Player : Script_Entity {
 	void move() {
 		Vector2 leftStick = new Vector2(0f, 0f);
 		if (controllMode == moveMode.CONTROLLER) {
-			leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, gamepad);
+			leftStick.y = XCI.GetAxis(XboxAxis.LeftStickY, gamepad);
+			leftStick.x = XCI.GetAxis(XboxAxis.LeftStickX, gamepad);
 		}
 		else if (controllMode == moveMode.KEYBOARD) {
 			leftStick.x = Input.GetAxis("Horizontal");
@@ -187,14 +188,11 @@ public class Script_Player : Script_Entity {
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
-		
-		Debug.Log("trigger off + " + col.gameObject);
 		Script_Interactable interaction = col.gameObject.GetComponent<Script_Interactable>();
 		if (interaction && canInteractWith == interaction)	
 			canInteractWith = null;
 		if (interaction) {
 			interaction.canInteractWith(GetInstanceID(), false);
-			Debug.Log("interact OFF");
 		}
 	}
 

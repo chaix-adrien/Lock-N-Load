@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GamepadInput;
 using Presset = System.Collections.Generic.List<ToSaveTileData>;
 using DictionaryPersonal;
+using XboxCtrlrInput;
 namespace DictionaryPersonal
 {
     public static class DictionaryExtensions
@@ -86,7 +86,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	}
 
 	private void checkForRestart() {
-		if (state == GameState.ENDROUND && GamePad.GetButton(GamePad.Button.A, alive[0].GetComponent<Script_Player>().gamepad)) {
+		if (state == GameState.ENDROUND && XCI.GetButton(XboxButton.A, alive[0].GetComponent<Script_Player>().gamepad)) {
 			restart(false);
 		}
 	}
@@ -108,7 +108,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	private void getPlayers() {
 		string [] names = Input.GetJoystickNames();
 		for (int i = 0; i < names.Length; i++) {
-			if (GamePad.IsConnected((GamePad.Index)i)) {
+			if (XCI.IsPluggedIn((XboxController)(i + 1))) {
 				if (!players.ContainsKey(i)) {
 					CreatePlayer(i);
 				}
@@ -122,7 +122,7 @@ public class Script_GameManager_PVP : MonoBehaviour {
 		player.GetComponent<Script_Entity>().entityColor = playerColors[idx];
 		player.GetComponent<Script_Entity>().entityName = "Player " + (idx + 1);
 		player.GetComponent<Script_Player>().controllMode = Script_Player.moveMode.CONTROLLER;
-		player.GetComponent<Script_Player>().gamepad = (GamePad.Index)(idx + 1);
+		player.GetComponent<Script_Player>().gamepad = (XboxController)(idx + 1);
 		player.GetComponent<Script_Entity>().respawn();
 		players.Add(idx, player);
 		map.GetComponent<Script_MapGenerator>().playersToSpawn = players.ToList();

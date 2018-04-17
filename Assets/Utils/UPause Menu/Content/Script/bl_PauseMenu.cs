@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using GamepadInput;
+using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 
  
@@ -77,24 +77,29 @@ public class bl_PauseMenu : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
+    bool initied = false;
     void Update()
     {
-        if (!onlyOption &&  Input.GetKeyDown(KeyCode.Escape))
-        {
-            DoPause();
-        }
-        if (!onlyOption &&  GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
-        {
-            if (m_PauseState == PauseState.Main)
+        if (initied) {
+            if (!onlyOption &&  Input.GetKeyDown(KeyCode.Escape))
+            {
                 DoPause();
-            else if (m_Pause == true)
-                DoMain();
+            }
+            if (!onlyOption &&  XCI.GetButtonDown(XboxButton.B))
+            {
+                if (m_PauseState == PauseState.Main)
+                    DoPause();
+                else if (m_Pause == true)
+                    DoMain();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) || XCI.GetButtonDown(XboxButton.B) || XCI.GetButtonDown(XboxButton.Start)) {
+                if (m_Pause) 
+                    DoPause();
+            }
+        } else {
+            initied = !Input.GetKey(KeyCode.Escape) && !XCI.GetButton(XboxButton.B) && !XCI.GetButton(XboxButton.Start);
         }
-        if (onlyOption && (Input.GetKeyDown(KeyCode.Escape) || GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))) {
-            if (m_Pause)
-                DoPause();
-        }
-
+        
         //Fade effect
         if (Overlay != null)
         {
@@ -114,6 +119,7 @@ public class bl_PauseMenu : MonoBehaviour {
     /// </summary>
     public void DoPause()
     {
+        initied = false;
         if (PauseUI != null)
         {
             //True or False

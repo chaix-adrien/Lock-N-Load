@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Presset = System.Collections.Generic.List<ToSaveTileData>;
-using GamepadInput;
+using XboxCtrlrInput;
 
 [System.Serializable]
 public class Script_CustomGame : MonoBehaviour {
@@ -96,9 +96,9 @@ public class Script_CustomGame : MonoBehaviour {
 			refreshPrerenderMap();
 			changed = false;
 		}
-		if (GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
+		if (XCI.GetButtonDown(XboxButton.Start, XboxController.Any))
 			onStart.Select();
-		if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
+		if (XCI.GetButtonDown(XboxButton.B, XboxController.Any))
 			onB.Select();
 	}
 }

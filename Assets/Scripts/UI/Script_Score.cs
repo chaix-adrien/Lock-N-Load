@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using GamepadInput;
+using XboxCtrlrInput;
 public class Script_Score : MonoBehaviour {
 	public int playerNumber;
 	
@@ -27,21 +27,25 @@ public class Script_Score : MonoBehaviour {
 		transform.Find("Kill").GetComponent<Image>().color = player.entityColor;
 		ScoreText = transform.Find("Score").Find("ScoreText").GetComponent<Text>();
 		killText = transform.Find("Kill").Find("KillText").GetComponent<Text>();
+		wasDesconected = true;
 	}
 
+	bool wasDesconected = false;
 	void Update () {
 		string [] names = Input.GetJoystickNames();
 		if (player) {
 			killText.text = player.getKill() + "";
 			ScoreText.text = player.getScore() + "";
-			if (!GamePad.IsConnected((GamePad.Index)playerNumber)) {
+			if (!XCI.IsPluggedIn(player.GetComponent<Script_Player>().gamepad)) {
 				ShowPannel("Controller Disconected");
 				Time.timeScale = 0.0f;
-			} else {
+				wasDesconected = true;
+			} else if (wasDesconected) {
 				HidePannel();
 				Time.timeScale = 1f;
+				wasDesconected = false;
 			}
-		} else if (Static_Datas.scoreToWin <= 0 && GamePad.IsConnected((GamePad.Index)playerNumber)) {
+		} else if (Static_Datas.scoreToWin <= 0 && XCI.IsPluggedIn((XboxController)(playerNumber + 1))) {
 			ShowPannel("Press Start to join !");
 			CheckToJoin();
 			
@@ -53,7 +57,7 @@ public class Script_Score : MonoBehaviour {
 	private void CheckToJoin() {
 		if (Static_Datas.scoreToWin > 0)
 			return;
-		if (GamePad.GetButton(GamePad.Button.Start, (GamePad.Index)(playerNumber + 1))) {
+		if (XCI.GetButton(XboxButton.Start, (XboxController)(playerNumber + 1))) {
 			GameObject.FindGameObjectWithTag("GameManager").GetComponent<Script_GameManager_PVP>().CreatePlayer(playerNumber);
 			init();
 		}
