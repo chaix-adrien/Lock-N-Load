@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Presset = System.Collections.Generic.List<ToSaveTileData>;
+using GamepadInput;
 
 [System.Serializable]
 public class Script_CustomGame : MonoBehaviour {
 	public GameObject mapPrerender;
+	public Selectable onStart;
+	public Selectable onB;
 	private GridLayoutGroup mapGrid;
 	private Vector2 prerenderSize;
 	private Dictionary<Sprite, float> tileWeight;
@@ -93,5 +96,9 @@ public class Script_CustomGame : MonoBehaviour {
 			refreshPrerenderMap();
 			changed = false;
 		}
+		if (GamePad.GetButtonDown(GamePad.Button.Start, GamePad.Index.Any))
+			onStart.Select();
+		if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
+			onB.Select();
 	}
 }
