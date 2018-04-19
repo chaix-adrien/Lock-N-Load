@@ -9,11 +9,15 @@ public class Script_MainMenu : MonoBehaviour  {
 	public GameObject warningPannel;
 	public GameObject sizeMapPanel;
 	public GameObject customGamePanel;
+
+	private AudioSource audioSource;
+	public AudioClip music;
 	private enum MenuState {Main, QuickPlay, customGame};
 	private MenuState state;
 
 	void Start() {
 		state = MenuState.Main;
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	void Update() {
