@@ -32,7 +32,6 @@ public class Script_Score : MonoBehaviour {
 
 	bool wasDesconected = false;
 	void Update () {
-		string [] names = Input.GetJoystickNames();
 		if (player) {
 			killText.text = player.getKill() + "";
 			ScoreText.text = player.getScore() + "";
@@ -83,6 +82,4 @@ public class Script_Score : MonoBehaviour {
 	}
 }
 
-
-//get score au joueur restant, pas au kill
 //check si explosion de tnt = > de quiù

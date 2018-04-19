@@ -36,7 +36,6 @@ public class Script_GameManager_PVP : MonoBehaviour {
 	public GameObject playerWinUI;
 	public GameObject NextRoundUI;
 	private  bool gameIsOver = false;
-	private int scoreToWin = 0;
 	private List<GameObject> alive;
 	private Dictionary<int, GameObject> players;
 	void Start () {
