@@ -12,6 +12,7 @@ public class Script_CustomGame : MonoBehaviour {
 	public Selectable onStart;
 	public Selectable onB;
 	public GameObject warningPannel;
+	public Selectable toSelectOnLeave;
 	private GridLayoutGroup mapGrid;
 	private Vector2 prerenderSize;
 	private Dictionary<Sprite, float> tileWeight;
@@ -42,6 +43,7 @@ public class Script_CustomGame : MonoBehaviour {
 
 	public void onBack() {
 		gameObject.SetActive(false);
+		toSelectOnLeave.Select();
 	}
 
 	public void onBlockRate(List<TileData> tileDatas) {

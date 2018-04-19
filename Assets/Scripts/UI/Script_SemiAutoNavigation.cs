@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 public class Script_SemiAutoNavigation : Button
 {
 	public Selectable upSelectable;
@@ -30,7 +32,7 @@ public class Script_SemiAutoNavigation : Button
 		return rightSelectable != null ? rightSelectable : base.FindSelectableOnRight();
 	}
 }
-
+#if UNITY_EDITOR
  [CustomEditor(typeof(Script_SemiAutoNavigation))]
  public class Script_CustomInpector : Editor
  {
@@ -39,6 +41,7 @@ public class Script_SemiAutoNavigation : Button
            base.OnInspectorGUI();
       }
  }
+ #endif
 
  // check back button on game options
  // select default button when navigate

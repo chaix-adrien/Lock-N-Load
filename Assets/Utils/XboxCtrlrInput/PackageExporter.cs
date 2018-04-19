@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -79,3 +79,4 @@ namespace XboxCtrlrInput.Editor {
 		#endregion
 	}
 }
+#endif
