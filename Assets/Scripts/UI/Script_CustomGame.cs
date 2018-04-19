@@ -11,6 +11,7 @@ public class Script_CustomGame : MonoBehaviour {
 	public GameObject mapPrerender;
 	public Selectable onStart;
 	public Selectable onB;
+	public GameObject warningPannel;
 	private GridLayoutGroup mapGrid;
 	private Vector2 prerenderSize;
 	private Dictionary<Sprite, float> tileWeight;
@@ -29,6 +30,7 @@ public class Script_CustomGame : MonoBehaviour {
 		refreshPrerenderMap();
 		mapPrerender.GetComponent<ContentSizeFitter>().enabled = true;
 		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
+
 	}
 
 	public void onScrore(float s) {
@@ -87,6 +89,14 @@ public class Script_CustomGame : MonoBehaviour {
 	}
 
 	public void onGenerate() {
+#if UNITY_EDITOR
+#else
+		if (XCI.GetNumPluggedCtrlrs() < 2) {
+			warningPannel.SetActive(true);
+			warningPannel.transform.GetChild(0).gameObject.SetActive(true);
+			return;
+		}
+#endif
 		Static_Datas.presset = ToSaveTileData.Convert(tileToGenerate);
 		SceneManager.LoadScene("Game");
 	}

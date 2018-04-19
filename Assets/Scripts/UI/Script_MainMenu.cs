@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class Script_MainMenu : MonoBehaviour  {
 	public GameObject option;
@@ -17,7 +18,7 @@ public class Script_MainMenu : MonoBehaviour  {
 
 	void Start() {
 		state = MenuState.Main;
-		audioSource = GetComponent<AudioSource>();
+		
 	}
 
 	void Update() {
@@ -33,7 +34,7 @@ public class Script_MainMenu : MonoBehaviour  {
 	public void quickPlay() {
 #if UNITY_EDITOR
 #else
-		if (names.Length <= 2) {
+		if (XCI.GetNumPluggedCtrlrs() < 2) {
 			warningPannel.SetActive(true);
 			warningPannel.transform.GetChild(0).gameObject.SetActive(true);
 			return;
