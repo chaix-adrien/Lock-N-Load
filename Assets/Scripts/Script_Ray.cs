@@ -14,11 +14,14 @@ public class Script_Ray : MonoBehaviour {
 	private bool fireState = false;
 	private bool reloadState = false;
 	private float percentAmmo;
+	public ParticleSystem particle;
 	// Use this for initialization
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
 		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
+		particle.Stop();
+		particle.startColor = player.GetComponent<Script_Entity>().entityColor;
 		resetColor();
 	}
 
@@ -38,6 +41,9 @@ public class Script_Ray : MonoBehaviour {
 
 	public void fire() {
 		fireState = true;
+		var emitParams = new ParticleSystem.EmitParams();
+		emitParams.rotation = -player.transform.eulerAngles.z - 180;
+		particle.Emit(emitParams, 1);
 		Invoke("endFire", fireTime);
 	}
 

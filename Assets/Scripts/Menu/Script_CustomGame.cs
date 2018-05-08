@@ -13,12 +13,11 @@ public class Script_CustomGame : MonoBehaviour {
 	public Selectable onB;
 	public GameObject warningPannel;
 	public Selectable toSelectOnLeave;
+
 	private GridLayoutGroup mapGrid;
 	private Vector2 prerenderSize;
 	private Dictionary<Sprite, float> tileWeight;
-	
 	private List<TileData> tileToGenerate;
-
 	private Presset toSaveTileData;
 	private bool changed = false;	
 
@@ -31,7 +30,17 @@ public class Script_CustomGame : MonoBehaviour {
 		refreshPrerenderMap();
 		mapPrerender.GetComponent<ContentSizeFitter>().enabled = true;
 		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
+	}
 
+	void Update() {
+		if (changed) {
+			refreshPrerenderMap();
+			changed = false;
+		}
+		if (XCI.GetButtonDown(XboxButton.Start, XboxController.Any))
+			onStart.Select();
+		if (XCI.GetButtonDown(XboxButton.B, XboxController.Any))
+			onB.Select();
 	}
 
 	public void onScrore(float s) {
@@ -68,6 +77,19 @@ public class Script_CustomGame : MonoBehaviour {
 		changed = true;
 	}
 
+	public void onGenerate() {
+#if UNITY_EDITOR
+#else
+		if (XCI.GetNumPluggedCtrlrs() < 2) {
+			warningPannel.SetActive(true);
+			warningPannel.transform.GetChild(0).gameObject.SetActive(true);
+			return;
+		}
+#endif
+		Static_Datas.presset = ToSaveTileData.Convert(tileToGenerate);
+		SceneManager.LoadScene("Game");
+	}
+
 	private void refreshPrerenderMap() {
 		float size = 0f;
 		if (prerenderSize.x / Static_Datas.sizeMap.x < prerenderSize.y / Static_Datas.sizeMap.y)
@@ -88,29 +110,5 @@ public class Script_CustomGame : MonoBehaviour {
 			NewObj.GetComponent<RectTransform>().SetParent(mapPrerender.transform, false);
 			NewObj.SetActive(true);
 		}
-	}
-
-	public void onGenerate() {
-#if UNITY_EDITOR
-#else
-		if (XCI.GetNumPluggedCtrlrs() < 2) {
-			warningPannel.SetActive(true);
-			warningPannel.transform.GetChild(0).gameObject.SetActive(true);
-			return;
-		}
-#endif
-		Static_Datas.presset = ToSaveTileData.Convert(tileToGenerate);
-		SceneManager.LoadScene("Game");
-	}
-
-	void Update() {
-		if (changed) {
-			refreshPrerenderMap();
-			changed = false;
-		}
-		if (XCI.GetButtonDown(XboxButton.Start, XboxController.Any))
-			onStart.Select();
-		if (XCI.GetButtonDown(XboxButton.B, XboxController.Any))
-			onB.Select();
 	}
 }

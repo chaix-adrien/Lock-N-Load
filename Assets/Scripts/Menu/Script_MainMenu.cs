@@ -10,9 +10,9 @@ public class Script_MainMenu : MonoBehaviour  {
 	public GameObject warningPannel;
 	public GameObject sizeMapPanel;
 	public GameObject customGamePanel;
+	public AudioClip music;
 
 	private AudioSource audioSource;
-	public AudioClip music;
 	private enum MenuState {Main, QuickPlay, customGame};
 	private MenuState state;
 

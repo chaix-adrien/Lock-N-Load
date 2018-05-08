@@ -25,12 +25,13 @@ public class Script_WeaponBase : MonoBehaviour {
 
 	protected string[] collisionMask = null;
 	private float lastShootTime = 0f;
-
+	private ParticleSystem particle;
 
 	protected void Start() {
 		collisionMask = collisionMask == null ? new string[2]{"Default", "Player"} : collisionMask;
 		magazine = magazineMax;
 		contraints = new Dictionary<string, bool>();
+		particle = GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<ParticleSystem>();
 	}
 
 	protected virtual void shootOnEntity(Script_Entity entity, Vector2 point) {
@@ -76,8 +77,13 @@ public class Script_WeaponBase : MonoBehaviour {
 					shootOnShield(hitInfo.collider.gameObject, hitInfo.point);
 				
 				if (impact) {
-					GameObject instanciedImpact = Instantiate(impact, hitInfo.point, Quaternion.identity);
-					instanciedImpact.GetComponent<SpriteRenderer>().color = GetComponent<Script_Entity>().entityColor;
+					/*GameObject instanciedImpact = Instantiate(impact, hitInfo.point, Quaternion.identity);
+					instanciedImpact.GetComponent<SpriteRenderer>().color = GetComponent<Script_Entity>().entityColor;*/
+					var emitParams = new ParticleSystem.EmitParams();
+					emitParams.applyShapeToPosition = true;
+					emitParams.position = new Vector3(hitInfo.point.x, hitInfo.point.y, 0);
+					particle.startColor = GetComponent<Script_Entity>().entityColor;
+					particle.Emit(emitParams, 5);
 				}
 			}
 			magazine--;
@@ -94,10 +100,13 @@ public class Script_WeaponBase : MonoBehaviour {
 			magazine = ammo;
 	}
 
+	private bool reloading = false;
 	public virtual void reload() {
-		if (magazine >= magazineMax)
+		if (magazine >= magazineMax || reloading)
 			return;
+		addContraint("reload", false);
 		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onReloadSound);
+		reloading = true;
 		Invoke("reloadFunction", reloadTime);
 	}
 
@@ -106,6 +115,8 @@ public class Script_WeaponBase : MonoBehaviour {
 
 	private void reloadFunction() {
 		onReloadEnd();
+		reloading = false;
+		removeContraint("reload");
 		magazine = magazineMax;
 	}
 

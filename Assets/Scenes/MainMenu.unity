@@ -1749,6 +1749,7 @@ MonoBehaviour:
   onStart: {fileID: 649788276}
   onB: {fileID: 1731076541}
   warningPannel: {fileID: 187485680}
+  toSelectOnLeave: {fileID: 1979367135}
 --- !u!114 &263576655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6145,7 +6146,7 @@ Prefab:
     - target: {fileID: 224214782845337998, guid: e2112ce69df8bbd48bded9a13abea2fe,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000076293945
+      value: 0.000052113428
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114427021904062436, guid: e2112ce69df8bbd48bded9a13abea2fe, type: 2}

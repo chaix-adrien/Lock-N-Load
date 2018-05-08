@@ -36,6 +36,7 @@ public class Script_Player : Script_Entity {
 		shield = shieldObject.GetComponent<Script_Shield>();
 		cut = GetComponent<Script_Cut>();
 		turnInvincible(2f);
+		shield.refull();
 	}
 
 	void FixedUpdate () {
@@ -82,24 +83,23 @@ public class Script_Player : Script_Entity {
 			trigger = XCI.GetAxis(XboxAxis.LeftTrigger, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			trigger = Input.GetKey("x") ? 1f : 0f;
-		if (!triggerStateLeft
-		&& trigger >= triggerDeadZoneIn) {
-			shield.up();
-			triggerStateLeft = true;
-			weapon.addContraint("shield", false);
-			cut.addContraint("shield", false);
+		if (trigger >= triggerDeadZoneIn) {
+			if (shield.up()) {
+				weapon.addContraint("shield", false);
+				cut.addContraint("shield", false);
+			}
 		} else if (trigger < triggerDeadZoneOut && shield.getState() == true) {
-			triggerStateLeft = false;
 			weapon.removeContraint("shield");
 			cut.removeContraint("shield");
 			shield.down();
 		}
+		
 	}
 
 	private void checkForCut() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = XCI.GetButton(XboxButton.B, gamepad);
+			doIt = XCI.GetButtonDown(XboxButton.B, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("c");
 		if (doIt) {
@@ -110,10 +110,11 @@ public class Script_Player : Script_Entity {
 	private void checkForReload() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = XCI.GetButton(XboxButton.X, gamepad);
+			doIt = XCI.GetButtonDown(XboxButton.X, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("e");
 		if (doIt) {
+			Debug.Log("reloead");
 			weapon.reload();
 		}
 	}
@@ -121,7 +122,7 @@ public class Script_Player : Script_Entity {
 	private void checkForAction() {
 		bool doIt = false;
 		if (controllMode == moveMode.CONTROLLER)
-			doIt = XCI.GetButton(XboxButton.X, gamepad);
+			doIt = XCI.GetButtonDown(XboxButton.X, gamepad);
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("a");
 		if (doIt) {
@@ -213,6 +214,7 @@ public class Script_Player : Script_Entity {
 			score = 0;
 			kill = 0;
 		}
+		shield.refull();
 		respawn();
 	}
 }

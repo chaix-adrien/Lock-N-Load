@@ -5,38 +5,40 @@ using UnityEngine;
 public class Script_Shield : MonoBehaviour {
 	public AudioClip onBreakSound;
 	public AudioClip onHitSound;
-	private int maxLife = 4;
+	public int maxLife = 4;
 	private int life;
 	private SpriteRenderer rend;
 	private PolygonCollider2D col;
-
 	private Dictionary<string, bool> contraints;
 	private bool on = false;
-
 	private bool canShield = true;
-	// Use this for initialization
-	void Start () {
-		life = maxLife;
+
+	void Awake() {
 		rend = GetComponent<SpriteRenderer>();
 		col = GetComponent<PolygonCollider2D>();
+	}
+	void Start () {
+		life = maxLife;
+		
 		if (on) up(); else down();
 		contraints = new Dictionary<string, bool>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (on) {
 			enable(life > 0);
 		}
 	}
 
-	public void up() {
-		if (!canShield)
-			return;
+	public bool up() {
+		if (!canShield || on)
+			return false;
 		on = true;
 		if (life > 0) {
 			enable(true);
+			return true;
 		}
+		return false;
 	}
 
 	public void down() {
@@ -61,9 +63,9 @@ public class Script_Shield : MonoBehaviour {
 	}
 
 	public void refull(int stack = -1) {
-		if (stack == -1)
+		if (stack == -1){			
 			life = maxLife;
-		else {
+		}else {
 			life += stack;
 			life = life > maxLife ? maxLife : life;
 		}
