@@ -36,14 +36,17 @@ public class Script_DropDownPresset : MonoBehaviour {
 			saveCurrentPresset(name);
 			dropdown.value = dropdown.options.Count - 2;
 			showButton(true);
+			textFieldModal.gameObject.SetActive(false);
 		}
-		textFieldModal.gameObject.SetActive(false);
 	}
 
 	public void setToDefault() {
 		dropdown.value = 0;
+		dropdown.Hide();
 	}
 	private void showButton(bool show) {
+		if (saveOnlyInEditor)
+			return;
 		foreach (GameObject obj in buttons) {
 			obj.SetActive(show);
 		}
@@ -53,17 +56,20 @@ public class Script_DropDownPresset : MonoBehaviour {
 	}
 
 	public void doApplyPresset() {
+		dropdown.Hide();
 		if (dropdown.value == 0) {
 			showButton(false);
 			return;
 		}
-		if (dropdown.value == dropdown.options.Count - 1) {
+		if (!saveOnlyInEditor &&  dropdown.value == dropdown.options.Count - 1) {
 			textFieldModal.gameObject.SetActive(true);
 			textFieldModal.Select();
 			showButton(false);
 			return;
 		}
-		showButton(true);
+		if (!saveOnlyInEditor)
+			showButton(true);
+		otherDropDown.setToDefault();
 		ratePannel.applyPresset(pressets[dropdown.value - 1]);
 	}
 

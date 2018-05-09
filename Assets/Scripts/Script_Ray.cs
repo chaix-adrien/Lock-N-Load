@@ -32,6 +32,17 @@ public class Script_Ray : MonoBehaviour {
 		}
 	}
 
+	void FixedUpdate() {
+		if (fireState) {
+			lineRenderer.endWidth += 0.06f;
+		} else {
+			if (lineRenderer.endWidth > 0.2f) {
+				lineRenderer.endWidth -= 0.1f;
+				lineRenderer.endWidth = lineRenderer.endWidth < 0.2f ? 0.2f : lineRenderer.endWidth;
+			}
+		}
+	}
+
 	void Update() {
 		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
 		if (!fireState && reloadState) {
@@ -40,13 +51,8 @@ public class Script_Ray : MonoBehaviour {
 			lineRenderer.enabled = true;
 		}
 		if (fireState) {
-			lineRenderer.endWidth += 0.06f;
 			fireColor();
 		} else {
-			if (lineRenderer.endWidth > 0.2f) {
-				lineRenderer.endWidth -= 0.1f;
-				lineRenderer.endWidth = lineRenderer.endWidth < 0.2f ? 0.2f : lineRenderer.endWidth;
-			}
 			resetColor();
 		}
 	}

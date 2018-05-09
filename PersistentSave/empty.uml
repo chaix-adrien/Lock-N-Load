@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <fileName>Steves File</fileName>
+  <serializedTypes>
+    <string>System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
+    <string>UnityEngine.Vector3, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</string>
+    <string>UnityEngine.Quaternion, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</string>
+  </serializedTypes>
+  <serializedData>
+  </serializedData>
+</SaveData>

@@ -35,9 +35,9 @@ public class Script_MapGenerator_Random : Script_MapGenerator {
 	}
 	private void generateBorders() {
 		Vector3Int pos = Vector3Int.zero;
-		for (pos.x = -1; pos.x <= size.x; pos.x++) {
-			for (pos.y = -1; pos.y <= size.y; pos.y++) {
-				if (pos.x == -1 || pos.x == size.x || pos.y == -1 || pos.y == size.y) {
+		for (pos.x = -2; pos.x <= size.x + 1; pos.x++) {
+			for (pos.y = -2; pos.y <= size.y + 1; pos.y++) {
+				if (pos.x < 0 || pos.x >= size.x || pos.y < 0 || pos.y >= size.y) {
 					tilemap.SetTile(pos, wall);
 				}
 			}

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 60658474694335712}
   - component: {fileID: 114510373598744318}
   - component: {fileID: 114284644846547806}
+  - component: {fileID: 114884294913490450}
   m_Layer: 0
   m_Name: Life_PU
   m_TagString: TileCollider
@@ -127,6 +128,19 @@ MonoBehaviour:
   walkable: 1
   tile: {fileID: 0}
   pos: {x: 0, y: 0}
+--- !u!114 &114884294913490450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281969052088926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732b28479ff7b314c8ff450a6f2d1bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratio: 0.07
+  speed: 2
 --- !u!212 &212248612699186638
 SpriteRenderer:
   m_ObjectHideFlags: 1

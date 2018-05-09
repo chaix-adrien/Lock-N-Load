@@ -9,11 +9,11 @@
     <DataContainer>
       <key>pressetKeys</key>
       <value xsi:type="ArrayOfString">
-        <string>MUD</string>
+        <string>test</string>
       </value>
     </DataContainer>
     <DataContainer>
-      <key>MUD</key>
+      <key>test</key>
       <value xsi:type="ArrayOfToSaveTileData">
         <ToSaveTileData>
           <rate>5</rate>
@@ -32,7 +32,7 @@
           <tileName>Wall_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
-          <rate>10</rate>
+          <rate>0.5</rate>
           <tileName>Mug_Tile</tileName>
         </ToSaveTileData>
         <ToSaveTileData>
