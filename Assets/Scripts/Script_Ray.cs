@@ -14,36 +14,45 @@ public class Script_Ray : MonoBehaviour {
 	private bool fireState = false;
 	private bool reloadState = false;
 	private float percentAmmo;
-	public ParticleSystem particle;
 	// Use this for initialization
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
 		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
-		particle.Stop();
-		particle.startColor = player.GetComponent<Script_Entity>().entityColor;
 		resetColor();
 	}
 
-	void Update() {
-		
-		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
-		if (reloadState && !fireState) {
+	void OnEnable() {
+		if (!lineRenderer)
+			return;
+		if (!fireState && reloadState) {
 			lineRenderer.enabled = false;
-		} else if (!reloadState) {
+		} else {
 			lineRenderer.enabled = true;
-		} if (fireState) {
+		}
+	}
+
+	void Update() {
+		percentAmmo = player.GetComponent<Script_WeaponWithRay>().getPercentAmmo();
+		if (!fireState && reloadState) {
+			lineRenderer.enabled = false;
+		} else {
+			lineRenderer.enabled = true;
+		}
+		if (fireState) {
+			lineRenderer.endWidth += 0.06f;
 			fireColor();
 		} else {
+			if (lineRenderer.endWidth > 0.2f) {
+				lineRenderer.endWidth -= 0.1f;
+				lineRenderer.endWidth = lineRenderer.endWidth < 0.2f ? 0.2f : lineRenderer.endWidth;
+			}
 			resetColor();
 		}
 	}
 
 	public void fire() {
 		fireState = true;
-		var emitParams = new ParticleSystem.EmitParams();
-		emitParams.rotation = -player.transform.eulerAngles.z - 180;
-		particle.Emit(emitParams, 1);
 		Invoke("endFire", fireTime);
 	}
 
@@ -58,8 +67,8 @@ public class Script_Ray : MonoBehaviour {
 	void resetColor() {
 		Color newStart = StartChill;
 		Color newEnd = EndChill;
-		newStart.a = 0.5f + percentAmmo / 2f;
-		newEnd.a = 0.5f + percentAmmo / 2f;
+		newStart.a = percentAmmo > 0f ? 0.5f + percentAmmo / 2f : 0f;
+		newEnd.a = percentAmmo > 0f ? 0.5f + percentAmmo / 2f : 0f;
 		lineRenderer.startColor = newStart;
 		lineRenderer.endColor = newEnd;
 	}

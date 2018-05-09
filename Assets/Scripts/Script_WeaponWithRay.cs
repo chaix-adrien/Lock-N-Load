@@ -11,9 +11,9 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 	}
 
 	void Update () {
-		if (canFire)
+		if (canFire || reloading)
 			displayRay();
-		ray.SetActive(canFire);
+		ray.SetActive(canFire || reloading);
 	}
 
 	public override bool fire() {
@@ -23,11 +23,13 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 			if (getPercentAmmo() == 0f)
 				ray.GetComponent<Script_Ray>().reload();
 		}
-			
-		
 		return fired;
 	}
 
+	protected override void onReloadStart() {
+		if (ray)
+			ray.GetComponent<Script_Ray>().reload();
+	}
 
 	protected override void onReloadEnd() {
 		if (ray)
@@ -35,6 +37,7 @@ public class Script_WeaponWithRay : Script_WeaponBase {
 	}
 
 	void displayRay() {
+		ray.SetActive(true);
 		RaycastHit2D hitInfo = castRay();
 		ray.GetComponent<LineRenderer>().SetPosition(0, startRay.transform.position);
 		if (hitInfo) {

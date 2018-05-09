@@ -114,7 +114,6 @@ public class Script_Player : Script_Entity {
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("e");
 		if (doIt) {
-			Debug.Log("reloead");
 			weapon.reload();
 		}
 	}

@@ -22,7 +22,7 @@ public class Script_WeaponBase : MonoBehaviour {
 	private Dictionary<string, bool> contraints;
 	protected bool canFire = true;
 	protected int magazine;
-
+	protected bool reloading = false;
 	protected string[] collisionMask = null;
 	private float lastShootTime = 0f;
 	private ParticleSystem particle;
@@ -32,6 +32,9 @@ public class Script_WeaponBase : MonoBehaviour {
 		magazine = magazineMax;
 		contraints = new Dictionary<string, bool>();
 		particle = GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<ParticleSystem>();
+		Color col = GetComponent<Script_Entity>().entityColor;
+		col.a = 0.5f;
+		particle.startColor = col;
 	}
 
 	protected virtual void shootOnEntity(Script_Entity entity, Vector2 point) {
@@ -82,7 +85,6 @@ public class Script_WeaponBase : MonoBehaviour {
 					var emitParams = new ParticleSystem.EmitParams();
 					emitParams.applyShapeToPosition = true;
 					emitParams.position = new Vector3(hitInfo.point.x, hitInfo.point.y, 0);
-					particle.startColor = GetComponent<Script_Entity>().entityColor;
 					particle.Emit(emitParams, 5);
 				}
 			}
@@ -100,16 +102,19 @@ public class Script_WeaponBase : MonoBehaviour {
 			magazine = ammo;
 	}
 
-	private bool reloading = false;
 	public virtual void reload() {
 		if (magazine >= magazineMax || reloading)
 			return;
+		onReloadStart();
 		addContraint("reload", false);
 		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onReloadSound);
 		reloading = true;
 		Invoke("reloadFunction", reloadTime);
 	}
 
+	protected virtual void onReloadStart() {
+
+	}
 	protected virtual void onReloadEnd() {
 	}
 
