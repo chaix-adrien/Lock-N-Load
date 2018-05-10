@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damages: 10
   onHitColor: {r: 1, g: 1, b: 1, a: 1}
+  environementName: fire
 --- !u!114 &114089318472902116
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,6 +15,7 @@ TagManager:
   - GameManager
   - PauseMenu
   - ImpactParticle
+  - HUD
   layers:
   - Default
   - TransparentFX

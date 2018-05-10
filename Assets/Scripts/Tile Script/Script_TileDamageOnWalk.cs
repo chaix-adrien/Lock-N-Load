@@ -6,7 +6,7 @@ public class Script_TileDamageOnWalk : Script_TileHandler {
 	public int damages = 10;
 	public Color onHitColor = Color.white;
 
-	protected string environementName = "none";
+	public string environementName = "none";
 	
 
 	protected override void walkedOnEnter(Collider2D col) {

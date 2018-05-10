@@ -105,6 +105,7 @@ MonoBehaviour:
   chance: 0.5
   toPutOnExplode: {fileID: 11400000, guid: 926afba9fd3e90940b5ed07d199cce09, type: 2}
   toPutElse: {fileID: 11400000, guid: d9e0d83c5067f4642a31ca5d4af513be, type: 2}
+  particle: {fileID: 2800000, guid: e3a8d403f76b82d41a761ecc3e7bf377, type: 3}
   onlyOnFloor: 0
   damageOnExplode: 40
   onHitColor: {r: 1, g: 1, b: 1, a: 1}

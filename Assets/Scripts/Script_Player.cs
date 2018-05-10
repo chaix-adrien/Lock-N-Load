@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using UnityEngine.UI;
 public class Script_Player : Script_Entity {
 //public
 	 [Header("Player parameters")]
@@ -17,6 +18,7 @@ public class Script_Player : Script_Entity {
 	public GameObject impactSprite;
 	public GameObject shieldObject;
 	public Script_Cut cut;
+	public GameObject killField;
 	private int kill = 0;
 	private int score = 0;
 //private
@@ -201,6 +203,16 @@ public class Script_Player : Script_Entity {
 	}
 
 	protected override void die(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
+		var killPanel = Instantiate(killField, transform.position, Quaternion.identity);
+		killPanel.transform.SetParent(GameObject.FindGameObjectWithTag("HUD").transform, false);
+		killPanel.transform.position = transform.position;
+		killPanel.transform.localScale = new Vector3(1, 1, 1);
+		var text = killPanel.GetComponentInChildren<Text>();
+		var img = killPanel.GetComponentsInChildren<Image>()[1];
+		Debug.Log(img);
+		text.text = fromDetails;
+		img.sprite = fromObject.GetComponent<SpriteRenderer>().sprite;
+		img.color = fromObject.GetComponent<SpriteRenderer>().color;
 		if (fromObject.GetComponent<Script_Player>())
 			fromObject.GetComponent<Script_Player>().addKill();
 		base.die(damages, hitColor, from, fromDetails, fromObject);

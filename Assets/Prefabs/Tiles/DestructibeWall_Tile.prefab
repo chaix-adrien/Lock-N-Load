@@ -97,8 +97,7 @@ MonoBehaviour:
   spritesState:
   - {fileID: 21300000, guid: 999f0a2fdf02623448ae27c41fd44b7d, type: 3}
   - {fileID: 21300000, guid: 2d27a39ce9f1a944cb413149c1597d67, type: 3}
-  walkableWhenBroken: 1
-  rayAccrossWhenBroken: 1
+  toPutWhenBroken: {fileID: 11400000, guid: d9e0d83c5067f4642a31ca5d4af513be, type: 2}
 --- !u!212 &212849043716765354
 SpriteRenderer:
   m_ObjectHideFlags: 1

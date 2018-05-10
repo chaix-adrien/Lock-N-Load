@@ -54,7 +54,7 @@ public class Script_TileExplosionBase : Script_TileHandler {
 				Collider2D inArea = hitColliders[i];
 				Script_Entity entity = inArea.gameObject.GetComponent<Script_Entity>();
 				if (entity)
-					entity.hit(damageOnExplode, onHitColor, "environement", "explosion", gameObject);
+					entity.hit(damageOnExplode, onHitColor, "environement", "explosion blast", gameObject);
 			}
 		}
 		ScriptedTile tile = tilemap.GetTile(new Vector3Int(check.x, check.y, 0)) as ScriptedTile;
