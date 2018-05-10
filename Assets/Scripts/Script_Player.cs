@@ -67,7 +67,8 @@ public class Script_Player : Script_Entity {
 			trigger = Input.GetKey("space") ? 1f : 0f;
 		if (!triggerStateRight
 		&& trigger >= triggerDeadZoneIn) {
-			weapon.fire();
+			if (weapon.fire())
+				gamepad.SetVibration(0.1f, 0.7f);
 			triggerStateRight = true;
 		} else if (trigger < triggerDeadZoneOut)
 			triggerStateRight = false;
@@ -75,7 +76,6 @@ public class Script_Player : Script_Entity {
 
 	private bool triggerStateLeft = false;
 	void checkForShield() {
-		
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
 		float trigger = 0f;
@@ -85,6 +85,7 @@ public class Script_Player : Script_Entity {
 			trigger = Input.GetKey("x") ? 1f : 0f;
 		if (trigger >= triggerDeadZoneIn) {
 			if (shield.up()) {
+				gamepad.SetVibration(0, 0.1f);
 				weapon.addContraint("shield", false);
 				cut.addContraint("shield", false);
 			}
@@ -92,6 +93,7 @@ public class Script_Player : Script_Entity {
 			weapon.removeContraint("shield");
 			cut.removeContraint("shield");
 			shield.down();
+			gamepad.StopVibration();
 		}
 		
 	}
@@ -103,7 +105,8 @@ public class Script_Player : Script_Entity {
 		else if (controllMode == moveMode.KEYBOARD)
 			doIt = Input.GetKeyDown("c");
 		if (doIt) {
-			cut.fire();
+			if (cut.fire())
+				gamepad.SetVibration(0.1f, 0.7f);
 		}
 	}
 
@@ -166,6 +169,7 @@ public class Script_Player : Script_Entity {
 	}
 
 	protected override void onHit(int damages, Color hitColor, string from, string fromDetails, GameObject fromObject) {
+		gamepad.SetVibration(0.1f, 1f);
 		if (from == "weapon") {
 			float impactTime = 1f;
 			impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
