@@ -19,6 +19,7 @@ public class Script_Player : Script_Entity {
 	public GameObject shieldObject;
 	public Script_Cut cut;
 	public GameObject killField;
+	public AudioClip onEnvironementHit;
 	private int kill = 0;
 	private int score = 0;
 //private
@@ -76,7 +77,6 @@ public class Script_Player : Script_Entity {
 			triggerStateRight = false;
 	}
 
-	private bool triggerStateLeft = false;
 	void checkForShield() {
 		float triggerDeadZoneIn = 0.9f;
 		float triggerDeadZoneOut = 0.5f;
@@ -176,6 +176,8 @@ public class Script_Player : Script_Entity {
 			float impactTime = 1f;
 			impactSprite.GetComponent<SpriteRenderer>().color = hitColor;
 			Invoke("hideImpactSprite", impactTime);
+		} else if (from == "environement") {
+			GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onEnvironementHit);
 		}
 	}
 
@@ -209,7 +211,6 @@ public class Script_Player : Script_Entity {
 		killPanel.transform.localScale = new Vector3(1, 1, 1);
 		var text = killPanel.GetComponentInChildren<Text>();
 		var img = killPanel.GetComponentsInChildren<Image>()[1];
-		Debug.Log(img);
 		text.text = fromDetails;
 		img.sprite = fromObject.GetComponent<SpriteRenderer>().sprite;
 		img.color = fromObject.GetComponent<SpriteRenderer>().color;

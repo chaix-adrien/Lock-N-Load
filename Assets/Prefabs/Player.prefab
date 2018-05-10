@@ -443,6 +443,7 @@ MonoBehaviour:
   shieldObject: {fileID: 1325393201578958}
   cut: {fileID: 0}
   killField: {fileID: 1642008794159632, guid: 044c42817fc172144b6ad52e51b9cd27, type: 2}
+  onEnvironementHit: {fileID: 8300000, guid: 279c9a9f00cb3af4fb475151c3d88fcc, type: 3}
 --- !u!114 &114659338041358754
 MonoBehaviour:
   m_ObjectHideFlags: 1

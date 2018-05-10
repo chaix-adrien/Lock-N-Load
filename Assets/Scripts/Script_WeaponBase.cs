@@ -25,13 +25,10 @@ public class Script_WeaponBase : MonoBehaviour {
 	protected bool reloading = false;
 	protected string[] collisionMask = null;
 	private float lastShootTime = 0f;
-	private Scirpt_ParticleSystem particle;
-
 	protected void Start() {
 		collisionMask = collisionMask == null ? new string[2]{"Default", "Player"} : collisionMask;
 		magazine = magazineMax;
 		contraints = new Dictionary<string, bool>();
-		particle = GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<Scirpt_ParticleSystem>();
 		Color col = GetComponent<Script_Entity>().entityColor;
 		col.a = 0.5f;
 	}
