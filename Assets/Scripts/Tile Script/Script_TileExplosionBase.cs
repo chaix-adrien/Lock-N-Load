@@ -9,6 +9,7 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	public float chance = 0.5f;
 	public Tile toPutOnExplode = null;
 	public Tile toPutElse = null;
+	public Texture particle;
 	public bool onlyOnFloor = false;
 	public int damageOnExplode = 40;
 	public Color onHitColor = Color.white;
@@ -25,8 +26,10 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	}
 
 	public override void getShot(GameObject player, string from, string fromDetails) {
-		if (onShoot)
+		if (onShoot) {
+			base.getShot(player, from, fromDetails);
 			launchExplosion();
+		}
 	}
 
 	protected override void walkedOnEnter(Collider2D entity) {
@@ -55,13 +58,19 @@ public class Script_TileExplosionBase : Script_TileHandler {
 			}
 		}
 		ScriptedTile tile = tilemap.GetTile(new Vector3Int(check.x, check.y, 0)) as ScriptedTile;
+		var emitParams = new ParticleSystem.EmitParams();
+		emitParams.applyShapeToPosition = true;
+		emitParams.position = new Vector3(check.x + 0.5f, check.y + 0.5f, 0);
 		if (!(check.x == pos.x && check.y == pos.y) && tile) {
 			if (!onlyOnFloor || tile.floor) {
 				if (!tile || tile.canBeExplosed) {
-					if (Random.Range(0, 1.0f) <= chance)
+					if (Random.Range(0, 1.0f) <= chance) {
 						tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutOnExplode);
-					else if (toPutElse)
+					} else if (toPutElse) {
 						tilemap.SetTile(new Vector3Int(check.x, check.y, 0), toPutElse);
+					}
+					if (particle)
+						GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<Scirpt_ParticleSystem>().Emit(emitParams, particle, 10, Color.white);
 					return true;
 				} else
 					return false;

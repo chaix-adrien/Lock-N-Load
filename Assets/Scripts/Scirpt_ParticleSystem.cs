@@ -19,8 +19,10 @@ public class Scirpt_ParticleSystem : MonoBehaviour {
 		return newPs;
 	}
 	
-	private ParticleSystem GetAvialableParticleSystem() {
+	private ParticleSystem GetAvialableParticleSystem(Texture text) {
 		foreach (ParticleSystem tmps in ps) {
+			if (tmps.GetComponent<ParticleSystemRenderer>().material.GetTexture("_MainTex") == text)
+				return tmps;
 			if (!tmps.IsAlive())
 				return tmps;
 		}
@@ -28,7 +30,7 @@ public class Scirpt_ParticleSystem : MonoBehaviour {
 	}
 
 	public void Emit(ParticleSystem.EmitParams param, Texture sprite, int ammount, Color color) {
-		ParticleSystem psToUse = GetAvialableParticleSystem();
+		ParticleSystem psToUse = GetAvialableParticleSystem(sprite);
 		var main = psToUse.main;
 		main.startColor = color * Color.white;
         psToUse.GetComponent<ParticleSystemRenderer>().material.mainTexture = sprite;

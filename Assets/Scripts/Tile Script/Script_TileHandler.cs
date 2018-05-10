@@ -17,7 +17,12 @@ public class Script_TileHandler : MonoBehaviour {
 
 	protected virtual void walkedOnLeave(Collider2D player) {}
 
-	public virtual void getShot(GameObject player, string from, string fromDetails) {}
+	public virtual void getShot(GameObject player, string from, string fromDetails) {
+		var emitParams = new ParticleSystem.EmitParams();
+		emitParams.applyShapeToPosition = true;
+		emitParams.position = transform.position;
+		GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<Scirpt_ParticleSystem>().Emit(emitParams, GetComponent<SpriteRenderer>().sprite.texture, 10, Color.white);
+	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (!col.isTrigger)

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212081199024999166}
   - component: {fileID: 61869036253439346}
   - component: {fileID: 114465754906229844}
+  - component: {fileID: 114515102195386800}
   m_Layer: 0
   m_Name: Wall_Tile
   m_TagString: TileCollider
@@ -82,6 +83,17 @@ MonoBehaviour:
   walkable: 0
   tile: {fileID: 11400000, guid: 279c3ad36575b3b4a98f0ee200dc83f2, type: 2}
   pos: {x: 0, y: 0}
+--- !u!114 &114515102195386800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598604289538266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a4391e5f804c541b25e6e4076dcf7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212081199024999166
 SpriteRenderer:
   m_ObjectHideFlags: 1

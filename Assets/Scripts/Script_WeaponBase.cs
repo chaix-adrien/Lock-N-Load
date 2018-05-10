@@ -84,7 +84,7 @@ public class Script_WeaponBase : MonoBehaviour {
 					var emitParams = new ParticleSystem.EmitParams();
 					emitParams.applyShapeToPosition = true;
 					emitParams.position = new Vector3(hitInfo.point.x, hitInfo.point.y, 0);
-					particle.Emit(emitParams, impact, 5, gameObject.GetComponent<Script_Entity>().entityColor);
+					//particle.Emit(emitParams, impact, 5, gameObject.GetComponent<Script_Entity>().entityColor);
 				}
 			}
 			magazine--;
