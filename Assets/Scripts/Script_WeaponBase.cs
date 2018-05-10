@@ -14,7 +14,7 @@ public class Script_WeaponBase : MonoBehaviour {
 
 	protected string weaponName = "none";
 	public Transform startRay;
-	public GameObject impact;
+	public Texture impact;
 	public AudioClip onFireSounds;
 	public AudioClip onFireSoundsTuchPlayer;
 	public AudioClip onReloadSound;
@@ -25,16 +25,15 @@ public class Script_WeaponBase : MonoBehaviour {
 	protected bool reloading = false;
 	protected string[] collisionMask = null;
 	private float lastShootTime = 0f;
-	private ParticleSystem particle;
+	private Scirpt_ParticleSystem particle;
 
 	protected void Start() {
 		collisionMask = collisionMask == null ? new string[2]{"Default", "Player"} : collisionMask;
 		magazine = magazineMax;
 		contraints = new Dictionary<string, bool>();
-		particle = GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<ParticleSystem>();
+		particle = GameObject.FindGameObjectWithTag("ImpactParticle").GetComponent<Scirpt_ParticleSystem>();
 		Color col = GetComponent<Script_Entity>().entityColor;
 		col.a = 0.5f;
-		particle.startColor = col;
 	}
 
 	protected virtual void shootOnEntity(Script_Entity entity, Vector2 point) {
@@ -85,7 +84,7 @@ public class Script_WeaponBase : MonoBehaviour {
 					var emitParams = new ParticleSystem.EmitParams();
 					emitParams.applyShapeToPosition = true;
 					emitParams.position = new Vector3(hitInfo.point.x, hitInfo.point.y, 0);
-					particle.Emit(emitParams, 5);
+					particle.Emit(emitParams, impact, 5, gameObject.GetComponent<Script_Entity>().entityColor);
 				}
 			}
 			magazine--;
