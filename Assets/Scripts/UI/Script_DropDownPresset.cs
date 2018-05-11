@@ -8,6 +8,7 @@ using Presset = System.Collections.Generic.List<ToSaveTileData>;
 public class Script_DropDownPresset : MonoBehaviour {
 	public Script_GenerateTileRatePannel ratePannel;
 	public bool saveOnlyInEditor = false;
+	public bool applyDefaultAtStart = false;
 	public InputFieldSubmitOnly textFieldModal;
 	private Dropdown dropdown;
 	private SaveData save;
@@ -21,6 +22,9 @@ public class Script_DropDownPresset : MonoBehaviour {
 		dropdown = GetComponent<Dropdown>();
 		save = GetComponent<Script_PersistentLoader>().getSave();
 		loadPresset();
+		if (applyDefaultAtStart) {
+			ratePannel.applyPresset(pressets[pressetNames.IndexOf("Default")]);
+		}
 		showButton(false);
 	}
 	
