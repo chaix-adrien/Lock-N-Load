@@ -23,6 +23,7 @@ public class Script_Score : MonoBehaviour {
 	private void init() {
 		List<GameObject> playerObjs = GameObject.FindGameObjectWithTag("Map").GetComponent<Script_MapGenerator>().playersToSpawn;
 		player = playerObjs[playerNumber].GetComponent<Script_Player>();
+		player.lifeBar = GetComponentInChildren<LineRenderer>().gameObject;
 		transform.Find("Score").GetComponent<Image>().color = player.entityColor;
 		transform.Find("Kill").GetComponent<Image>().color = player.entityColor;
 		ScoreText = transform.Find("Score").Find("ScoreText").GetComponent<Text>();

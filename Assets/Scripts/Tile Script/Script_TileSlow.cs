@@ -10,14 +10,14 @@ public class Script_TileSlow : Script_TileHandler {
 		base.Start();
 		contraintName = "mug_" + GetInstanceID();
 	}
-	protected override void  walkedOnEnter(Collider2D col) {
+	protected override void walkedOnEnter(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
 		if (moveComp) {
 			moveComp.addContraint(contraintName, speedCoef);
 		}
 	}
 
-	protected override void  walkedOnLeave(Collider2D col) {
+	protected override void walkedOnLeave(Collider2D col) {
 		Script_Move moveComp = col.gameObject.GetComponent<Script_Move>();
 		if (moveComp) {
 			moveComp.removeContraint(contraintName);

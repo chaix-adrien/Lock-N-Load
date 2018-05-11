@@ -57,12 +57,11 @@ namespace XboxCtrlrInput {
 	public static class XCIextention {
 			public static Dictionary<XboxController, bool> vibrating = new Dictionary<XboxController, bool>();
 			public static void SetVibration(this XboxController controller, float time, float intensity, float rightintensity = -1f) {
-				Debug.Log("Start vibration for " + time + "s at " + intensity + "%");
 				XInputDotNetPure.GamePad.SetVibration((XInputDotNetPure.PlayerIndex)(controller - 1), intensity, rightintensity == - 1 ? intensity : rightintensity);
 				if (time != 0) {
-					var _mb = GameObject.FindObjectOfType<MonoBehaviour>();
+					var _mb = GameObject.FindGameObjectWithTag("Map").GetComponent<MonoBehaviour>();
 					if (_mb != null) {
-						_mb.StartCoroutine(coRoutineStop(controller, time));
+						var get = _mb.StartCoroutine(coRoutineStop(controller, time));
 					}
 				} else {
 					vibrating[controller] = true;
@@ -71,7 +70,6 @@ namespace XboxCtrlrInput {
 
 			public static IEnumerator coRoutineStop(this XboxController controller, float time) {
 				yield return new WaitForSeconds(time);
-				Debug.Log("EndCoroutine : " + vibrating.ContainsKey(controller) + " / " + (vibrating.ContainsKey(controller) ? vibrating[controller] + "" : ""));
 				if (!vibrating.ContainsKey(controller))
 					StopVibration(controller);
 				else if (!vibrating[controller])
@@ -79,7 +77,6 @@ namespace XboxCtrlrInput {
 			}
 
 			public static void StopVibration(this XboxController controller) {
-				Debug.Log("StopVibration");
 				XInputDotNetPure.GamePad.SetVibration((XInputDotNetPure.PlayerIndex)(controller - 1), 0, 0);
 				vibrating[controller] = false;
 			}
