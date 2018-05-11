@@ -7,6 +7,7 @@ using XboxCtrlrInput;
 
 
 public class Script_EventSystem : MonoBehaviour {
+	public AudioClip tick;
 	private GameObject lastSelec = null;
 	void Update () {
 		if (EventSystem.current.currentSelectedGameObject == null)
@@ -25,6 +26,7 @@ public class Script_EventSystem : MonoBehaviour {
 		}
 		if (EventSystem.current.currentSelectedGameObject != lastSelec && lastSelec != null) {
 			XCIextention.SetVibration((XboxController)1, 0.1f, 0.1f);
+			GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(tick);
 		}
 		lastSelec = EventSystem.current.currentSelectedGameObject;
 	}

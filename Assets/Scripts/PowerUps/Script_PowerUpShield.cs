@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Script_PowerUpShield : Script_PowerUp {
 	public int shieldStack = 1;
 	public bool refullTotal = true;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using XboxCtrlrInput;
 
 public class Script_TileHitShield : Script_TileHandler {
 
@@ -13,6 +14,9 @@ public class Script_TileHitShield : Script_TileHandler {
 	protected override void walkedOnEnter(Collider2D col) {
 		Script_Shield shield = col.GetComponentInChildren<Script_Shield>();
 		if (shield) {
+			Script_Player player = col.gameObject.GetComponentInChildren<Script_Player>();
+			if (player)
+				player.gamepad.SetVibration(0.1f, 0.5f);
 			if (downEntierely)
 				shield.hit(-1);
 			else

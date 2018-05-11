@@ -214,6 +214,7 @@ public class Script_Player : Script_Entity {
 		text.text = fromDetails;
 		img.sprite = fromObject.GetComponent<SpriteRenderer>().sprite;
 		img.color = fromObject.GetComponent<SpriteRenderer>().color;
+		gamepad.StopVibration();
 		if (fromObject.GetComponent<Script_Player>())
 			fromObject.GetComponent<Script_Player>().addKill();
 		base.die(damages, hitColor, from, fromDetails, fromObject);
@@ -231,6 +232,7 @@ public class Script_Player : Script_Entity {
 			kill = 0;
 		}
 		shield.refull();
+		weapon.reload(true);
 		respawn();
 	}
 }

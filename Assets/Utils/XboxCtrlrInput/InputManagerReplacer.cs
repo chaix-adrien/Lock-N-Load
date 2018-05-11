@@ -55,30 +55,35 @@ namespace XboxCtrlrInput.Editor {
 
 namespace XboxCtrlrInput {
 	public static class XCIextention {
-			public static Dictionary<XboxController, bool> vibrating = new Dictionary<XboxController, bool>();
+			public static Dictionary<XboxController, float> vibrating = new Dictionary<XboxController, float>();
 			public static void SetVibration(this XboxController controller, float time, float intensity, float rightintensity = -1f) {
 				XInputDotNetPure.GamePad.SetVibration((XInputDotNetPure.PlayerIndex)(controller - 1), intensity, rightintensity == - 1 ? intensity : rightintensity);
+				if (intensity == 0)
+					return;
 				if (time != 0) {
-					var _mb = GameObject.FindGameObjectWithTag("Map").GetComponent<MonoBehaviour>();
+					var _mb = GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<MonoBehaviour>();
 					if (_mb != null) {
-						var get = _mb.StartCoroutine(coRoutineStop(controller, time));
+						_mb.StartCoroutine(coRoutineStop(controller, time));
 					}
-				} else {
-					vibrating[controller] = true;
+				} else if (intensity != 0) {
+					vibrating[controller] = intensity;
 				}
 			}
 
 			public static IEnumerator coRoutineStop(this XboxController controller, float time) {
-				yield return new WaitForSeconds(time);
+				yield return new WaitForSeconds(time);				
 				if (!vibrating.ContainsKey(controller))
 					StopVibration(controller);
-				else if (!vibrating[controller])
+				else if (vibrating[controller] == 0f)
 					StopVibration(controller);
+				else {
+					SetVibration(controller, vibrating[controller], time);
+				}
 			}
 
 			public static void StopVibration(this XboxController controller) {
+				vibrating[controller] = 0f;
 				XInputDotNetPure.GamePad.SetVibration((XInputDotNetPure.PlayerIndex)(controller - 1), 0, 0);
-				vibrating[controller] = false;
 			}
 	}
 

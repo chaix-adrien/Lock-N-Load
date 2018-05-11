@@ -98,14 +98,14 @@ public class Script_WeaponBase : MonoBehaviour {
 			magazine = ammo;
 	}
 
-	public virtual void reload() {
+	public virtual void reload(bool noDelay = false) {
 		if (magazine >= magazineMax || reloading)
 			return;
 		onReloadStart();
 		addContraint("reload", false);
 		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onReloadSound);
 		reloading = true;
-		Invoke("reloadFunction", reloadTime);
+		Invoke("reloadFunction", noDelay ? 0f : reloadTime);
 	}
 
 	protected virtual void onReloadStart() {
