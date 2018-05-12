@@ -112,6 +112,8 @@ public class bl_PauseMenu : MonoBehaviour {
                 Overlay.alpha = Mathf.Lerp(Overlay.alpha, 0.0f, Time.unscaledDeltaTime * 5);
             }
         }
+        if (m_Pause)
+            Time.timeScale = 0;
         
     }
     /// <summary>
