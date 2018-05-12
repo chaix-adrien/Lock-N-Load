@@ -409,7 +409,7 @@ MonoBehaviour:
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 2800000, guid: 0e1be76264599d2438857cd4e919c705, type: 3}
   onFireSounds: {fileID: 8300000, guid: 3ed6d942684f7384d8968b14acb9c52a, type: 3}
-  onFireSoundsTuchPlayer: {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7,
+  onFireSoundsTuchPlayer: {fileID: 8300000, guid: bbfa391d68738cd44902b5813d2bde99,
     type: 3}
   onReloadSound: {fileID: 8300000, guid: 95992615288d0a844b69cc0a0325445b, type: 3}
   ray: {fileID: 1044170311306722}

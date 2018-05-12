@@ -5857,7 +5857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82c869426eaadd49b82384973d21be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tick: {fileID: 8300000, guid: 6530fc5d4100d164ba0d7a2bef8366f3, type: 3}
+  tick: {fileID: 8300000, guid: 832e3c613f5f88747a81c849afb94ca0, type: 3}
   rumbleTime: 0
 --- !u!1 &480360094
 GameObject:
@@ -9779,6 +9779,11 @@ Prefab:
       propertyPath: test
       value: 
       objectReference: {fileID: 2100000, guid: 54e1cb1948fc61b488bb6b8df479bebf, type: 2}
+    - target: {fileID: 114929392404197422, guid: 9eb14fc0fc372c24fac08ec3d16c0a1b,
+        type: 2}
+      propertyPath: onWinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 456efce4b96bcc54eaa8d4d8dace1e3f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eb14fc0fc372c24fac08ec3d16c0a1b, type: 2}
   m_IsPrefabParent: 0
@@ -10801,6 +10806,11 @@ Prefab:
     - target: {fileID: 4834079485379022, guid: 8f63c2c63709b464cac1c308dbc602f8, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82558113324569756, guid: 8f63c2c63709b464cac1c308dbc602f8,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f63c2c63709b464cac1c308dbc602f8, type: 2}
@@ -18177,7 +18187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000035405057}
+  m_AnchoredPosition: {x: 0, y: 0.0000534918}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2027843801
