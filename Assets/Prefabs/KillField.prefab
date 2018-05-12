@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   justDisable: 0
-  destroyTime: 3
+  destroyTime: 2
   autoFade: 1
 --- !u!114 &114920643831442662
 MonoBehaviour:

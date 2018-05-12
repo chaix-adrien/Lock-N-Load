@@ -1775,7 +1775,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1165538159089318, guid: 29fa4f94439bfb84fa63028027f215d8, type: 2}
       propertyPath: m_Name
-      value: Player2
+      value: Player3
       objectReference: {fileID: 0}
     - target: {fileID: 224223691215338168, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
@@ -1838,7 +1838,7 @@ Prefab:
     - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
       propertyPath: m_Positions.Array.data[1].x
-      value: 142.7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
@@ -6022,20 +6022,14 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 114667288934037388, guid: 29fa4f94439bfb84fa63028027f215d8,
+    - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
-      propertyPath: left
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 64365a522b18c124f9a4164444845453, type: 2}
+    - target: {fileID: 4887478738905754, guid: 29fa4f94439bfb84fa63028027f215d8, type: 2}
+      propertyPath: m_LocalScale.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
-        type: 2}
-      propertyPath: m_Positions.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
-        type: 2}
-      propertyPath: m_Positions.Array.data[1].x
-      value: 142.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29fa4f94439bfb84fa63028027f215d8, type: 2}
@@ -7392,7 +7386,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1165538159089318, guid: 29fa4f94439bfb84fa63028027f215d8, type: 2}
       propertyPath: m_Name
-      value: Player3
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 224223691215338168, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
@@ -7475,7 +7469,7 @@ Prefab:
     - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
       propertyPath: m_Positions.Array.data[1].x
-      value: 142.7
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29fa4f94439bfb84fa63028027f215d8, type: 2}
@@ -15459,7 +15453,7 @@ Prefab:
     - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
       propertyPath: m_Positions.Array.data[1].x
-      value: 142.7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 120971169533521970, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
@@ -17878,7 +17872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000038621747}
+  m_AnchoredPosition: {x: 0, y: 0.000034309178}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2027843801

@@ -1578,6 +1578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ratePannel: {fileID: 454043098}
   saveOnlyInEditor: 1
+  applyDefaultAtStart: 1
   textFieldModal: {fileID: 440108160}
   buttons:
   - {fileID: 581890630}
@@ -3796,6 +3797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ratePannel: {fileID: 454043098}
   saveOnlyInEditor: 0
+  applyDefaultAtStart: 0
   textFieldModal: {fileID: 95436676}
   buttons:
   - {fileID: 333907033}

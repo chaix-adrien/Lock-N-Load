@@ -189,7 +189,6 @@ public class Script_Player : Script_Entity {
 		if (!interaction)
 			interaction = col.gameObject.GetComponentInParent<Script_Interactable>();
 		if (interaction) {
-			Debug.Log("interact ON");
 			canInteractWith = interaction;
 			interaction.canInteractWith(GetInstanceID(), true);
 		}

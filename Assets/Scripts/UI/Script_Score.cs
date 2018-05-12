@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using XboxCtrlrInput;
 public class Script_Score : MonoBehaviour {
 	public int playerNumber;
+	public GameObject lifebar;
 	
 	private Script_Player player = null;
 	private Text killText;
@@ -23,9 +24,11 @@ public class Script_Score : MonoBehaviour {
 	private void init() {
 		List<GameObject> playerObjs = GameObject.FindGameObjectWithTag("Map").GetComponent<Script_MapGenerator>().playersToSpawn;
 		player = playerObjs[playerNumber].GetComponent<Script_Player>();
-		player.lifeBar = GetComponentInChildren<LineRenderer>().gameObject;
+		player.lifeBar = lifebar;
 		transform.Find("Score").GetComponent<Image>().color = player.entityColor;
 		transform.Find("Kill").GetComponent<Image>().color = player.entityColor;
+		lifebar.GetComponent<LineRenderer>().startColor = player.entityColor;
+		lifebar.GetComponent<LineRenderer>().endColor = player.entityColor;
 		ScoreText = transform.Find("Score").Find("ScoreText").GetComponent<Text>();
 		killText = transform.Find("Kill").Find("KillText").GetComponent<Text>();
 		wasDesconected = true;

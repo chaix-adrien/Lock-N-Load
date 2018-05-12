@@ -15,6 +15,5 @@ public class Script_LifeBar : MonoBehaviour {
 		var pos = GetComponent<LineRenderer>().GetPosition(1);
 		pos.x = max * (left ? percent : 1 - percent);
 		GetComponent<LineRenderer>().SetPosition(left ? 1 : 0, pos);
-		//transform.localScale = new Vector3(percent, 1f, 1f);
 	}
 }
