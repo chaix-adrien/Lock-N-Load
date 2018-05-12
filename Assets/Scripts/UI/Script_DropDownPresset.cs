@@ -65,7 +65,15 @@ public class Script_DropDownPresset : MonoBehaviour {
 			showButton(false);
 			return;
 		}
-		if (!saveOnlyInEditor &&  dropdown.value == dropdown.options.Count - 1) {
+		#if UNITY_EDITOR
+			if (saveOnlyInEditor && dropdown.value == dropdown.options.Count - 1) {
+				textFieldModal.gameObject.SetActive(true);
+				textFieldModal.Select();
+				showButton(false);
+				return;
+			}
+		#endif
+		if (!saveOnlyInEditor && dropdown.value == dropdown.options.Count - 1) {
 			textFieldModal.gameObject.SetActive(true);
 			textFieldModal.Select();
 			showButton(false);

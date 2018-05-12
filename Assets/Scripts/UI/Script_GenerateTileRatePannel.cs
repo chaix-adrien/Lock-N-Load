@@ -110,7 +110,6 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 				i += 1.0f;
 			}
 		}
-		customGame.onBlockRate(tileRates);
 	}
 	
 	static int sortTilesByRate(ScriptedTile t1, ScriptedTile t2) {
@@ -137,14 +136,15 @@ public class Script_GenerateTileRatePannel : MonoBehaviour {
 	}
 	public void applyPresset(Presset presset) {
 		ToSaveTileData.Apply(presset, tileRates);
+		valueChanged();
 	}
 
 	void Update() {
 		if (change) {
-		foreach (TileData apply in tileRates) {
-			apply.set(apply.get());
-		}
-		change = true;
+			foreach (TileData apply in tileRates) {
+				apply.set(apply.get());
+			}
+			change = true;
 			generatePercent();
 			customGame.onBlockRate(tileRates);
 			int i = 0;

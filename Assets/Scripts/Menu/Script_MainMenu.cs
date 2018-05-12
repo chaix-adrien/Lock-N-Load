@@ -18,7 +18,8 @@ public class Script_MainMenu : MonoBehaviour  {
 
 	void Start() {
 		state = MenuState.Main;
-		
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
 	}
 
 	void Update() {

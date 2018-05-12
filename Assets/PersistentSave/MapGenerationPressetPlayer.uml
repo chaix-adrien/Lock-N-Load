@@ -3,71 +3,16 @@
   <fileName>Steves File</fileName>
   <serializedTypes>
     <string>System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
-    <string>System.Collections.Generic.List`1[[ToSaveTileData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
+    <string>System.Collections.Generic.List`1[[System.Collections.Generic.List`1[[ToSaveTileData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</string>
   </serializedTypes>
   <serializedData>
     <DataContainer>
       <key>pressetKeys</key>
-      <value xsi:type="ArrayOfString">
-        <string>test</string>
-      </value>
+      <value xsi:type="ArrayOfString" />
     </DataContainer>
     <DataContainer>
       <key>test</key>
-      <value xsi:type="ArrayOfToSaveTileData">
-        <ToSaveTileData>
-          <rate>5</rate>
-          <tileName>Floor_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>4</rate>
-          <tileName>DestructibeWall_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>2</rate>
-          <tileName>Rock_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>2</rate>
-          <tileName>Wall_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.5</rate>
-          <tileName>Mug_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.4</rate>
-          <tileName>Waterbomb_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.4</rate>
-          <tileName>Inflamable_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.4</rate>
-          <tileName>TNT_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.4</rate>
-          <tileName>ElectricBox_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.2</rate>
-          <tileName>BoltBall_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.2</rate>
-          <tileName>FireBall_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.1</rate>
-          <tileName>Bush_Tile</tileName>
-        </ToSaveTileData>
-        <ToSaveTileData>
-          <rate>0.01</rate>
-          <tileName>Chest_Tile</tileName>
-        </ToSaveTileData>
-      </value>
+      <value xsi:type="ArrayOfArrayOfToSaveTileData" />
     </DataContainer>
   </serializedData>
   <filePath>D:/code/Lock-N-Load/Assets/PersistentSave/MapGenerationPressetPlayer.uml</filePath>

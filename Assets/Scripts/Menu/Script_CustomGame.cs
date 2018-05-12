@@ -27,7 +27,6 @@ public class Script_CustomGame : MonoBehaviour {
 		prerenderSize = mapPrerender.GetComponent<RectTransform>().rect.size;
 		prerenderSize.x -= (mapGrid.padding.left + mapGrid.padding.right);
 		prerenderSize.y -= (mapGrid.padding.bottom + mapGrid.padding.top);
-		refreshPrerenderMap();
 		mapPrerender.GetComponent<ContentSizeFitter>().enabled = true;
 		InvokeRepeating("refreshPrerenderMap", 4.0f, 4.0f);
 	}
@@ -65,7 +64,6 @@ public class Script_CustomGame : MonoBehaviour {
 			foreach (TileData data in tileDatas)
 				tileWeight[data.tile.getDisplaySprite()] = data.percent;
 		}
-		
 		changed = true;
 	}
 
@@ -107,7 +105,6 @@ public class Script_CustomGame : MonoBehaviour {
 			GameObject NewObj = new GameObject();
 			Image NewImage = NewObj.AddComponent<Image>();
 			NewImage.sprite = selected;
-
 			NewObj.GetComponent<RectTransform>().SetParent(mapPrerender.transform, false);
 			NewObj.SetActive(true);
 		}

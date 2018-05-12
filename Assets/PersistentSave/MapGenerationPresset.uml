@@ -11,6 +11,7 @@
       <value xsi:type="ArrayOfString">
         <string>Default</string>
         <string>Explosive</string>
+        <string>Water</string>
       </value>
     </DataContainer>
     <DataContainer>
@@ -123,6 +124,63 @@
         </ToSaveTileData>
         <ToSaveTileData>
           <rate>0.1</rate>
+          <tileName>Chest_Tile</tileName>
+        </ToSaveTileData>
+      </value>
+    </DataContainer>
+    <DataContainer>
+      <key>Water</key>
+      <value xsi:type="ArrayOfToSaveTileData">
+        <ToSaveTileData>
+          <rate>5</rate>
+          <tileName>Floor_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>5.42855024</rate>
+          <tileName>DestructibeWall_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.929230332</rate>
+          <tileName>Rock_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>1.55000043</rate>
+          <tileName>Wall_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>1.99932337</rate>
+          <tileName>Mug_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.4</rate>
+          <tileName>ElectricBox_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.5</rate>
+          <tileName>TNT_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.5</rate>
+          <tileName>Inflamable_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>1.36621726</rate>
+          <tileName>Waterbomb_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.100000009</rate>
+          <tileName>FireBall_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.2</rate>
+          <tileName>BoltBall_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.1</rate>
+          <tileName>Bush_Tile</tileName>
+        </ToSaveTileData>
+        <ToSaveTileData>
+          <rate>0.0600000024</rate>
           <tileName>Chest_Tile</tileName>
         </ToSaveTileData>
       </value>
