@@ -181,6 +181,7 @@ MonoBehaviour:
   contain:
   - {fileID: 1921689822781286, guid: 9fee75f1b47d98040959d9ccea7cc87b, type: 2}
   - {fileID: 1164805746795532, guid: 20fb0fa2848e26f4cbb7d54989884e6f, type: 2}
+  onOpenSound: {fileID: 8300000, guid: 934fecd15ab7b0f41a6e767b53f00831, type: 3}
 --- !u!212 &212222762981385210
 SpriteRenderer:
   m_ObjectHideFlags: 1
