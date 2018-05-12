@@ -28,24 +28,29 @@ public class Script_TileExplosionBase : Script_TileHandler {
 	public override void getShot(GameObject player, string from, string fromDetails) {
 		if (onShoot) {
 			base.getShot(player, from, fromDetails);
-			launchExplosion();
+			launchExplosion(player);
 		}
 	}
 
 	protected override void walkedOnEnter(Collider2D entity) {
 		if (onWalk) {
 			GetComponent<SpriteRenderer>().enabled = false;
-			Invoke("launchExplosion", 0.1f);
-		}
-			
+			StartCoroutine(launcheExplosionDelayed(entity.gameObject, 0.1f));
+			//launchExplosion(entity.gameObject);
+		}		
 	}
 
-	protected virtual void launchExplosion() {
+	IEnumerator launcheExplosionDelayed(GameObject madeExplosion, float delay) {
+		yield return new WaitForSeconds(delay);
+		launchExplosion(madeExplosion);
+	}
+
+	protected virtual void launchExplosion(GameObject madeExplosion) {
 		GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(explosionSound);
-		explode(new Vector2Int(pos.x, pos.y));
+		explode(new Vector2Int(pos.x, pos.y), madeExplosion);
 	}
 
-	protected bool explode(Vector2Int check) {
+	protected bool explode(Vector2Int check, GameObject madeExplosion) {
 		if (damageOnExplode > 0) {
 			Collider2D[] hitColliders = new Collider2D[50];
 			ContactFilter2D contactFilter = new ContactFilter2D();
@@ -53,8 +58,9 @@ public class Script_TileExplosionBase : Script_TileHandler {
 			for (int i = 0; i < ret; i++) {
 				Collider2D inArea = hitColliders[i];
 				Script_Entity entity = inArea.gameObject.GetComponent<Script_Entity>();
-				if (entity)
-					entity.hit(damageOnExplode, onHitColor, "environement", "explosion blast", gameObject);
+				if (entity) {
+					entity.hit(damageOnExplode, onHitColor, "environement", "explosion blast", madeExplosion);
+				}
 			}
 		}
 		ScriptedTile tile = tilemap.GetTile(new Vector3Int(check.x, check.y, 0)) as ScriptedTile;

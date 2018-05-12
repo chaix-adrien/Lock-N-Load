@@ -56,16 +56,6 @@ public class Script_camera : MonoBehaviour {
 				GetComponent<Camera>().orthographicSize += 0.05f;
 			else
 				placed = true;
-			/*BoundsInt bounds = tilemap.cellBounds;
-			Debug.Log(bounds);
-			if (bounds.size.x < bounds.size.y)
-				GetComponent<Camera>().orthographicSize = 0.5f * bounds.size.y;
-			else
-				GetComponent<Camera>().orthographicSize = 0.5f * bounds.size.x;
-			transform.position = new Vector3(
-				CenterOnMap.transform.position.x + bounds.position.x + bounds.size.x / 2f,
-				CenterOnMap.transform.position.y + bounds.position.y + bounds.size.y / 2f,
-				z);*/
 		}
 	}
 }

@@ -214,8 +214,11 @@ public class Script_Player : Script_Entity {
 		img.sprite = fromObject.GetComponent<SpriteRenderer>().sprite;
 		img.color = fromObject.GetComponent<SpriteRenderer>().color;
 		gamepad.StopVibration();
-		if (fromObject.GetComponent<Script_Player>())
-			fromObject.GetComponent<Script_Player>().addKill();
+		if (fromObject.GetComponent<Script_Player>()) {
+			if (fromObject != gameObject)
+				fromObject.GetComponent<Script_Player>().addKill();
+		}
+			
 		base.die(damages, hitColor, from, fromDetails, fromObject);
 	}
 
