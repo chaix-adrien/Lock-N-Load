@@ -122,7 +122,7 @@ MonoBehaviour:
   onHitColor: {r: 1, g: 1, b: 1, a: 1}
   onWalk: 0
   onShoot: 1
-  explosionSound: {fileID: 8300000, guid: 4c9c7ebd74ea4374aae062ad3c007b01, type: 3}
+  explosionSound: {fileID: 8300000, guid: 25df0751841526f4da0f274be4505ad6, type: 3}
 --- !u!212 &212743921810400866
 SpriteRenderer:
   m_ObjectHideFlags: 1

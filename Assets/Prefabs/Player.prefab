@@ -339,8 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ff71c74e7ed7479b156cf0074ba53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBreakSound: {fileID: 8300000, guid: 3d1012d93aab9b14188541b67b661aa5, type: 3}
-  onHitSound: {fileID: 8300000, guid: 7ea105a1b9ff09b42a48b7577a386922, type: 3}
+  onBreakSound: {fileID: 8300000, guid: 238a426f0b3cd4442bd6e2fe8b15ddf8, type: 3}
+  onHitSound: {fileID: 8300000, guid: 2ec721c5e2065ec4698cdda99c4a2892, type: 3}
   maxLife: 6
 --- !u!114 &114567634951892724
 MonoBehaviour:
@@ -361,7 +361,7 @@ MonoBehaviour:
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 2800000, guid: 357152a601e1f39499051ef1622d5a0b, type: 3}
   onFireSounds: {fileID: 8300000, guid: a6ac1aeff94db0c409ba730c3c3fd98e, type: 3}
-  onFireSoundsTuchPlayer: {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7,
+  onFireSoundsTuchPlayer: {fileID: 8300000, guid: bbfa391d68738cd44902b5813d2bde99,
     type: 3}
   onReloadSound: {fileID: 0}
 --- !u!114 &114603801404168104
@@ -389,7 +389,7 @@ MonoBehaviour:
   shieldObject: {fileID: 1325393201578958}
   cut: {fileID: 0}
   killField: {fileID: 1642008794159632, guid: 044c42817fc172144b6ad52e51b9cd27, type: 2}
-  onEnvironementHit: {fileID: 8300000, guid: 279c9a9f00cb3af4fb475151c3d88fcc, type: 3}
+  onEnvironementHit: {fileID: 8300000, guid: 9984eca53c18df74b8c30224576964ea, type: 3}
 --- !u!114 &114659338041358754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,7 +408,7 @@ MonoBehaviour:
   damagePerShot: 20
   startRay: {fileID: 4085814378830992}
   impact: {fileID: 2800000, guid: 0e1be76264599d2438857cd4e919c705, type: 3}
-  onFireSounds: {fileID: 8300000, guid: 592eef74beb57ca47969164222d5f161, type: 3}
+  onFireSounds: {fileID: 8300000, guid: 3ed6d942684f7384d8968b14acb9c52a, type: 3}
   onFireSoundsTuchPlayer: {fileID: 8300000, guid: 39403164e65cb5940b5297118dc2e0b7,
     type: 3}
   onReloadSound: {fileID: 8300000, guid: 95992615288d0a844b69cc0a0325445b, type: 3}

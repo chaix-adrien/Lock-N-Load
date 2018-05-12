@@ -56,4 +56,4 @@ MonoBehaviour:
   toSpawn:
   - {fileID: 1743266061826596, guid: 83a643af2b60ce64eb68afe8ee466c5d, type: 2}
   - {fileID: 1281969052088926, guid: bb1bcec2fe4805749a10e3a5c38c9c66, type: 2}
-  onSpawnSound: {fileID: 8300000, guid: 6d58fc0a2d8361f469a00660d19fa12c, type: 3}
+  onSpawnSound: {fileID: 8300000, guid: a5de7cd560e295b419213cc1659a7c2a, type: 3}

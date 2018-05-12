@@ -88,7 +88,7 @@ MonoBehaviour:
   destroyOnUse: 1
   destroyOnShoot: 1
   useIfUseless: 0
-  onUseSound: {fileID: 8300000, guid: 304bbf135fbc2344c86a342d8be019fb, type: 3}
+  onUseSound: {fileID: 8300000, guid: 88c3cae5e223b1d4ea4b1c7fec6454ff, type: 3}
   shieldStack: 1
   refullTotal: 1
 --- !u!114 &114204239867264466
