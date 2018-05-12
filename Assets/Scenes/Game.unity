@@ -7990,15 +7990,15 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 224223691215338168, guid: 29fa4f94439bfb84fa63028027f215d8,
+    - target: {fileID: 114139043319540090, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.9263
+      propertyPath: m_EffectDistance.x
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 224223691215338168, guid: 29fa4f94439bfb84fa63028027f215d8,
+    - target: {fileID: 114139043319540090, guid: 29fa4f94439bfb84fa63028027f215d8,
         type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -98.79999
+      propertyPath: m_EffectDistance.y
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29fa4f94439bfb84fa63028027f215d8, type: 2}
@@ -15305,13 +15305,13 @@ Tilemap:
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
-  - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 1
+    m_DirtyIndex: 0
+  - serializedVersion: 1
+    m_DirtyIndex: 0
 --- !u!114 &1607154695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18022,7 +18022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030284533}
+  m_AnchoredPosition: {x: 0, y: -0.000020973719}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2027843801
