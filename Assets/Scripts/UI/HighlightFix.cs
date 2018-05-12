@@ -7,7 +7,7 @@ using UnityEngine.UI;
  
  
  [RequireComponent(typeof(Selectable))]
- public class HighlightFix : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDeselectHandler
+ public class HighlightFix : MonoBehaviour, IPointerEnterHandler, IDeselectHandler
  {
      public void OnPointerEnter(PointerEventData eventData)
      {
@@ -19,9 +19,5 @@ using UnityEngine.UI;
      public void OnDeselect(BaseEventData eventData)
      {
          this.GetComponent<Selectable>().OnPointerExit(null);
-     }
-
-     public void OnPointerExit(PointerEventData eventData) {
-        //EventSystem.current.SetSelectedGameObject(null);
      }
  }

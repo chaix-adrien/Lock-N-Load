@@ -53,7 +53,7 @@ public class Script_MainMenu : MonoBehaviour  {
 
 
 	public void options() {
-		GameObject.FindGameObjectWithTag("Menu").GetComponent<bl_PauseMenu>().DoPause();
+		GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<bl_PauseMenu>().DoPause();
 	}
 
 	public void quit() {

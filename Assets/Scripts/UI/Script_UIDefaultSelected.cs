@@ -17,5 +17,6 @@ public class Script_UIDefaultSelected : MonoBehaviour {
 	public void selectDefault() {
 		selected.GetComponent<Selectable>().Select();
 		selected.GetComponent<Selectable>().OnSelect(null);
+		EventSystem.current.SetSelectedGameObject(selected);
 	}
 }

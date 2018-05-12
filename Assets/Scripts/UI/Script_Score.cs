@@ -16,6 +16,7 @@ public class Script_Score : MonoBehaviour {
 		List<GameObject> playerObjs = GameObject.FindGameObjectWithTag("Map").GetComponent<Script_MapGenerator>().playersToSpawn;
 		if (playerNumber >= playerObjs.Count) {
 			HideAll(true);
+
 			return;
 		}
 		init();
@@ -76,6 +77,7 @@ public class Script_Score : MonoBehaviour {
 		foreach (Transform child in transform) {
 			child.gameObject.SetActive(!hide);
 		}
+		GetComponent<Image>().enabled = !hide;
 	}
 
 	

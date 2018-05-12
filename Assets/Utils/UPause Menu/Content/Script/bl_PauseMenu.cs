@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
  
 
 public class bl_PauseMenu : MonoBehaviour {
@@ -130,6 +130,8 @@ public class bl_PauseMenu : MonoBehaviour {
                 PauseUI.SetActive(true);
                 if (!onlyOption)
                     PauseUI.GetComponent<Animator>().Play(m_PauseShowAnim,0,0);
+                else
+                    OptionsUI.SetActive(true);
                 m_PauseState = PauseState.Main;
                 if (LookCursor)
                 {
@@ -161,6 +163,11 @@ public class bl_PauseMenu : MonoBehaviour {
                 else if (!onlyOption)
                 {
                     PauseUI.GetComponent<Animator>().Play(m_PauseHideAnim, 0, 0);
+                } else {
+                    OptionsUI.SetActive(false);
+                    var menu = GameObject.FindGameObjectWithTag("Menu");
+                    menu.SetActive(false);
+                    menu.SetActive(true);
                 }
                 //If options active, then hide too
                 if (OptionsUI.activeSelf)
