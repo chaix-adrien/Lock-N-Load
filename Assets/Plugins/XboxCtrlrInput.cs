@@ -182,38 +182,10 @@ namespace XboxCtrlrInput
 		/// </param>
 		public static bool GetButtonDown(XboxButton button)
 		{
-			if (button.IsDPad())
-				return GetDPadDown(button.ToDPad());
-
-			if(OnWindowsNative())
-			{
-				#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-				if(!XInputStillInCurrFrame())
-				{
-					XInputUpdateAllStates();
-				}
-				
-				GamePadState ctrlrState = XInputGetSingleState();
-				GamePadState ctrlrStatePrev = XInputGetSingleStatePrev();
-				
-				if( ( XInputGetButtonState(ctrlrState.Buttons, button) == ButtonState.Pressed ) &&
-					( XInputGetButtonState(ctrlrStatePrev.Buttons, button) == ButtonState.Released ) )
-				{
+			for (var id = XboxController.First; id <= XboxController.Fourth; id++) {
+				if (GetButtonDown(button, id))
 					return true;
-				}
-				#endif
 			}
-			
-			else
-			{
-				string btnCode = DetermineButtonCode(button, 0);
-				
-				if(Input.GetKeyDown(btnCode))
-				{
-					return true;
-				}
-			}
-				
 			return false;
 		}
 		

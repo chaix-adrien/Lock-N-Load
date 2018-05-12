@@ -37,7 +37,8 @@ public class Script_CustomGame : MonoBehaviour {
 			refreshPrerenderMap();
 			changed = false;
 		}
-		if (XCI.GetButtonDown(XboxButton.Start, XboxController.Any))
+		//Debug.Log(XCI.GetButton(XboxButton.Start, XboxController.Second));
+		if (XCI.GetButtonDown(XboxButton.Start))
 			onStart.Select();
 		if (XCI.GetButtonDown(XboxButton.B, XboxController.Any))
 			onB.Select();
