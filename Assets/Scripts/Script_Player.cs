@@ -87,7 +87,7 @@ public class Script_Player : Script_Entity {
 			trigger = Input.GetKey("x") ? 1f : 0f;
 		if (trigger >= triggerDeadZoneIn) {
 			if (shield.up()) {
-				gamepad.SetVibration(0, 0.1f);
+				gamepad.SetVibration(0, 0.07f);
 				weapon.addContraint("shield", false);
 				cut.addContraint("shield", false);
 			}

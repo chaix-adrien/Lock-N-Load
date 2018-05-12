@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114080892167288908}
   - component: {fileID: 114497115378792198}
   - component: {fileID: 114779163915127290}
+  - component: {fileID: 114807512254001736}
   m_Layer: 0
   m_Name: Bush_Tile
   m_TagString: TileCollider
@@ -105,6 +106,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83396a91e1fc57e4699c697bb8378803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114807512254001736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846968638657782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5616c84731efb2c45bddde35bb5bc56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212559327896252140

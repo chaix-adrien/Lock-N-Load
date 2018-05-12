@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Script_TileDestructible : Script_TileHandler {
 	public Sprite[] spritesState;
 	public ScriptedTile toPutWhenBroken;
+	public Script_RandomRotateOnAxis toActivateOnBroken;
 	private int spriteId;
 	private SpriteRenderer rend;
 
@@ -18,6 +19,8 @@ public class Script_TileDestructible : Script_TileHandler {
 	public override void getShot(GameObject player, string from, string fromDetails) {
 		base.getShot(player, from, fromDetails);
 		if (spriteId < spritesState.Length) {
+			if (toActivateOnBroken)
+				toActivateOnBroken.enabled = true;
 			rend.sprite = spritesState[spriteId];
 			spriteId++;
 		}

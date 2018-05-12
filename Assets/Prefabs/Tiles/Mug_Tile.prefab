@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61151574245355232}
   - component: {fileID: 114549124733857600}
   - component: {fileID: 114111572825566238}
+  - component: {fileID: 114619023308888926}
   m_Layer: 8
   m_Name: Mug_Tile
   m_TagString: TileCollider
@@ -95,6 +96,17 @@ MonoBehaviour:
   walkable: 1
   tile: {fileID: 11400000, guid: 1999601df4630fa40bbb7f3a046ec93e, type: 2}
   pos: {x: 0, y: 0}
+--- !u!114 &114619023308888926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228880921980494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5616c84731efb2c45bddde35bb5bc56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212250962213660856
 SpriteRenderer:
   m_ObjectHideFlags: 1

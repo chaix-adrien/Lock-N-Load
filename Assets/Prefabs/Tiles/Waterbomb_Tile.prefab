@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61793166303060856}
   - component: {fileID: 114212993530281210}
   - component: {fileID: 114585953979591920}
+  - component: {fileID: 114732340327324104}
   m_Layer: 8
   m_Name: Waterbomb_Tile
   m_TagString: TileCollider
@@ -105,6 +106,17 @@ MonoBehaviour:
   onWalk: 1
   onShoot: 0
   explosionSound: {fileID: 8300000, guid: a9f159d1efc58f24583377c432b1807c, type: 3}
+--- !u!114 &114732340327324104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558110777146042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5616c84731efb2c45bddde35bb5bc56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212946414720726162
 SpriteRenderer:
   m_ObjectHideFlags: 1
