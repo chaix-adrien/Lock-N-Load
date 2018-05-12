@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Script_TileChest : Script_Interactable {
 	public GameObject[] contain;
+	public AudioClip onOpenSound;
 	private Tile floor;
 	protected override void Start () {
 		base.Start();
@@ -15,6 +16,7 @@ public class Script_TileChest : Script_Interactable {
 		Tilemap tilemap = GameObject.FindGameObjectWithTag("Map").GetComponent<Tilemap>();
 		Script_Tile_Collider tileCol = GetComponent<Script_Tile_Collider>();
 		if (contain.Length > 0) {
+			GameObject.FindGameObjectWithTag("AudioPlayer").GetComponent<Script_AudioPlayer>().play(onOpenSound);
 			GameObject toReplace = contain[Mathf.FloorToInt(Random.value * contain.Length)];
 			if (toReplace) {
 				GameObject instancied = Instantiate(toReplace, new Vector3(tileCol.pos.x, tileCol.pos.y, 0), Quaternion.identity);
